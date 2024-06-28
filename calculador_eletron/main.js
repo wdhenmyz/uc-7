@@ -5,7 +5,7 @@ app.on('ready', () => {
     //console.log("teste")
     mainWindow = new BrowserWindow({
         width: 400,
-        height: 470,
+        height: 505,
         //autoHideMenuBar: true,
         icon: './app/assets/icon/pngtree-vector-bar-chart-icon-png-image_313722.ico',
         webPreferences:{

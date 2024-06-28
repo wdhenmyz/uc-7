@@ -2,6 +2,10 @@ function reiniciar() {
     window.location.reload()
 }
 
+function fecharjanela() {
+    window.close()
+}
+
 function calcularMedia() {
     // Obter o nome do aluno
     let nome = document.getElementById('nome').value;
