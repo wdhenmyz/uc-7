@@ -1,0 +1,79 @@
+body {
+    background: rgb(80, 243, 255);
+    background: linear-gradient(to top, rgb(80, 243, 255), rgb(62, 145, 153), rgb(80, 243, 255));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 1s;
+}
+
+h2 {
+    width: 350px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.856);
+    border-radius: 50px;
+}
+
+label {
+    text-align: center;
+    font-size: 20px;
+    width: 260px;
+    background-color: rgba(255, 255, 255, 0.856);
+    color: rgb(0, 0, 0);
+}
+
+input {
+    background: rgba(17, 166, 252, 0.884);
+    border-radius: 5px;
+}
+
+button {
+    font-family: arial;
+    color: white !important;
+    font-size: 14px;
+    box-shadow: 1px 1px 1px #BEE2F9;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 2px solid #3866A3;
+    background: #0000EE;
+    background: linear-gradient(to top, #0000EE, #1D76CF);
+    cursor: pointer;
+    transition: 2s;
+}
+
+button:hover{
+    transition: 2s;
+    color: #00c3ff !important;
+    background: #63B8EE;
+    background: linear-gradient(to top, #63B8EE, #1504ff);
+}
+
+div{
+    text-align: center;
+    width: 130px;
+    height: 45px;
+    border-radius: 20px;
+    background-color: rgba(245, 245, 220, 0.842);
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+body.dark {
+    background: #172368;
+    background: linear-gradient(to top, #172368, #371781, #172368);
+    transition: 1s;
+}
+
+.dark button {
+    background: #00b6ee;
+    background: linear-gradient(to top, #00b6ee, #1d4d7e);
+}
+
+.dark button:hover {
+    color: black;
+    background: #1d4d7e;
+    background: linear-gradient(to top, #1d4d7e, #1D76CF);
+}

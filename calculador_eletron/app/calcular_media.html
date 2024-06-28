@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Média de Notas</title>
+
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="js/comandos.js" defer></script>
+
+</head>
+<body>
+    <h2>Calculadora de Média de Notas</h2>
+    <button id="botaodark" onclick="document.body.classList.toggle('dark')"> luminosidade </button><br>
+
+    <form id="formMedia">
+        <label for="nome">Nome do Aluno:</label>
+        <input type="text" id="nome" name="nome" required><br><br>
+        
+        <label for="nota1">Nota 1:</label>
+        <input type="text" id="nota1" name="nota1" min="0" max="10" step="0.1" required><br><br>
+
+        <label for="nota2">Nota 2:</label>
+        <input type="text" id="nota2" name="nota2" min="0" max="10" step="0.1" required><br><br>
+
+        <label for="nota3">Nota 3:</label>
+        <input type="text" id="nota3" name="nota3" min="0" max="10" step="0.1" required><br><br>
+
+        <label for="nota4">Nota 4:</label>
+        <input type="text" id="nota4" name="nota4" min="0" max="10" step="0.1" required><br><br>
+
+        <button type="button" onclick="calcularMedia()">Calcular Média</button>
+        <button onclick="reiniciar()">reiniciar</button>
+    </form>
+    <br>
+    <!-- <div id="resultado"></div> -->
+    
+    
+</body>
+</html>
