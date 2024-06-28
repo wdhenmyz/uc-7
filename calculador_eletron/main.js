@@ -5,7 +5,7 @@ app.on('ready', () => {
     //console.log("teste")
     mainWindow = new BrowserWindow({
         width: 400,
-        height: 460,
+        height: 470,
         //autoHideMenuBar: true,
         icon: './app/assets/icon/pngtree-vector-bar-chart-icon-png-image_313722.ico',
         webPreferences:{
@@ -23,7 +23,7 @@ app.on("window-all-closed", () => {
 const janelasobre = ()=> {
     const sobre = new BrowserWindow({
         width: 300,
-        height: 150,
+        height: 250,
         resizable: false,
         autoHideMenuBar: true,
         icon: './app/assets/icon/pngtree-vector-bar-chart-icon-png-image_313722.ico'

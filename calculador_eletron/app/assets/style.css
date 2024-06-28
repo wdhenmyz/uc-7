@@ -20,29 +20,36 @@ label {
     width: 260px;
     background-color: rgba(255, 255, 255, 0.856);
     color: rgb(0, 0, 0);
+    
 }
 
 input {
     background: rgba(17, 166, 252, 0.884);
     border-radius: 5px;
+    box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
 }
 
 button {
-    font-family: arial;
-    color: white !important;
-    font-size: 14px;
-    box-shadow: 1px 1px 1px #BEE2F9;
-    padding: 5px 10px;
-    border-radius: 10px;
-    border: 2px solid #3866A3;
-    background: #0000EE;
-    background: linear-gradient(to top, #0000EE, #1D76CF);
+    background-color: #c2fbd7;
+    border-radius: 100px;
+    box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+    color: rgb(0, 0, 0);
     cursor: pointer;
-    transition: 2s;
+    display: inline-block;
+    font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
 }
 
 button:hover{
-    transition: 2s;
+    transition: all 250ms;
     color: #00c3ff !important;
     background: #63B8EE;
     background: linear-gradient(to top, #63B8EE, #1504ff);
@@ -70,10 +77,15 @@ body.dark {
 .dark button {
     background: #00b6ee;
     background: linear-gradient(to top, #00b6ee, #1d4d7e);
+    box-shadow: none;
 }
 
 .dark button:hover {
     color: black;
     background: #1d4d7e;
     background: linear-gradient(to top, #1d4d7e, #1D76CF);
+}
+
+.dark input {
+    box-shadow: none;
 }
