@@ -1,0 +1,57 @@
+/*Reset de Estilos e Definição de Fonte*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: cursive;
+  }
+  
+/*Centralização do Conteúdo*/
+  body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #c1cc2d8e;
+  }
+  
+/*Estrutura do Container Principal*/
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border: solid;
+    border-color: aquamarine;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  
+/*Centralização do Título*/
+  h1 {
+    text-align: center;
+  }
+  
+/*Estilização da Linha Horizontal*/
+  hr {
+    font-weight: bold;
+    height: 3px;
+    background: black;
+    margin-bottom: 10px;
+  }
+  
+/*Grid do Jogo*/
+  .game {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  
+/*Estilo dos Botões do Jogo*/
+  .game button {
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 50px;
+    background: #3be71052;
+    color:blue;
+  }
