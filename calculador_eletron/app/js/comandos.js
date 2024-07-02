@@ -24,13 +24,10 @@ function calcularMedia() {
 
     // Calcular a média das notas
     let media = (nota1 + nota2 + nota3 + nota4) / 4;
-    if (media >= 7) {
-        alert("Aluno/a " + nome + " sua Média é: " + media.toFixed(2) + " você passou")   
-        //document.getElementById('resultado').textContent = `${nome}, sua média é: ${media.toFixed(2)} você passou`;
-    } else {
-        alert("Aluno/a " + nome + " sua média é: " + media.toFixed(2) + " você reprovou")
-        //document.getElementById('resultado').textContent = `${nome}, sua média é: ${media.toFixed(2)} você reprovou`;
-    }
+    // Verificar se o aluno passou ou reprovou
+    let resultadoTexto = `Aluno/a ${nome}, sua média é: ${media.toFixed(2)}. Você `;
+    resultadoTexto += (media >= 7) ? "passou." : "reprovou.";
+
     // Exibir a média e o nome do aluno
-    window.location.reload()
+    document.getElementById('resultado').textContent = resultadoTexto;
 }

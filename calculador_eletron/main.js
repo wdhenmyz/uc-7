@@ -4,8 +4,8 @@ let mainWindow = null;
 app.on('ready', () => {
     //console.log("teste")
     mainWindow = new BrowserWindow({
-        width: 400,
-        height: 505,
+        width: 470,
+        height: 620,
         //autoHideMenuBar: true,
         icon: './app/assets/icon/pngtree-vector-bar-chart-icon-png-image_313722.ico',
         webPreferences:{
