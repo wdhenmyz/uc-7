@@ -22,8 +22,8 @@ app.on("window-all-closed", () => {
 
 const janelasobre = ()=> {
     const sobre = new BrowserWindow({
-        width: 300,
-        height: 250,
+        width: 350,
+        height: 320,
         resizable: false,
         autoHideMenuBar: true,
         icon: './app/assets/icon/pngtree-vector-bar-chart-icon-png-image_313722.ico'
@@ -50,7 +50,7 @@ const template = [
     },
     {label: 'ajuda', 
         submenu: [
-            {label: 'documentação', click: ()=> shell.openExternal('https://www.electronjs.org/docs/latest/api/shell')}, //chama um evento para abrir um link externo
+            {label: 'documentação', click: ()=> shell.openExternal('https://onsenacrn-my.sharepoint.com/:b:/g/personal/wesllen52872276_edum_rn_senac_br/Eb-xiq60jHBLpSq8aSbozO4BxdkyhgKyoitM1pxC86M8zQ?e=IyNsCl')}, //chama um evento para abrir um link externo
             {type: 'separator'},
             {label: 'sobre', click: ()=> janelasobre()}
         ]      
