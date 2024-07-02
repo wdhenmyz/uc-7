@@ -2,11 +2,11 @@ const {app, BrowserWindow, Menu, shell} = require('electron')
 
 let mainWindow = null;
 app.on('ready', () => {
-    //console.log("teste")
     mainWindow = new BrowserWindow({
         width: 470,
         height: 620,
         //autoHideMenuBar: true,
+        //frame: false,
         icon: './app/assets/icon/pngtree-vector-bar-chart-icon-png-image_313722.ico',
         webPreferences:{
             preload:`${__dirname}/preload.js`
@@ -23,7 +23,7 @@ app.on("window-all-closed", () => {
 const janelasobre = ()=> {
     const sobre = new BrowserWindow({
         width: 300,
-        height: 250,
+        height: 340,
         resizable: false,
         autoHideMenuBar: true,
         icon: './app/assets/icon/pngtree-vector-bar-chart-icon-png-image_313722.ico'
