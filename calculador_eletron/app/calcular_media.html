@@ -13,6 +13,10 @@
     <h2>Calculadora de Média de Notas</h2>
     <button id="botaodark" onclick="document.body.classList.toggle('dark')"> luminosidade </button><br>
 
+    <div id="paragrafo">
+        <p>para usar essa calculadora coloque um nome qualquer e 4 valores de 0 a 10 para realizar o calculo</p>
+    </div> <br>
+
     <form id="formMedia">
         <label for="nome">Nome do Aluno:</label>
         <input type="text" id="nome" name="nome" required><br><br>
@@ -29,10 +33,12 @@
         <label for="nota4">Nota 4:</label>
         <input type="text" id="nota4" name="nota4" min="0" max="10" step="0.1" required><br><br>
     </form>
+
     <div>
         <button type="button" onclick="calcularMedia()">Calcular Média</button>
         <button onclick="reiniciar()">reiniciar</button>
     </div>
+
     <br>
     <div id="resultado"></div><br>
     <button onclick="fecharjanela()">fechar</button>
