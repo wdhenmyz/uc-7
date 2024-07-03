@@ -4,13 +4,13 @@
 }
 
 #a{
-    
     background-color: #fff;
     border-radius: 15px;
     width: 120px;
 }
 a{
     text-decoration: none;
+    color: black;
 }
 
 .fundo{
