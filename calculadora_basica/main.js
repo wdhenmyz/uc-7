@@ -4,16 +4,15 @@ let mainWindow = null;
 app.on('ready', () => {
     mainWindow = new BrowserWindow({
         width: 470,
-        height: 710,
+        height: 620,
         //autoHideMenuBar: true,
         //frame: false,
-        icon: './app/assets/icon/pngtree-vector-bar-chart-icon-png-image_313722.ico',
         webPreferences:{
             preload:`${__dirname}/preload.js`
         }
     });
     Menu.setApplicationMenu(Menu.buildFromTemplate(template))
-    mainWindow.loadFile('app/calcular_media.html')
+    mainWindow.loadFile('app/calculadora.html')
 });
 
 app.on("window-all-closed", () => {
@@ -26,7 +25,6 @@ const janelasobre = ()=> {
         height: 320,
         resizable: false,
         autoHideMenuBar: true,
-        icon: './app/assets/icon/pngtree-vector-bar-chart-icon-png-image_313722.ico'
     });
     sobre.loadFile('app/sobre.html')
 }
