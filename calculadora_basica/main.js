@@ -1,11 +1,11 @@
-const {app, BrowserWindow, Menu, shell} = require('electron')
+const {app, BrowserWindow} = require('electron')
 
 let mainWindow = null;
 app.on('ready', () => {
     mainWindow = new BrowserWindow({
         width: 470,
         height: 620,
-        //autoHideMenuBar: true,
+        autoHideMenuBar: true,
         //frame: false,
         webPreferences:{
             preload:`${__dirname}/preload.js`
