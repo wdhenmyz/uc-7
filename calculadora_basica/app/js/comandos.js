@@ -1,26 +1,26 @@
-function insert(num)
-        {
-            var numero = document.getElementById('resultado').innerHTML;
-            document.getElementById('resultado').innerHTML = numero + num;
-        }
-        function clean()
-        {
-            document.getElementById('resultado').innerHTML = "";
-        }
-        function back()
-        {
-            var resultado = document.getElementById('resultado').innerHTML;
-            document.getElementById('resultado').innerHTML = resultado.substring(0, resultado.length -1);
-        }
-        function calcular()
-        {
-            var resultado = document.getElementById('resultado').innerHTML;
-            if(resultado)
-            {
-                document.getElementById('resultado').innerHTML = eval(resultado);
-            }
-            else
-            {
-                document.getElementById('resultado').innerHTML = "Nada..."
-            }
-        }
+function insert(num) {
+    document.getElementById('resultado').innerText += num;
+}
+
+function clean() {
+    document.getElementById('resultado').innerText = "";
+}
+
+function back() {
+    let resultado = document.getElementById('resultado').innerText;
+    document.getElementById('resultado').innerText = resultado.substring(0, resultado.length - 1);
+}
+
+function calcular() {
+    let resultado = document.getElementById('resultado').innerText;
+    if(resultado) {
+        document.getElementById('resultado').innerText = eval(resultado.replace('X', '*'));
+    }
+}
+
+function percent() {
+    const resultado = document.getElementById('resultado').innerText;
+    if (resultado) {
+        document.getElementById('resultado').innerText = eval(resultado) / 100;
+    }
+}
