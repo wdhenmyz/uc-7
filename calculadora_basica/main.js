@@ -11,7 +11,7 @@ app.on('ready', () => {
             preload:`${__dirname}/preload.js`
         }
     });
-    Menu.setApplicationMenu(Menu.buildFromTemplate(template))
+    //Menu.setApplicationMenu(Menu.buildFromTemplate(template))
     mainWindow.loadFile('app/calculadora.html')
 });
 
@@ -19,7 +19,8 @@ app.on("window-all-closed", () => {
     app.quit();
 });
 
-const janelasobre = ()=> {
+
+/*const janelasobre = ()=> {
     const sobre = new BrowserWindow({
         width: 350,
         height: 320,
@@ -28,7 +29,6 @@ const janelasobre = ()=> {
     });
     sobre.loadFile('app/sobre.html')
 }
-
 
 const template = [
     {label:'arquivo',
@@ -53,4 +53,4 @@ const template = [
             {label: 'sobre', click: ()=> janelasobre()}
         ]      
     }
-]
+]*/
