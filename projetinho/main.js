@@ -1,11 +1,11 @@
-const {app, BrowserWindow, Menu, shell} = require('electron')
+const {app, BrowserWindow, Menu} = require('electron')
 
 let mainWindow = null;
 app.on('ready', () => {
     mainWindow = new BrowserWindow({
         width: 470,
         height: 620,
-        icon: './app/icone.ico'
+        icon: './app/variedade.ico'
         /*autoHideMenuBar: true,
         frame: false,
         webPreferences:{
@@ -13,7 +13,7 @@ app.on('ready', () => {
         }*/
     });
     Menu.setApplicationMenu(Menu.buildFromTemplate(template))
-    mainWindow.loadFile('app/calculadora.html')
+    mainWindow.loadFile('app/variedades.html')
 });
 
 app.on("window-all-closed", () => {
@@ -36,9 +36,4 @@ const template = [
             {label: 'zoom padrão', role: 'resetZoom'} //restaurar zoom ao inicial
         ]
     },
-    {label: 'ajuda', 
-        submenu: [
-            {label: 'documentação', click: ()=> shell.openExternal('https://onsenacrn-my.sharepoint.com/:b:/g/personal/wesllen52872276_edum_rn_senac_br/EdoD9QZKJFpLpfsPFRqNR5cBqj25RYQ6iSSBYkPgRHDJAQ?e=IzGoo9')}, //chama um evento para abrir um link externo
-        ]      
-    }
 ]
