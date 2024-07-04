@@ -1,26 +1,27 @@
-function insert(num) {
-    document.getElementById('resultado').innerText += num;
-}
+let resultado = document.getElementById('resultado');
+        let operacao = '';
 
-function clean() {
-    document.getElementById('resultado').innerText = "";
-}
+        function insert(valor) {
+            operacao += valor;
+            resultado.innerHTML = operacao;
+        }
 
-function back() {
-    let resultado = document.getElementById('resultado').innerText;
-    document.getElementById('resultado').innerText = resultado.substring(0, resultado.length - 1);
-}
+        function clean() {
+            operacao = '';
+            resultado.innerHTML = operacao;
+        }
 
-function calcular() {
-    let resultado = document.getElementById('resultado').innerText;
-    if(resultado) {
-        document.getElementById('resultado').innerText = eval(resultado.replace('X', '*'));
-    }
-}
+        function back() {
+            operacao = operacao.slice(0, -1);
+            resultado.innerHTML = operacao;
+        }
 
-function percent() {
-    const resultado = document.getElementById('resultado').innerText;
-    if (resultado) {
-        document.getElementById('resultado').innerText = eval(resultado) / 100;
-    }
-}
+        function calcular() {
+            try {
+                let result = eval(operacao);
+                resultado.innerHTML = result.toFixed(2);
+                operacao = result.toFixed(2);
+            } catch (error) {
+                resultado.innerHTML = 'Erro';
+            }
+        }
