@@ -10,9 +10,16 @@
   body {
     height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background: #c1cc2d8e;
+  }
+
+  a {
+    text-decoration: none;
+    background-color: bisque;
+    border-radius: 10px;
   }
   
 /*Estrutura do Container Principal*/

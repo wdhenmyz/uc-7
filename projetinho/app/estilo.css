@@ -1,0 +1,15 @@
+body {
+    height: 535px;
+}
+
+a{
+    text-decoration: none;
+}
+
+#corpo {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(180deg,#f12e2ea2,#b6b900,#60f027be,#1ddce296);
+}
