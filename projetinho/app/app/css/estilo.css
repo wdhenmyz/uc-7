@@ -1,0 +1,82 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: rgba(54, 44, 44, 0.801);
+}
+
+p {
+    overflow-y: hidden;
+}
+
+p::-webkit-scrollbar {
+    height: 8px; /* Altura da barra de rolagem horizontal */
+}
+  
+p::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Cor do trilho da barra de rolagem */
+}
+  
+p::-webkit-scrollbar-thumb {
+    background: #888; /* Cor do polegar da barra de rolagem */
+    border-radius: 6px; /* Bordas arredondadas do polegar */
+}
+  
+p::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Cor do polegar da barra de rolagem ao passar o mouse */
+}
+
+
+.fundo{
+    background-image: linear-gradient(45deg,rgb(240, 170, 240), rgb(200, 220, 20), rgb(109, 250, 255));
+    height: 100vh;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.calculadora{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    background-color: rgba(59, 151, 113, 0.486);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    padding: 15px;
+    width: 230px;
+    height: 380px;
+}
+
+.botao{
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    cursor: pointer;
+    margin: 3px;
+    background-color: rgb(221, 220, 220);
+    border: none;
+    color: #000000b2;
+    border-radius: 10px;
+}
+
+.botao:hover{
+    background-color: rgb(91, 206, 241);
+    transition: 0.5s;
+}
+
+#resultado{
+    background-color: white;
+    width: 207px;
+    height: 200px;
+    margin: 5px;
+    font-size: 25px;
+    color: black;
+    text-align: right;
+    padding: 5px;
+}
