@@ -7,6 +7,12 @@ h1 {
     color: rgba(54, 44, 44, 0.801);
 }
 
+a {
+    text-decoration: none;
+    background-color: bisque;
+    border-radius: 10px;
+  }
+
 p {
     overflow-y: hidden;
 }

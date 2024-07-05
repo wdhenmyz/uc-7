@@ -3,7 +3,7 @@ const {app, BrowserWindow, Menu} = require('electron')
 let mainWindow = null;
 app.on('ready', () => {
     mainWindow = new BrowserWindow({
-        width: 470,
+        width: 520,
         height: 620,
         icon: './app/variedade.ico'
         /*autoHideMenuBar: true,
