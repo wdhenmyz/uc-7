@@ -1,4 +1,4 @@
-const {app, BrowserWindow, Menu} = require('electron')
+const {app, BrowserWindow, Menu, shell} = require('electron')
 
 let mainWindow = null;
 app.on('ready', () => {
@@ -23,10 +23,11 @@ app.on("window-all-closed", () => {
 const template = [
     {label:'arquivo',
         submenu:[
-            {label: 'sair', click: ()=> app.quit(), accelerator: 'Alt+f4'} //definindo um evento click para fechar o app, definindo alt+f4 como atalho
+            {label: 'sair', click: ()=> app.quit(), accelerator: 'Alt+f4'}, //definindo um evento click para fechar o app, definindo alt+f4 como atalho
+            {label: 'documentação', click: ()=> shell.openExternal()}
         ]
     },
-    {label:'exibir',
+    {label:'opções',
         submenu: [
             {label: 'recarregar', role: 'reload'}, //função para recarregar a página
             {label: 'ferramentas do desenvolvedor', role: 'toggleDevTools'}, //abre ferramentas avançadas
