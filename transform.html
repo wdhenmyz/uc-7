@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemplo de Transformação com CSS</title>
+  <style>
+    .caixa {
+      width: 100px;
+      height: 100px;
+      background-color: skyblue;
+      margin: 50px;
+    }
+    .mover {
+      transform: translate(50px, 50px);
+    }
+    .aumentar {
+      transform: scale(1.5);
+    }
+    .rotacionar {
+      transform: rotate(45deg);
+    }
+    .inclinar {
+      transform: skew(20deg, 10deg);
+    }
+    .combinado {
+      transform: translate(50px, 50px) scale(1.5) rotate(30deg);
+    }
+    .animado {
+      transition: transform 0.5s ease;
+    }
+    .animado:hover {
+      transform: scale(1.2) rotate(10deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="caixa mover">Mover</div>
+  <div class="caixa aumentar">Aumentar</div>
+  <div class="caixa rotacionar">Rotacionar</div>
+  <div class="caixa inclinar">Inclinar</div>
+  <div class="caixa combinado">Combinado</div>
+  <div class="caixa animado">Passe o mouse</div>
+</body>
+</html>
