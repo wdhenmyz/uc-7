@@ -17,23 +17,25 @@ body {
 #players {
     width: 1000px;
     height: 400px;
+    background-image: url(imagens/ping-pong-table.jpg);
+    background-size: contain;
+    background-repeat: round;
 }
 
 #player-1, #player-2 {
     position: absolute;
-    width: 10px;
-    height: 80px;
-    background-color: white;
+    width: 70px; 
+    background-size: contain;
 }
 
 #player-1 {
     left: 0;
-    background-color: rgb(0, 133, 88);
+    rotate: 90deg;
 }
 
 #player-2 {
     right: 0;
-    background-color: blueviolet;
+    rotate: -90deg;
 }
 
 #ball {
@@ -41,7 +43,7 @@ body {
     width: 20px;
     height: 20px;
     border-radius: 20px;
-    background-color: rgb(240, 65, 65);
+    background-color: rgb(216, 212, 0);
 }
 
 #score {
