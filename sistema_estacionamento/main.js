@@ -24,7 +24,7 @@ const template = [
     {label:'arquivo',
         submenu:[
             {label: 'sair', click: ()=> app.quit(), accelerator: 'Alt+f4'}, //definindo um evento click para fechar o app, definindo alt+f4 como atalho
-            {label: 'documentação', click: ()=> shell.openExternal('https://github.com/wdhenmyz/uc-7/blob/main/sistema_estacionamento/app/Documenta%C3%A7%C3%A3o%20do%20Sistema%20de%20Estacionamento.pdf')}
+            {label: 'documentação', click: ()=> shell.openExternal('https://github.com/wdhenmyz/uc-7/blob/main/sistema_estacionamento/app/Documentacao.pdf')}
         ]
     },
     {label:'opções',
