@@ -109,3 +109,10 @@ function começar() {
 
 começar()
 
+function reiniciar() {
+    document.getElementById('reset').addEventListener('click', () =>{
+        window.location.reload();
+    })
+}
+
+reiniciar()

@@ -70,6 +70,17 @@ body {
     display: flex;
 }
 
+button {
+    margin: 0 8px 0 8px;
+}
+
+#options {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+}
+
 #start {
     display: block;
     margin: 10px auto;
