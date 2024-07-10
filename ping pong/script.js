@@ -108,7 +108,7 @@ function começar() {
 }
 
 começar()
-
+// função para reiniciar o jogo
 function reiniciar() {
     document.getElementById('reset').addEventListener('click', () =>{
         window.location.reload();
