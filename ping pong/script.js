@@ -31,22 +31,18 @@ function updateball() {
     ball.style.top = ballY + 'px';
 }
 
-// Função para lidar com pressionamentos de teclas para o jogador 1
+// Função para lidar com pressionamentos de teclas para os jogadores 1 e 2
 document.addEventListener('keydown', function(event) {
     if (event.key === 'w') {
         player1Y -= 20;
     } else if (event.key === 's') {
         player1Y += 20;
-    }
-});
-
-// Função para lidar com pressionamentos de teclas para o jogador 2
-document.addEventListener('keydown', function(event) {
+    };
     if (event.key === 'ArrowUp') {
         player2Y -= 20;
     } else if (event.key === 'ArrowDown') {
         player2Y += 20;
-    }
+    };
 });
 
 // Função para atualizar o estado do jogo
