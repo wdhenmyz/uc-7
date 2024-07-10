@@ -5,8 +5,8 @@ app.on('ready', () => {
     mainWindow = new BrowserWindow({
         width: 1110,
         height: 600,
-        /*icon: 'app/assets/css/icone.ico'
-        autoHideMenuBar: true,
+        icon: 'app/ping_pong.ico'
+        /*autoHideMenuBar: true,
         frame: false,
         webPreferences:{
             preload:`${__dirname}/preload.js`
