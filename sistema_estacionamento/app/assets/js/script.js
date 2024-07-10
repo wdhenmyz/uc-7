@@ -132,6 +132,13 @@ function addRowToTable(plate, owner, entryTime, exitTime, value) {
     
     // Adiciona a linha à tabela
     tableBody.appendChild(row);
+
+    // Atualiza a quantidade de vagas disponíveis
+    const availableSpots = document.getElementById('availableSpots');
+    const totalSpots = 100; // O número total de vagas disponíveis
+    const occupiedSpots = tableBody.querySelectorAll('tr').length;
+    const availableSpotsCount = totalSpots - occupiedSpots;
+    availableSpots.textContent = `Vagas Disponíveis: ${availableSpotsCount}`;
 }
 
 // Carrega dados do localStorage e adiciona à tabela ao carregar a página

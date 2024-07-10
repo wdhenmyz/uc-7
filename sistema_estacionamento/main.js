@@ -4,7 +4,7 @@ let mainWindow = null;
 app.on('ready', () => {
     mainWindow = new BrowserWindow({
         width: 950,
-        height: 580,
+        height: 600,
         icon: 'app/assets/css/icone.ico'
         /*autoHideMenuBar: true,
         frame: false,
