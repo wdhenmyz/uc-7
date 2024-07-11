@@ -50,6 +50,11 @@ input[type="submit"] {
     
 }
 
+#spots {
+    height: 5px;
+    width: 40px;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
