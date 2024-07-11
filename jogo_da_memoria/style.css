@@ -19,12 +19,14 @@ body {
     width: 700px;
     height: 700px;
     display: flex;
+    border-radius: 30px;
+    background-color: rgba(250, 178, 91, 0.651);
 }
 
 .board {
     width: 25%;
     height: 100%;
-    background-color: rgba(250, 178, 91, 0.651);
+    
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;

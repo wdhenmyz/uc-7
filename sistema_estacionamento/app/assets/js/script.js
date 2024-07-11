@@ -112,7 +112,7 @@ function addRowToTable(plate, owner, entryTime, exitTime, value) {
             const exitTime = new Date();
             const diffInMs = new Date(exitTime) - new Date(entryTime);
             const diffInHours = Math.ceil(diffInMs / (1000 * 60 * 60));
-            const value = diffInHours * 2;
+            const value = diffInHours * 3;
             
             exitTimeCell.textContent = exitTime.toLocaleString();
             valueCell.textContent = 'R$ ' + value.toFixed(2);
