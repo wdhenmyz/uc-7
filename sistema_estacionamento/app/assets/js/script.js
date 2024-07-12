@@ -65,11 +65,23 @@ function addRowToTable(plate, owner, entryTime, exitTime, value) {
                 saveToLocalStorage(data);
             }
 
-            // Atualiza a quantidade de vagas disponíveis
-            availableSpotsCount++;
-            availableSpots.textContent = `Vagas Disponíveis: ${availableSpotsCount}`;
+            // Cria o botão "Pagar"
+            const payButton = document.createElement('button');
+            payButton.textContent = 'Pagar';
+            actionsCell.appendChild(payButton);
+
+            payButton.addEventListener('click', function() {
+                // Remove a linha da tabela
+                row.remove();
+
+                // Atualiza a quantidade de vagas disponíveis
+                availableSpotsCount++;
+                const availableSpots = document.getElementById('availableSpots');
+                availableSpots.textContent = `Vagas Disponíveis: ${availableSpotsCount}`;
+            });
         });
     }
+
     actionsCell.appendChild(exitButton);
     row.appendChild(actionsCell);
 
