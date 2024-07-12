@@ -60,6 +60,10 @@ function addRowToTable(plate, owner, entryTime, exitTime, value) {
                 data.splice(vehicleIndex, 1);
                 saveToLocalStorage(data);
             }
+            
+            const availableSpots = document.getElementById('availableSpots');
+            availableSpotsCount++
+            availableSpots.textContent = `Vagas Disponíveis: ${availableSpotsCount}`;
         });
     }
     actionsCell.appendChild(exitButton);
