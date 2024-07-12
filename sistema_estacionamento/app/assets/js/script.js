@@ -36,7 +36,6 @@ function addRowToTable(plate, owner, entryTime, exitTime, value) {
     const valueCell = document.createElement('td');
     valueCell.textContent = value ? 'R$ ' + value.toFixed(2) : '';
     row.appendChild(valueCell);
-    
     // Célula para o botão de registrar saída
     const actionsCell = document.createElement('td');
     const exitButton = document.createElement('button');
