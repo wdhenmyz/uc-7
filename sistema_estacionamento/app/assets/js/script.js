@@ -44,6 +44,25 @@ function addRowToTable(plate, owner, entryTime, exitTime, value) {
     const exitButton = document.createElement('button');
     exitButton.textContent = 'Registrar Saída';
 
+   // Variáveis para armazenar as taxas de carro e moto
+   let valor = 0;
+   const carCheckbox = document.getElementById('carCheckbox');
+   const motoCheckbox = document.getElementById('motoCheckbox');
+
+   function updateRate() {
+       if (motoCheckbox.checked && !carCheckbox.checked) {
+           valor = 2;
+       } else if (!motoCheckbox.checked && carCheckbox.checked) {
+           valor = 3;
+       } else {
+           valor = 0;
+       }
+   }
+
+   carCheckbox.addEventListener('change', updateRate);
+   motoCheckbox.addEventListener('change', updateRate);
+   updateRate();
+
     if (exitTime) {
         exitButton.disabled = true;
     } else {
@@ -51,7 +70,7 @@ function addRowToTable(plate, owner, entryTime, exitTime, value) {
             const exitTime = new Date();
             const diffInMs = exitTime - new Date(entryTime);
             const diffInHours = Math.ceil(diffInMs / (1000 * 60 * 60));
-            const value = diffInHours * 3;
+            const value = diffInHours * valor;
 
             exitTimeCell.textContent = exitTime.toLocaleString();
             valueCell.textContent = 'R$ ' + value.toFixed(2);
@@ -79,7 +98,9 @@ function addRowToTable(plate, owner, entryTime, exitTime, value) {
                 const availableSpots = document.getElementById('availableSpots');
                 availableSpots.textContent = `Vagas Disponíveis: ${availableSpotsCount}`;
             });
+            console.log(valor);
         });
+        console.log(valor);
     }
 
     actionsCell.appendChild(exitButton);
