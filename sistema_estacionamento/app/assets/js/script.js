@@ -12,7 +12,7 @@ function saveToLocalStorage(data) {
 let availableSpotsCount = 100; // Total number of parking spots
 
 //função para adicionar uma linha na tabela
-function addRowToTable(plate, owner, entryTime, exitTime, value) {
+async function addRowToTable(plate, owner, entryTime, exitTime, value) {
     const tableBody = document.getElementById('parkingTableBody');
     const row = document.createElement('tr');
 

@@ -63,7 +63,7 @@ async function addRowToTable(plate, owner, entryTime, exitTime, value) {
             exitButton.disabled = true;
 
             // Atualiza os dados no banco de dados
-            const response = await fetch(`/vehicles/${row.dataset.id}`, {
+            const response = await fetch(`/veiculos/${row.dataset.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -73,22 +73,7 @@ async function addRowToTable(plate, owner, entryTime, exitTime, value) {
                     value: value
                 })
             });
-            const updatedVehicle = await response.json();
-
-            // Cria o botão "Pagar"
-            const payButton = document.createElement('button');
-            payButton.textContent = 'Pagar';
-            actionsCell.appendChild(payButton);
-
-            payButton.addEventListener('click', function() {
-                // Remove a linha da tabela
-                row.remove();
-
-                // Atualiza a quantidade de vagas disponíveis
-                availableSpotsCount++;
-                const availableSpots = document.getElementById('availableSpots');
-                availableSpots.textContent = `Vagas Disponíveis: ${availableSpotsCount}`;
-            });
+            const updatedVeiculos = await response.json();
         });
     }
 
@@ -99,7 +84,7 @@ async function addRowToTable(plate, owner, entryTime, exitTime, value) {
     tableBody.appendChild(row);
 
     // Salva o veículo no banco de dados
-    const response = await fetch('/vehicles', {
+    const response = await fetch('/veiculos', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -112,8 +97,8 @@ async function addRowToTable(plate, owner, entryTime, exitTime, value) {
             value: value
         })
     });
-    const newVehicle = await response.json();
-    row.dataset.id = newVehicle.id; // Guarda o ID do veículo no dataset da linha
+    const newveiculos = await response.json();
+    row.dataset.id = newveiculos.id; // Guarda o ID do veículo no dataset da linha
 
     // Atualiza a quantidade de vagas disponíveis
     const availableSpots = document.getElementById('availableSpots');
@@ -121,6 +106,3 @@ async function addRowToTable(plate, owner, entryTime, exitTime, value) {
     availableSpotsCount = 100 - occupiedSpots;
     availableSpots.textContent = `Vagas Disponíveis: ${availableSpotsCount}`;
 }
-
-// Exemplo de uso da função
-addRowToTable('ABC-1234', 'João Silva', new Date().toISOString(), null, null);

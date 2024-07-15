@@ -15,11 +15,11 @@ const pool = new Pool({
 
 app.use(bodyParser.json());
 
-app.post('/vehicles', async (req, res) => {
+app.post('/veiculos', async (req, res) => {
     const { plate, owner, entryTime, exitTime, value } = req.body;
     try {
         const result = await pool.query(
-            'INSERT INTO vehicles (plate, owner, entry_time, exit_time, value) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+            'INSERT INTO veiculos (plate, owner, entry_time, exit_time, value) VALUES ($1, $2, $3, $4, $5) RETURNING *',
             [plate, owner, entryTime, exitTime, value]
         );
         res.status(201).json(result.rows[0]);
@@ -28,12 +28,12 @@ app.post('/vehicles', async (req, res) => {
     }
 });
 
-app.put('/vehicles/:id', async (req, res) => {
+app.put('/veiculos/:id', async (req, res) => {
     const { id } = req.params;
     const { exitTime, value } = req.body;
     try {
         const result = await pool.query(
-            'UPDATE vehicles SET exit_time = $1, value = $2 WHERE id = $3 RETURNING *',
+            'UPDATE veiculos SET exit_time = $1, value = $2 WHERE id = $3 RETURNING *',
             [exitTime, value, id]
         );
         res.status(200).json(result.rows[0]);
