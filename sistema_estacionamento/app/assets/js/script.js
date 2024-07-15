@@ -98,9 +98,7 @@ function addRowToTable(plate, owner, entryTime, exitTime, value) {
                 const availableSpots = document.getElementById('availableSpots');
                 availableSpots.textContent = `Vagas Disponíveis: ${availableSpotsCount}`;
             });
-            console.log(valor);
         });
-        console.log(valor);
     }
 
     actionsCell.appendChild(exitButton);
