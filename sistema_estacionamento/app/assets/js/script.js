@@ -48,20 +48,19 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
     const exitButton = document.createElement('button');
     exitButton.textContent = 'Registrar Saída';
 
-   // Variáveis para armazenar as taxas de carro e moto
-    function updateRate(tipo, valor) {
-        if (tipo === "carro") {
+   // Função para atualizar a taxa com base no tipo do veículo
+   function updateRate(tipo) {
+        if (tipo == 'carro') {
             return 2;
-        } else if (tipo === "moto") {
+        } else if (tipo == 'moto') {
             return 3;
         } else {
             return 0;
         }
     }
 
-    updateRate()
-    
-    console.log(updateRate());
+    const valor = updateRate(tipo); // Chama updateRate para definir a taxa inicial
+    console.log('Taxa calculada:', valor);
     
 
     if (exitTime) {
