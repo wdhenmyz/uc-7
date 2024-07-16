@@ -72,12 +72,12 @@ function updategame() {
     ballY += ballYSpeed;
 
     // Checar se um ganhou
-    if (ballX < 0) {
+    if (ballX < 30) {
         // Player 2 scores
         player2Score++;
         score2.textContent = player2Score;
         resetGame();
-    } else if (ballX > 1000) {
+    } else if (ballX > 970) {
         // Player 1 scores
         player1Score++;
         score1.textContent = player1Score;
