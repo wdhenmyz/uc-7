@@ -56,6 +56,13 @@ body {
     justify-content: center;
 }
 
+.shuffle-animation {
+    transition: transform 6s;
+}
+.shuffle-animation .card {
+    transform: scale(0.5) translateX(40px) rotate(30deg);
+}
+
 .card {
     border-radius: 40%;
     width: 88%;
