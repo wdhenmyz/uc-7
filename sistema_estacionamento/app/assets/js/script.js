@@ -12,7 +12,7 @@ function saveToLocalStorage(data) {
 let availableSpotsCount = 100; // Total number of parking spots
 
 //função para adicionar uma linha na tabela
-async function addRowToTable(plate, owner, entryTime, exitTime, value) {
+async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
     const tableBody = document.getElementById('parkingTableBody');
     const row = document.createElement('tr');
 
@@ -20,6 +20,10 @@ async function addRowToTable(plate, owner, entryTime, exitTime, value) {
     const plateCell = document.createElement('td');
     plateCell.textContent = plate;
     row.appendChild(plateCell);
+
+    const tipoCell = document.createElement('td');
+    tipoCell.textContent = tipo;
+    row.appendChild(tipoCell);
 
     const ownerCell = document.createElement('td');
     ownerCell.textContent = owner;
@@ -45,23 +49,20 @@ async function addRowToTable(plate, owner, entryTime, exitTime, value) {
     exitButton.textContent = 'Registrar Saída';
 
    // Variáveis para armazenar as taxas de carro e moto
-   let valor = 0;
-   const carCheckbox = document.getElementById('carCheckbox');
-   const motoCheckbox = document.getElementById('motoCheckbox');
+    function updateRate(tipo, valor) {
+        if (tipo === "carro") {
+            return 2;
+        } else if (tipo === "moto") {
+            return 3;
+        } else {
+            return 0;
+        }
+    }
 
-   function updateRate() {
-       if (motoCheckbox.checked && !carCheckbox.checked) {
-           valor = 2;
-       } else if (!motoCheckbox.checked && carCheckbox.checked) {
-           valor = 3;
-       } else {
-           valor = 0;
-       }
-   }
-
-   carCheckbox.addEventListener('change', updateRate);
-   motoCheckbox.addEventListener('change', updateRate);
-   updateRate();
+    updateRate()
+    
+    console.log(updateRate());
+    
 
     if (exitTime) {
         exitButton.disabled = true;
@@ -118,7 +119,7 @@ async function addRowToTable(plate, owner, entryTime, exitTime, value) {
 window.addEventListener('load', function() {
     const data = loadFromLocalStorage();
     data.forEach(vehicle => {
-        addRowToTable(vehicle.plate, vehicle.owner, vehicle.entryTime, vehicle.exitTime, vehicle.value);
+        addRowToTable(vehicle.plate, vehicle.tipo, vehicle.owner, vehicle.entryTime, vehicle.exitTime, vehicle.value);
     });
 });
 
@@ -127,14 +128,15 @@ document.getElementById('parkingForm').addEventListener('submit', function(event
     event.preventDefault();
     
     const plate = document.getElementById('plate').value;
+    const tipo = document.getElementById('tipo').value;
     const owner = document.getElementById('owner').value;
     const entryTime = new Date().toISOString();
     
-    addRowToTable(plate, owner, entryTime, null, null);
+    addRowToTable(plate, owner, tipo, entryTime, null, null);
 
     // Salva os dados no localStorage
     const data = loadFromLocalStorage();
-    data.push({ plate, owner, entryTime });
+    data.push({ plate, tipo, owner, entryTime });
     saveToLocalStorage(data);
     
     document.getElementById('parkingForm').reset();

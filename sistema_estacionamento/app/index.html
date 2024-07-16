@@ -22,27 +22,8 @@
         <label for="owner">Nome do Proprietário:</label>
         <input type="text" id="owner" name="owner" required>
 
-        <div id="veiculo">
-            <div class="tipo">               
-                <p><strong>Carro</strong></p>      
-                <div class="checkbox-wrapper">
-                    <input id="carCheckbox" type="checkbox">
-                    <label for="carCheckbox">
-                    <div class="tick_mark"></div>
-                    </label>
-                </div>
-            </div> 
-
-            <div class="tipo">
-                <p><strong>Moto</strong></p>      
-                <div class="checkbox-wrapper">
-                    <input id="motoCheckbox" type="checkbox">
-                    <label for="motoCheckbox">
-                    <div class="tick_mark"></div>
-                    </label>
-                </div>
-            </div>
-        </div><br>
+        <label for="tipo">tipo de veículo:</label>
+        <input type="text" id="tipo" name="tipo" required>
 
         <input type="submit" value="Registrar Entrada">
     </form>
@@ -54,6 +35,7 @@
         <thead>
             <tr>
                 <th>Placa</th>
+                <th>tipo</th>
                 <th>Proprietário</th>
                 <th>Hora de Entrada</th>
                 <th>Hora de Saída</th>
