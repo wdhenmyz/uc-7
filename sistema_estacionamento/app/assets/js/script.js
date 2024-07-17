@@ -9,6 +9,10 @@ function saveToLocalStorage(data) {
     localStorage.setItem('parkingData', JSON.stringify(data));
 }
 
+function deleteFromLocalStorage(data) {
+    localStorage.removeItem('parkingData', JSON.stringify(data));
+}
+
 let availableSpotsCount = 20; // Total number of parking spots
 
 // Função para adicionar uma linha na tabela
@@ -92,6 +96,7 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
             payButton.addEventListener('click', function() {
                 // Remove a linha da tabela
                 row.remove();
+                deleteFromLocalStorage(data);
 
                 // Atualiza a quantidade de vagas disponíveis
                 availableSpotsCount++;
@@ -130,7 +135,7 @@ document.getElementById('parkingForm').addEventListener('submit', function(event
     const owner = document.getElementById('owner').value;
     const entryTime = new Date().toISOString();
     
-    addRowToTable(plate, owner, tipo, entryTime, null, null);
+    addRowToTable(plate, tipo, owner,  entryTime, null, null);
 
     // Salva os dados no localStorage
     const data = loadFromLocalStorage();
