@@ -9,9 +9,9 @@ function saveToLocalStorage(data) {
     localStorage.setItem('parkingData', JSON.stringify(data));
 }
 
-let availableSpotsCount = 100; // Total number of parking spots
+let availableSpotsCount = 20; // Total number of parking spots
 
-//função para adicionar uma linha na tabela
+// Função para adicionar uma linha na tabela
 async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
     const tableBody = document.getElementById('parkingTableBody');
     const row = document.createElement('tr');
@@ -48,11 +48,11 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
     const exitButton = document.createElement('button');
     exitButton.textContent = 'Registrar Saída';
 
-   // Função para atualizar a taxa com base no tipo do veículo
-   function updateRate(tipo) {
-        if (tipo == 'carro') {
+    // Função para atualizar a taxa com base no tipo do veículo
+    function updateRate(tipo) {
+        if (tipo === 'moto') {
             return 2;
-        } else if (tipo == 'moto') {
+        } else if (tipo === 'carro') {
             return 3;
         } else {
             return 0;
@@ -61,18 +61,17 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
 
     const valor = updateRate(tipo); // Chama updateRate para definir a taxa inicial
     console.log('Taxa calculada:', valor);
-    
 
     if (exitTime) {
         exitButton.disabled = true;
     } else {
         exitButton.addEventListener('click', function() {
-            const exitTime = new Date();
-            const diffInMs = exitTime - new Date(entryTime);
+            const exitTimeActual = new Date();
+            const diffInMs = exitTimeActual - new Date(entryTime);
             const diffInHours = Math.ceil(diffInMs / (1000 * 60 * 60));
             const value = diffInHours * valor;
 
-            exitTimeCell.textContent = exitTime.toLocaleString();
+            exitTimeCell.textContent = exitTimeActual.toLocaleString();
             valueCell.textContent = 'R$ ' + value.toFixed(2);
             exitButton.disabled = true;
 
@@ -80,7 +79,8 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
             const data = loadFromLocalStorage();
             const vehicleIndex = data.findIndex(v => v.plate === plate && v.entryTime === entryTime);
             if (vehicleIndex !== -1) {
-                data.splice(vehicleIndex, 1);
+                data[vehicleIndex].exitTime = exitTimeActual.toISOString();
+                data[vehicleIndex].value = value;
                 saveToLocalStorage(data);
             }
 
@@ -108,9 +108,8 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
     tableBody.appendChild(row);
 
     // Atualiza a quantidade de vagas disponíveis
+    availableSpotsCount--;
     const availableSpots = document.getElementById('availableSpots');
-    const occupiedSpots = tableBody.querySelectorAll('tr').length;
-    availableSpotsCount = 100 - occupiedSpots;
     availableSpots.textContent = `Vagas Disponíveis: ${availableSpotsCount}`;
 }
 
