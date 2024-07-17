@@ -3,8 +3,8 @@ const {app, BrowserWindow, Menu, shell} = require('electron')
 let mainWindow = null;
 app.on('ready', () => {
     mainWindow = new BrowserWindow({
-        width: 950,
-        height: 600,
+        width: 1000,
+        height: 650,
         icon: 'app/assets/css/icone.ico'
         /*autoHideMenuBar: true,
         frame: false,
