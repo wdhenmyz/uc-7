@@ -30,8 +30,15 @@ init();
 
 // function to flip the card
 function flipCard(){
-    var cards = document.getElementsByClassName("card");
-    cards[0].classList.toggle("flip");
+    document.addEventListener("DOMContentLoaded", function() {
+        const cards = document.querySelectorAll('.card');
+      
+        cards.forEach(card => {
+          card.addEventListener('click', function() {
+            card.classList.toggle('hover');
+          });
+        });
+      });
 }
 
 flipCard();
