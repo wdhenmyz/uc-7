@@ -28,11 +28,10 @@ function init() {
 
 init();
 
+const cards = document.querySelectorAll('.card');
 // function to flip the card
 function flipCard(){
-    document.addEventListener("DOMContentLoaded", function() {
-        const cards = document.querySelectorAll('.card');
-      
+    document.addEventListener("DOMContentLoaded", function() {            
         cards.forEach(card => {
           card.addEventListener('click', function() {
             card.classList.toggle('hover');
@@ -42,4 +41,3 @@ function flipCard(){
 }
 
 flipCard();
-
