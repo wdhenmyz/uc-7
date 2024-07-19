@@ -14,47 +14,56 @@
     <div class="container">
         <h1>VagaRápida</h1>
         
-        <!-- Formulário para registrar a entrada de veículos -->
-    <form id="parkingForm">
-        <label for="plate">Placa do Veículo:</label>
-        <input type="text" id="plate" name="plate" required>
+        <div id="parkingFormContainer">  <!-- Formulário para registrar a entrada de veículos -->
+            <form id="parkingForm">
+                <div class="info">
+                    <label for="plate">Placa do Veículo:</label>
+                    <input type="text" id="plate" name="plate" required>
+                    
+                    <label for="owner">Nome do Proprietário:</label>
+                    <input type="text" id="owner" name="owner" required>
+
+                    <label for="tipo">tipo de veículo:</label>
+                    <input type="text" id="tipo" name="tipo" required>
+                </div>
+                <input type="submit" value="Registrar Entrada">
+            </form>
+
+            <form id="informationForm">
+                <div class="info">
+                    <label for="plate">Placa do Veículo:</label>
+                    <input type="text" id="plate" name="plate">
+
+                    <label for="tipo">tipo de veículo:</label>
+                    <input type="text" id="tipo" name="tipo">
+                </div>
+                <input type="submit" value="procurar veiculo">
+            </form>
+        </div>  
         
-        <label for="owner">Nome do Proprietário:</label>
-        <input type="text" id="owner" name="owner" required>
+        <!-- Tabela para mostrar os veículos estacionados -->
+        <h2>Veículos Estacionados</h2>
 
-        <label for="tipo">tipo de veículo:</label>
-        <input type="text" id="tipo" name="tipo" required>
+        <p id="availableSpots">Vagas Disponíveis: 20</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Placa</th>
+                    <th>tipo</th>
+                    <th>Proprietário</th>
+                    <th>Hora de Entrada</th>
+                    <th>Hora de Saída</th>
+                    <th>Valor (R$)</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="parkingTableBody">
+                <!-- Os dados dos veículos serão adicionados aqui dinamicamente -->
+            </tbody>
+        </table>
+                
 
-        <input type="submit" value="Registrar Entrada">
-    </form>
-    
-    <!-- Tabela para mostrar os veículos estacionados -->
-    <h2>Veículos Estacionados</h2>
-    
-    <label for="plate">Placa do Veículo:</label>
-    <input type="text" id="plate" name="plate">
-    <input type="submit" value="procurar veiculo">
-
-    <p id="availableSpots">Vagas Disponíveis: 20</p>
-    <table>
-        <thead>
-            <tr>
-                <th>Placa</th>
-                <th>tipo</th>
-                <th>Proprietário</th>
-                <th>Hora de Entrada</th>
-                <th>Hora de Saída</th>
-                <th>Valor (R$)</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody id="parkingTableBody">
-            <!-- Os dados dos veículos serão adicionados aqui dinamicamente -->
-        </tbody>
-    </table>
-            
-
-        <script src="assets/js/script.js"></script>
+            <script src="assets/js/script.js"></script>
 
     </div>
     

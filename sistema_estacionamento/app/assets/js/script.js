@@ -54,8 +54,10 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
             return 2;
         } else if (tipo === 'carro') {
             return 3;
-        } else {
-            return 0;
+        } else if (tipo === 'caminhonete') {
+            return 4;
+        }else if (tipo === 'onibus') {
+            return 5;
         }
     }
 
