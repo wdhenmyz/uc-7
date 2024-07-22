@@ -166,7 +166,7 @@ document.getElementById('parkingForm').addEventListener('submit', function(event
 
     // Salva os dados no localStorage
     const data = loadFromLocalStorage();
-    data.push({ plate, tipo, owner, entryTime });
+    data.push({ plate, tipo, owner, entryTime, });
     saveToLocalStorage(data);
     
     document.getElementById('parkingForm').reset();
