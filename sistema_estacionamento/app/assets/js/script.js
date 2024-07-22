@@ -9,6 +9,11 @@ function saveToLocalStorage(data) {
     localStorage.setItem('parkingData', JSON.stringify(data));
 }
 
+function diario(data) {
+    localStorage.setItem('diario', JSON.stringify(data));
+    document.getElementById('parkingTableBody').innerHTML = '';
+}
+
 let availableSpotsCount = 20; // Total number of parking spots
 
 // Função para adicionar uma linha na tabela
@@ -86,12 +91,16 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
                 saveToLocalStorage(data);
             }
 
+            // guarda os dados no diário      
+            diario(data)
+
             // Cria o botão "Pagar"
             const payButton = document.createElement('button');
             payButton.textContent = 'Pagar';
             actionsCell.appendChild(payButton);
 
             payButton.addEventListener('click', async function() {
+                
                 // Remove a linha da tabela
                 row.remove();
                 
@@ -107,8 +116,9 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
                 availableSpotsCount++;
                 const availableSpots = document.getElementById('availableSpots');
                 availableSpots.textContent = `Vagas Disponíveis: ${availableSpotsCount}`;
+                
 
-                fetch('https://sheetdb.io/api/v1/9nlku5fa6cl5i', {
+                /*fetch('https://sheetdb.io/api/v1/9nlku5fa6cl5i', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
@@ -121,15 +131,16 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
                                 'proprietário': owner,
                                 'tipo': tipo,
                                 'entrada': entryTime,
-                                'saida': exitTime,
+                                'saida': exitTimeActual,
                                 'valor': value
                             }
                         ]
                     })
                 })
                   .then((response) => response.json())
-                  .then((data) => console.log(data));
+                  .then((data) => console.log(data));*/
             });
+            
         });
     }
 
@@ -166,7 +177,7 @@ document.getElementById('parkingForm').addEventListener('submit', function(event
 
     // Salva os dados no localStorage
     const data = loadFromLocalStorage();
-    data.push({ plate, tipo, owner, entryTime, });
+    data.push({ plate, tipo, owner, entryTime});
     saveToLocalStorage(data);
     
     document.getElementById('parkingForm').reset();
