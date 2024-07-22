@@ -9,10 +9,6 @@ function saveToLocalStorage(data) {
     localStorage.setItem('parkingData', JSON.stringify(data));
 }
 
-function diario(data) {
-    localStorage.setItem('diario', JSON.stringify(data));
-    document.getElementById('parkingTableBody').innerHTML = '';
-}
 
 let availableSpotsCount = 20; // Total number of parking spots
 
@@ -92,7 +88,8 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
             }
 
             // guarda os dados no diário      
-            diario(data)
+            localStorage.setItem('diario', JSON.stringify(data));
+            document.getElementById('parkingTableBody').innerHTML = '';
 
             // Cria o botão "Pagar"
             const payButton = document.createElement('button');
