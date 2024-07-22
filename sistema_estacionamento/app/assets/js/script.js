@@ -107,6 +107,28 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
                 availableSpotsCount++;
                 const availableSpots = document.getElementById('availableSpots');
                 availableSpots.textContent = `Vagas Disponíveis: ${availableSpotsCount}`;
+
+                fetch('https://sheetdb.io/api/v1/9nlku5fa6cl5i', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        data: [
+                            {
+                                'placa': plate,
+                                'proprietário': owner,
+                                'tipo': tipo,
+                                'entrada': entryTime,
+                                'saida': exitTime,
+                                'valor': value
+                            }
+                        ]
+                    })
+                })
+                  .then((response) => response.json())
+                  .then((data) => console.log(data));
             });
         });
     }
