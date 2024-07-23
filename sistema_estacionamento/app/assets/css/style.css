@@ -15,6 +15,16 @@ button {
   cursor: pointer;
 }
 
+button[type="submit"] {
+  cursor: pointer;
+  border-radius: 20px;
+  border: transparent;
+  background-color: darkgreen;
+  color: #ffffff;
+  width: 60px;
+  height: 30px;
+}
+
 a {
   display: flex;
   border: transparent;
@@ -294,4 +304,27 @@ th {
 
 #dailyReport {
   font-size: 15px
+}
+
+/* Add some basic styling for the pop-up */
+.popup {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+.popup-overlay {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
 }

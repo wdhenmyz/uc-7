@@ -34,12 +34,19 @@
                   <label for="tipo">tipo de veículo:</label>
                     <input type="text" id="tipo" name="tipo" >
                 </div>
-                <input type="submit" value="procurar veiculo">
+                <button type="submit">Filter</button>
             </form>
             <a href="index.html"><button class="local">
               <img src="assets/css/pagina-inicial.png" alt="pagina inicial" title="pagina inicial">
             </button></a>
         </div>  
+
+        <div class="popup-overlay" id="popupOverlay"></div>
+        <div class="popup" id="popup">
+            <h2>Filtered Vehicles</h2>
+            <div id="filteredVehiclesList"></div>
+            <button id="closePopup">Close</button>
+        </div>
         
         <!-- Tabela para mostrar os veículos estacionados -->
         <div id="table">

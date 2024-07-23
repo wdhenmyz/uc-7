@@ -180,34 +180,4 @@ document.getElementById('parkingForm').addEventListener('submit', function(event
 });
 
 
-document.getElementById('vehicleForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const plate = document.getElementById('plate').value.toLowerCase();
-    const tipo = document.getElementById('tipo').value.toLowerCase();
-
-    // Retrieve vehicles from Local Storage
-    const storedVehicles = JSON.parse(localStorage.getItem('parkingData')) || [];
-
-    // Filter vehicles based on input
-    const filteredVehicles = storedVehicles.filter(vehicle =>
-        vehicle.plate.toLowerCase().includes(plate) || vehicle.tipo.toLowerCase().includes(tipo)
-    );
-
-    // Open a new window and display the results
-    const newWindow = window.open('', '_blank');
-    newWindow.document.write('<h1>Veículos Encontrados</h1>');
-
-    if (filteredVehicles.length > 0) {
-        newWindow.document.write('<ul>');
-        filteredVehicles.forEach(vehicle => {
-            newWindow.document.write(`<li>Placa: ${vehicle.plate}, Tipo: ${vehicle.tipo}, Proprietário: ${vehicle.owner}</li><br>`);
-        });
-        newWindow.document.write('</ul>');
-    } else {
-        newWindow.document.write('<p>Nenhum veículo encontrado.</p>');
-    }
-
-    newWindow.document.close();
-});
 
