@@ -10,6 +10,11 @@ body {
     background-attachment: fixed;
 }
 
+button {
+  margin: 0 10px 0 10px;
+  cursor: pointer;
+}
+
 .container {
     max-width: 910px;
     margin: 20px auto;
@@ -25,11 +30,24 @@ body {
 #topo {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 h1 {
     text-align: center;
     color: #333;
+    margin-left: 110px;
+    margin-right: 110px;
+}
+
+.fonte {
+  height: 40px;
+  width: 40px;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #2c2c2c52;
+  border-radius: 50px;
+  border: transparent;
 }
 
 #parkingFormContainer {
@@ -60,6 +78,12 @@ input[type="submit"] {
     background-color: rgba(0, 128, 0, 0.521);
     width: 30%;
     
+}
+
+#table {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 #veiculo {
