@@ -1,0 +1,33 @@
+.dark .container {
+    background-color: #424242;
+    transition: 0.6s;
+}
+
+.dark h1 {
+    color: rgb(187, 198, 207);
+}
+
+.dark h2 {
+    color: rgb(187, 198, 207);
+}
+
+.dark p {
+    color: rgb(187, 198, 207);
+}
+
+.dark label {
+    color: rgb(187, 198, 207);
+}
+
+.dark input[type="text"] {
+    background-color: rgb(135, 135, 199);
+    color: aliceblue;
+}
+
+.dark input[type="submit"] {
+    color: aliceblue;
+}
+
+.dark button {
+    color: aliceblue;
+}
