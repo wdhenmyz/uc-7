@@ -87,9 +87,9 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
                 saveToLocalStorage(data);
             }
 
-            // guarda os dados no diário      
+            /* guarda os dados no diário      
             localStorage.setItem('diario', JSON.stringify(data));
-            document.getElementById('parkingTableBody').innerHTML = '';
+            document.getElementById('parkingTableBody').innerHTML = '';*/
 
             // Cria o botão "Pagar"
             const payButton = document.createElement('button');
@@ -97,6 +97,9 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
             actionsCell.appendChild(payButton);
 
             payButton.addEventListener('click', async function() {
+                
+                localStorage.setItem('diario', JSON.stringify(data));
+                document.getElementById('parkingTableBody').innerHTML = '';
                 
                 // Remove a linha da tabela
                 row.remove();
