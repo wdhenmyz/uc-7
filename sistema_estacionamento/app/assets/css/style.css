@@ -15,7 +15,7 @@ button {
   cursor: pointer;
 }
 
-.container {
+#container {
     max-width: 910px;
     margin: 20px auto;
     padding: 20px;
@@ -92,6 +92,22 @@ input[type="submit"] {
     justify-content: center;
     width: 800px;
     height: 120px;
+}
+
+h2 {
+  font-size: 26px;
+}
+
+p {
+  font-size: 18px;
+}
+
+th {
+  font-size: 17px;
+}
+
+td {
+  font-size: 17px;
 }
 
 .tipo {

@@ -1,4 +1,4 @@
-.dark .container {
+.dark #container {
     background-color: #424242;
     transition: 0.6s;
 }
