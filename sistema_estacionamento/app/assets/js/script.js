@@ -96,11 +96,7 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
             payButton.textContent = 'Pagar';
             actionsCell.appendChild(payButton);
 
-            payButton.addEventListener('click', async function() {
-                
-                localStorage.setItem('diario', JSON.stringify(data));
-                document.getElementById('parkingTableBody').innerHTML = '';
-                
+            payButton.addEventListener('click', async function() {               
                 // Remove a linha da tabela
                 row.remove();
                 
