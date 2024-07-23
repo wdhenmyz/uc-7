@@ -1,4 +1,4 @@
-const info = document.getElementById('parkingTableBody').innerHTML = '';
+/*const info = document.getElementById('parkingTableBody').innerHTML = '';
 
 function diario() {
     localStorage.setItem('diario', JSON.stringify(data));
@@ -11,5 +11,7 @@ exitButton.textContent = 'Registrar Saída';
 
 exitButton.addEventListener('click', function() {
     diario(data)
-});
+});*/
+
+
 
