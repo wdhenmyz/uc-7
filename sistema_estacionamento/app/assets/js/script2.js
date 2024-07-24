@@ -1,17 +1,19 @@
-/*const info = document.getElementById('parkingTableBody').innerHTML = '';
+const info = document.getElementById('parkingTableBody').innerHTML = '';
 
-function diario() {
+/*function diario() {
     localStorage.setItem('diario', JSON.stringify(data));
     document.getElementById('parkingTableBody').innerHTML = '';
 }
 
-const actionsCell = document.createElement('td');
+/*const actionsCell = document.createElement('td');
 const exitButton = document.createElement('button');
 exitButton.textContent = 'Registrar Saída';
 
 exitButton.addEventListener('click', function() {
     diario(data)
 });*/
+
+
 
 let contador = 0
 
@@ -75,12 +77,12 @@ function showPopup(filteredVehicles) {
     filteredVehiclesList.innerHTML = '';
 
     if (filteredVehicles.length === 0) {
-        filteredVehiclesList.innerHTML = '<p>No vehicles found</p>';
+        filteredVehiclesList.innerHTML = '<p>Nenhum veículo encontrado</p>';
     } else {
         const list = document.createElement('ul');
         filteredVehicles.forEach(vehicle => {
             const listItem = document.createElement('li');
-            listItem.textContent = `Plate: ${vehicle.plate}, Type: ${vehicle.tipo}, dono: ${vehicle.owner}, entrada: ${vehicle.entryTime}, saida: ${vehicle.exitTime}`;
+            listItem.textContent = `Placa: ${vehicle.plate}, Tipo: ${vehicle.tipo}, dono: ${vehicle.owner}, entrada: ${vehicle.entryTime}, saida: ${vehicle.exitTime}`;
             list.appendChild(listItem);
         });
         filteredVehiclesList.appendChild(list);
