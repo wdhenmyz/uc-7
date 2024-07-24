@@ -136,8 +136,10 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
                   .then((response) => response.json())
                   .then((data) => console.log(data));*/
             });
+        
             
         });
+        
     }
 
     actionsCell.appendChild(exitButton);
