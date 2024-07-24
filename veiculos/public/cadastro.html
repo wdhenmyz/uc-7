@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Veículos</title>
+</head>
+<body>
+    <header>
+        <h1>Cadastrar Veículos</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Página Inicial</a></li>
+                <li><a href="consulta.html">Consultar Veículos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Preencha os dados do veículo:</h2>
+            <form id="formCadastro">
+                <label for="marca">Marca:</label>
+                <input type="text" name="marca" id="marca" required><br><br>
+
+                <label for="modelo">Modelo:</label>
+                <input type="text" name="modelo" id="modelo" required><br><br>
+
+                <label for="ano">Ano:</label>
+                <input type="number" name="ano" id="ano" required><br><br>
+
+                <button type="submit">Cadastrar Veículos</button>
+            </form>
+        </section>
+    </main>
+    <script src="cadastro.js"></script>
+</body>
+</html>
