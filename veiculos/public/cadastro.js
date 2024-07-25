@@ -9,6 +9,7 @@ form.addEventListener('submit', async(e) => {
     const modelo = document.getElementById('modelo').value;   
     const ano = document.getElementById('ano').value;
 
+    // envia os dados para o servidor
     const response = await fetch('/veiculos', {
         method: 'POST',
         headers: {
@@ -17,6 +18,8 @@ form.addEventListener('submit', async(e) => {
         },
         body: JSON.stringify({ marca, modelo, ano }),
     })
+
+    // captura a resposta
     const data = await response.json();
     console.log('veiculo cadastrado', data);
 })
