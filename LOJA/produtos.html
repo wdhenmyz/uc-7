@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>produtos</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <header>
+        <h1>Cadastrar produtos</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Página Inicial</a></li>
+                <li><a href="clientes.html">Cadastrar clientes</a></li>                
+                <li><a href="funcionarios.html">Cadastrar funcionários</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Preencha os dados do produto:</h2>
+            <form id="produto">
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" id="nome" required><br><br>
+
+                <label for="fabricante">Fabricante:</label>
+                <input type="text" name="fabricante" id="fabricante" required><br><br>
+
+                <label for="modelo">Modelo:</label>
+                <input type="text" name="modelo" id="modelo" required><br><br>
+
+                <label for="ano">Ano:</label>
+                <input type="text" name="ano" id="ano" required><br><br>
+
+                <label for="descricao">Descriçao:</label>
+                <input type="text" name="descricao" id="descricao" required><br><br>
+
+                <label for="preco">Preço:</label>
+                <input type="text" name="preco" id="preco" required><br><br>
+
+                <button type="submit">Cadastrar produto</button>
+            </form>
+        </section>
+        <section id="tabela">
+            <form id="procurar">
+                <input type="text" name="procurar" id="procurar">
+                <button id="submit">Procurar</button>
+            </form><br>
+            <table id="produtos">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Fabricante</th>
+                        <th>Modelo</th>
+                        <th>Ano</th>
+                        <th>Descriçao</th>
+                        <th>Preço</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- PRODUTOS APARECERAM AQUI-->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="js/produtos.js"></script>
+    
+</body>
+</html>

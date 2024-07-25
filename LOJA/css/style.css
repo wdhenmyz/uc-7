@@ -1,0 +1,64 @@
+body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    background-color: bisque;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    color: rgb(35, 92, 73);
+    background-color: bisque;
+    border-radius: 5px;
+}
+
+header {
+    width: 20%;
+    background-color: rgba(69, 72, 233, 0.589);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    margin-bottom: 10px
+}
+
+main{
+    background-color: rgba(158, 158, 158, 0.63);
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+#principal {
+    width: 30%;
+}
+
+#tabela {
+    height: 100%;
+    width: 65%;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+thead {
+    background-color: rgb(255, 255, 255);
+}
+
+th {
+    border-radius: 3px;
+    width: 125px;
+}
+
+tbody {
+    background-color: rgb(134, 134, 134);
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clientes</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <header>
+        <h1>Cadastrar clientes</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Página Inicial</a></li>
+                <li><a href="produtos.html">Cadastrar produtos</a></li>
+                <li><a href="funcionarios.html">Cadastrar funcionários</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Preencha os dados do cliente:</h2>
+            <form id="cliente">
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" id="nome" required><br><br>
+
+                <label for="data_nascimento">Data de nascimento:</label>
+                <input type="text" name="data_nascimento" id="data_nascimento" required><br><br>
+
+                <label for="celular">Celular:</label>
+                <input type="text" name="celular" id="celular" required><br><br>
+
+                <label for="endereco">Endereço:</label>
+                <input type="text" name="endereco" id="endereco" required><br><br>
+
+                <label for="sexo">Sexo:</label>
+                <input type="text" name="sexo" id="sexo" required><br><br>
+
+                <button type="submit">Cadastrar cliente</button>
+            </form>
+        </section>
+        <section id="tabela">
+            <form id="procurar">
+                <input type="text" name="procurar" id="procurar">
+                <button id="submit">Procurar</button>
+            </form> <br>
+            <table id="clientes">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Data de nascimento:</th>
+                        <th>Celular</th>
+                        <th>Endereco</th>
+                        <th>Sexo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- CLIENTES APARECERAM AQUI-->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="js/clientes.js"></script>
+    
+</body>
+</html>
