@@ -41,6 +41,12 @@ main{
     width: 30%;
 }
 
+button {
+    border: 1px solid rgba(0, 0, 0, 0.432);
+    border-radius: 20px;
+    height: 30px;
+}
+
 #tabela {
     height: 100%;
     width: 65%;
