@@ -42,7 +42,3 @@ function flipCard(){
 
 flipCard();
 
-// check if cards match
-function check() {
-    
-}

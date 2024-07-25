@@ -15,64 +15,80 @@
 #n1.hover{
   background-image: url(icons/diamonds/diamond-removebg-preview.png);
   background-size: contain;
+  background-color: green;
 }
 #n2.hover{
   background-image: url(icons/diamonds/diamond-removebg-preview.png);
   background-size: contain;
+  background-color: green;
 }
 #n3.hover{
   background-image: url(icons/diamonds/diamond__1_-removebg-preview.png);
   background-size: contain;
+  background-color: blue;
 }
 #n4.hover{
   background-image: url(icons/diamonds/diamond__1_-removebg-preview.png);
   background-size: contain;
+  background-color: blue;
 }
 #n5.hover{
   background-image: url(icons/diamonds/diamond__2_-removebg-preview.png);
   background-size: contain;
+  background-color: red;
 }
 #n6.hover{
   background-image: url(icons/diamonds/diamond__2_-removebg-preview.png);
   background-size: contain;
+  background-color: red;
 }
 #n7.hover{
   background-image: url(icons/diamonds/gem-removebg-preview.png);
   background-size: contain;
+  background-color: yellow;
 }
 #n8.hover{
   background-image: url(icons/diamonds/gem-removebg-preview.png);
   background-size: contain;
+  background-color: yellow;
 }
 #n9.hover{
   background-image: url(icons/diamonds/gem__1_-removebg-preview.png);
   background-size: contain;
+  background-color: orange;
 }
 #n10.hover{
   background-image: url(icons/diamonds/gem__1_-removebg-preview.png);
   background-size: contain;
+  background-color: orange;
 }
 #n11.hover{
   background-image: url(icons/diamonds/gem__2_-removebg-preview.png);
   background-size: contain;
+  background-color: white;
 }
 #n12.hover{
   background-image: url(icons/diamonds/gem__2_-removebg-preview.png);
   background-size: contain;
+  background-color: white;
 }
 #n13.hover{
   background-image: url(icons/diamonds/gem__3_-removebg-preview.png);
   background-size: contain;
+  background-color: black;
 }
 #n14.hover{
   background-image: url(icons/diamonds/gem__3_-removebg-preview.png);
   background-size: contain;
+  background-color: black;
 }
 #n15.hover{
   background-image: url(icons/diamonds/gem__4_-removebg-preview.png);
   background-size: contain;
+  background-color: purple;
 }
 #n16.hover{
   background-image: url(icons/diamonds/gem__4_-removebg-preview.png);
   background-size: contain;
+  background-color: purple;
 }
