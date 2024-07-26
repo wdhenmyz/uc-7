@@ -1,15 +1,6 @@
-// garantir que o DOM esteja carregado, antes de carregar o conteúdo
+/* garantir que o DOM esteja carregado, antes de carregar o conteúdo
 document.addEventListener("DOMContentLoaded", () => {
     carregarClientes();
-    addRowToTable();
-
-    // carrega o formulário
-    const form = document.getElementById('cliente');
-    // cria uma função para cadastrar o cliente
-    form.addEventListener('submit', async(e) => {
-        e.preventDefault();
-       addRowToTable();
-    })
 
     // carrega o formulário
     const procurar = document.getElementById('procurar');
@@ -18,23 +9,23 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();        
         carregarClientes();
     })
-});
+});*/
 
 const cliente = document.getElementById("cliente");
 
-async function addRowToTable(e) {
+cliente.addEventListener('submit', async(e) => {
     // previne o comportamento padrão do formulário
-    e.preventDefault(e);
+    e.preventDefault();
 
     // pega os dados do formulário
-    const nome = document.getElementById("nome").value;
-    const nascimento = document.getElementById("data_nascimento").value;
-    const celular = document.getElementById("celular").value;
-    const endereco = document.getElementById("endereco").value;
-    const sexo = document.getElementById("sexo").value;
+    const nome = document.getElementById('nome').value;
+    const nascimento = document.getElementById('data_nascimento').value;
+    const celular = document.getElementById('celular').value;
+    const endereco = document.getElementById('endereco').value;
+    const sexo = document.getElementById('sexo').value;
 
     // envia os dados para o servidor
-    const response = await fetch('/', {
+    const response = await fetch('/loja', {
         method: 'POST',
         headers: {
             // define o cabeçalho
@@ -46,15 +37,15 @@ async function addRowToTable(e) {
     // captura a resposta
     const data = await response.json();
     console.log('cliente cadastrado', data);
-}
+})
 
 
 
-// traz os clientes
+/* traz os clientes
 async function carregarClientes() {
     // captura os valores do form
     try {
-        const response = await fetch('/');
+        const response = await fetch('/loja');
         const data = await response.json();
 
         // captura a tabela
@@ -79,4 +70,4 @@ async function carregarClientes() {
     } catch(error) {
         console.error("Erro ao buscar cliente", error);
     }
-}
+}*/

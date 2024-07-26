@@ -15,7 +15,7 @@ const port = 3000;
 const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
-    database: 'banco',
+    database: 'loja',
     password: 'BemVindo!',
     port: 5432,
 });
@@ -42,7 +42,7 @@ app.post('/loja', async(req,res) => {
         const result = await pool.query(queryText,values);
         res.status(201).json(result.rows[0]);
     } catch (err){
-        res.status(500).send('Erro ao cadastrar o produtos');
+        res.status(500).send('Erro ao cadastrar os produtos');
     }
 });
 
@@ -65,7 +65,7 @@ app.post('/loja', async(req,res) => {
 app.post('/loja', async(req,res) => {
     const {nome, nascimento, celular, endereco, sexo} = req.body;
 
-    const queryText = 'INSERT INTO cliente (nome, nascimento, celular, endereco, sexo, ) VALUES ($1, $2, $3, $4, $5) RETURNING *';
+    const queryText = 'INSERT INTO clientes (nome, nascimento, celular, endereco, sexo, ) VALUES ($1, $2, $3, $4, $5) RETURNING *';
     const values = [nome, nascimento, celular, endereco, sexo]
 
     try {

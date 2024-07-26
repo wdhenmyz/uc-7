@@ -1,4 +1,4 @@
-const cliente = document.getElementById("produto");
+const produto = document.getElementById("produto");
 
 async function addRowToTable(e) {
     // previne o comportamento padrão do formulário
@@ -13,7 +13,7 @@ async function addRowToTable(e) {
     const preco = document.getElementById("preco").value;
 
     // envia os dados para o servidor
-    const response = await fetch('/', {
+    const response = await fetch('/loja', {
         method: 'POST',
         headers: {
             // define o cabeçalho
