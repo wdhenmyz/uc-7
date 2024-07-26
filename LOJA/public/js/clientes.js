@@ -8,15 +8,15 @@ document.addEventListener("DOMContentLoaded", () => {
     // cria uma função para cadastrar o cliente
     form.addEventListener('submit', async(e) => {
         e.preventDefault();
-        carregarClientes();
+       addRowToTable();
     })
 
     // carrega o formulário
     const procurar = document.getElementById('procurar');
     // cria uma função para procurar o cliente
     procurar.addEventListener('submit', async(e) => {
-        e.preventDefault();
-        addRowToTable();
+        e.preventDefault();        
+        carregarClientes();
     })
 });
 
@@ -24,7 +24,7 @@ const cliente = document.getElementById("cliente");
 
 async function addRowToTable(e) {
     // previne o comportamento padrão do formulário
-    e.preventDefault();
+    e.preventDefault(e);
 
     // pega os dados do formulário
     const nome = document.getElementById("nome").value;
@@ -77,6 +77,6 @@ async function carregarClientes() {
             tabelaClientes.appendChild(row);
         });
     } catch(error) {
-        console.error('Erro ao buscar cliente', error);
+        console.error("Erro ao buscar cliente", error);
     }
 }

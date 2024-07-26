@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 
 // rotas de cadastro
 //rota para cadastrar um produto
-app.post('/produtos', async(req,res) => {
+app.post('/loja', async(req,res) => {
     const {nome, fabricante, modelo, ano, descricao, preco} = req.body;
 
     const queryText = 'INSERT INTO produtos (nome, fabricante , modelo, ano, descricao, preco) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *';
@@ -47,7 +47,7 @@ app.post('/produtos', async(req,res) => {
 });
 
 //rota para cadastrar um funcionário
-app.post('/veiculos', async(req,res) => {
+app.post('/loja', async(req,res) => {
     const {nome, nascimento, celular, endereco, sexo, funcao} = req.body;
 
     const queryText = 'INSERT INTO funcionarios (nome, nascimento, celular, endereco, sexo, funcao) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *';
@@ -62,7 +62,7 @@ app.post('/veiculos', async(req,res) => {
 });
 
 //rota para cadastrar um cliente
-app.post('/veiculos', async(req,res) => {
+app.post('/loja', async(req,res) => {
     const {nome, nascimento, celular, endereco, sexo} = req.body;
 
     const queryText = 'INSERT INTO cliente (nome, nascimento, celular, endereco, sexo, ) VALUES ($1, $2, $3, $4, $5) RETURNING *';
