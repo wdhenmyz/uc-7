@@ -152,6 +152,17 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
     availableSpotsCount--;
     const availableSpots = document.getElementById('availableSpots');
     availableSpots.textContent = `Vagas Disponíveis: ${availableSpotsCount}`;
+
+    const vagas = document.getElementById('vagas');
+    if (tipo === 'moto') {
+        vagas.textContent = `Vagas de moto: 5, Vagas de carro: 10, Vagas de caminhonete: 3, vagas de onibus: 2`
+    } else if (tipo === 'carro') {
+        
+    } else if (tipo === 'caimhnionete') {
+        
+    } else if (tipo === 'onibus') {
+        
+    }
 }
 
 // Carrega dados do localStorage e adiciona à tabela ao carregar a página
