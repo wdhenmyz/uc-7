@@ -25,7 +25,6 @@ cliente.addEventListener('submit', async(e) => {
     const sexo = document.getElementById('sexo').value;
     const celular = document.getElementById('celular').value;
     
-    console.log(`nome: ${nome}, data de nascimento: ${nascimento}, endereco: ${endereco}, sexo: ${sexo}, celular: ${celular}`);// Verifica se os dados foram encontrados
 
     // envia os dados para o servidor
     const response = await fetch('/clientes', {
