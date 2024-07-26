@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });*/
 
 const cliente = document.getElementById("cliente");
+console.log(cliente); // Verifica se o elemento foi encontrado
 
 cliente.addEventListener('submit', async(e) => {
     // previne o comportamento padrão do formulário
@@ -32,7 +33,7 @@ cliente.addEventListener('submit', async(e) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ nome, nascimento, endereco, sexo, celular }),
-    })
+    });
 
     // captura a resposta
     const data = await response.json();
