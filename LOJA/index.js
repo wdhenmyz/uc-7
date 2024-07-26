@@ -62,11 +62,11 @@ app.post('/loja', async(req,res) => {
 });
 
 //rota para cadastrar um cliente
-app.post('/loja', async(req,res) => {
-    const {nome, nascimento, celular, endereco, sexo} = req.body;
+app.post('/clientes', async(req,res) => {
+    const {nome, nascimento, endereco, sexo, celular} = req.body;
 
-    const queryText = 'INSERT INTO clientes (nome, nascimento, celular, endereco, sexo, ) VALUES ($1, $2, $3, $4, $5) RETURNING *';
-    const values = [nome, nascimento, celular, endereco, sexo]
+    const queryText = 'INSERT INTO clientes (nome, nascimento, endereco, sexo, celular ) VALUES ($1, $2, $3, $4, $5) RETURNING *';
+    const values = [nome, nascimento, endereco, sexo, celular]
 
     try {
         const result = await pool.query(queryText,values);

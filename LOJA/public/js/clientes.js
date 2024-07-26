@@ -19,19 +19,19 @@ cliente.addEventListener('submit', async(e) => {
 
     // pega os dados do formulário
     const nome = document.getElementById('nome').value;
-    const nascimento = document.getElementById('data_nascimento').value;
-    const celular = document.getElementById('celular').value;
+    const nascimento = document.getElementById('data_nascimento').value;   
     const endereco = document.getElementById('endereco').value;
     const sexo = document.getElementById('sexo').value;
+    const celular = document.getElementById('celular').value;
 
     // envia os dados para o servidor
-    const response = await fetch('/loja', {
+    const response = await fetch('/clientes', {
         method: 'POST',
         headers: {
             // define o cabeçalho
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ nome, nascimento, celular, endereco, sexo }),
+        body: JSON.stringify({ nome, nascimento, endereco, sexo, celular }),
     })
 
     // captura a resposta
