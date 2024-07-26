@@ -50,7 +50,7 @@ async function addRowToTable(e) {
 
 
 
-// traz os veiculos
+// traz os clientes
 async function carregarClientes() {
     // captura os valores do form
     try {
@@ -62,7 +62,7 @@ async function carregarClientes() {
         // carrega as informacoes
         tabelaClientes.innerHTML = '';
 
-        // cria uma linha para cada veiculo
+        // cria uma linha para cada cliente
         data.forEach(cliente => {
             const row = document.createElement('tr');
             // adiciona as informações
