@@ -12,6 +12,11 @@ function saveToLocalStorage(data) {
 
 let availableSpotsCount = 20; // Total number of parking spots
 
+let motospots = 5; // Number of motorcycle spots
+let carspots = 10; // Number of car spots
+let truckspots = 3; // Number of truck spots
+let busspots = 2; // Number of bus spots
+
 // Função para adicionar uma linha na tabela
 async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
     const tableBody = document.getElementById('parkingTableBody');
@@ -112,6 +117,24 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
                 availableSpotsCount++;
                 const availableSpots = document.getElementById('availableSpots');
                 availableSpots.textContent = `Vagas Disponíveis: ${availableSpotsCount}`;
+
+                const vagas = document.getElementById('vagas');
+                if (tipo === 'moto') {
+                    motospots++;
+                    vagas.textContent = `Vagas de moto: ${motospots}, Vagas de carro: ${carspots}, Vagas de caminhonete: ${truckspots}, vagas de onibus: ${busspots}`
+                }    
+                if (tipo === 'carro') {
+                    carspots++;
+                    vagas.textContent = `Vagas de moto: ${motospots}, Vagas de carro: ${carspots}, Vagas de caminhonete: ${truckspots}, vagas de onibus: ${busspots}`
+                } 
+                if (tipo === 'caminhonete') {
+                    truckspots++;
+                    vagas.textContent = `Vagas de moto: ${motospots}, Vagas de carro: ${carspots}, Vagas de caminhonete: ${truckspots}, vagas de onibus: ${busspots}`
+                } 
+                if (tipo === 'onibus') {
+                    busspots++;
+                    vagas.textContent = `Vagas de moto: ${motospots}, Vagas de carro: ${carspots}, Vagas de caminhonete: ${truckspots}, vagas de onibus: ${busspots}`
+                } 
                 
 
                 /*fetch('https://sheetdb.io/api/v1/9nlku5fa6cl5i', {
@@ -153,16 +176,24 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
     const availableSpots = document.getElementById('availableSpots');
     availableSpots.textContent = `Vagas Disponíveis: ${availableSpotsCount}`;
 
+
     const vagas = document.getElementById('vagas');
     if (tipo === 'moto') {
-        vagas.textContent = `Vagas de moto: 5, Vagas de carro: 10, Vagas de caminhonete: 3, vagas de onibus: 2`
-    } else if (tipo === 'carro') {
-        
-    } else if (tipo === 'caimhnionete') {
-        
-    } else if (tipo === 'onibus') {
-        
-    }
+        motospots--;
+        vagas.textContent = `Vagas de moto: ${motospots}, Vagas de carro: ${carspots}, Vagas de caminhonete: ${truckspots}, vagas de onibus: ${busspots}`
+    }    
+    if (tipo === 'carro') {
+        carspots--;
+        vagas.textContent = `Vagas de moto: ${motospots}, Vagas de carro: ${carspots}, Vagas de caminhonete: ${truckspots}, vagas de onibus: ${busspots}`
+    } 
+    if (tipo === 'caminhonete') {
+        truckspots--;
+        vagas.textContent = `Vagas de moto: ${motospots}, Vagas de carro: ${carspots}, Vagas de caminhonete: ${truckspots}, vagas de onibus: ${busspots}`
+    } 
+    if (tipo === 'onibus') {
+        busspots--;
+        vagas.textContent = `Vagas de moto: ${motospots}, Vagas de carro: ${carspots}, Vagas de caminhonete: ${truckspots}, vagas de onibus: ${busspots}`
+    } 
 }
 
 // Carrega dados do localStorage e adiciona à tabela ao carregar a página
