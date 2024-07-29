@@ -144,27 +144,6 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
                 } 
                 
 
-                /*fetch('https://sheetdb.io/api/v1/9nlku5fa6cl5i', {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        data: [
-                            {
-                                'placa': plate,
-                                'proprietário': owner,
-                                'tipo': tipo,
-                                'entrada': entryTime,
-                                'saida': exitTimeActual,
-                                'valor': value
-                            }
-                        ]
-                    })
-                })
-                  .then((response) => response.json())
-                  .then((data) => console.log(data));*/
             });
         
             
