@@ -51,6 +51,7 @@ produto.addEventListener('submit', async (e) => {
             body: JSON.stringify({
                 data: [
                     {
+                        'id': "INCREMENT",
                         'nome': nome,
                         'fabricante': fabricante,
                         'modelo': modelo,
@@ -67,4 +68,32 @@ produto.addEventListener('submit', async (e) => {
     } catch (error) {
         console.error('Error:', error);
     }
+});
+
+
+document.getElementById("procurar").addEventListener('submit', async(e) => {
+    e.preventDefault();
+
+    fetch('https://sheetdb.io/api/v1/mg07naffiti78')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+
+            const tabelaProdutos = document.getElementById('produtos');
+
+            data.forEach(produto => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${produto.id}</td>
+                    <td>${produto.nome}</td>
+                    <td>${produto.fabricante}</td>
+                    <td>${produto.modelo}</td>
+                    <td>${produto.ano}</td>
+                    <td>${produto.descriçao}</td>
+                    <td>${produto.preço}</td>
+                `;
+
+                tabelaProdutos.appendChild(row);
+            });
+        })
 });

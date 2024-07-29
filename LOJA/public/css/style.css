@@ -65,6 +65,10 @@ th {
     width: 125px;
 }
 
+td {
+    background-color: rgb(248, 217, 217);
+}
+
 tbody {
-    background-color: rgb(134, 134, 134);
+    
 }
