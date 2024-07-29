@@ -93,9 +93,15 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
                 saveToLocalStorage(data);
             }
 
-            /* guarda os dados no diário      
-            localStorage.setItem('diario', JSON.stringify(data));
-            document.getElementById('parkingTableBody').innerHTML = '';*/
+            // Armazena os dados no diario 
+            function diario(data) {
+                const existingData = JSON.parse(localStorage.getItem('diario')) || [];
+                existingData.push(data);
+                localStorage.setItem('diario', JSON.stringify(existingData));
+            }
+            
+            // Call the diario function with the appropriate data
+            diario({ plate, tipo, owner, entryTime, exitTimeActual, value });
 
             // Cria o botão "Pagar"
             const payButton = document.createElement('button');
