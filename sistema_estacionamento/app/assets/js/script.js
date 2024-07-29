@@ -53,6 +53,7 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
     const actionsCell = document.createElement('td');
     const exitButton = document.createElement('button');
     exitButton.textContent = 'Registrar Saída';
+    exitButton.id = "exitButton"; 
 
     // Função para atualizar a taxa com base no tipo do veículo
     function updateRate(tipo) {
