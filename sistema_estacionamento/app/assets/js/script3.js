@@ -6,23 +6,21 @@ function loadFromDiario() {
 document.getElementById('dailyReport').addEventListener('click', async function(e) {
     e.preventDefault();
 
-    const data = loadFromDiario();
-    console.log(data);
-
-    const { plate, owner, tipo, entryTime, exitTimeActual, value } = data;
+    const dataEntries = loadFromDiario(); // Assumes this returns an array of objects
+    console.log('Loaded Data Entries:', dataEntries);
 
     const payload = {
-        data: [
-            {
-                'placa': plate,
-                'proprietário': owner,
-                'tipo': tipo,
-                'entrada': entryTime,
-                'saida': exitTimeActual,
-                'valor': value
-            }
-        ]
+        data: dataEntries.map(entry => ({
+            'placa': entry.plate,
+            'proprietário': entry.owner,
+            'tipo': entry.tipo,
+            'entrada': entry.entryTime,
+            'saida': entry.exitTimeActual,
+            'valor': entry.value
+        }))
     };
+
+    console.log('Payload:', JSON.stringify(payload, null, 2));
 
     try {
         const response = await fetch('https://sheetdb.io/api/v1/9nlku5fa6cl5i', {
