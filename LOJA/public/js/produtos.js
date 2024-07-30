@@ -74,26 +74,29 @@ produto.addEventListener('submit', async (e) => {
 document.getElementById("procurar").addEventListener('submit', async(e) => {
     e.preventDefault();
 
-    fetch('https://sheetdb.io/api/v1/mg07naffiti78')
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
+    try {
+        const response = await fetch('https://sheetdb.io/api/v1/mg07naffiti78');
+        const data = await response.json();
 
-            const tabelaProdutos = document.getElementById('produtos');
+        console.log(data);
 
-            data.forEach(produto => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${produto.id}</td>
-                    <td>${produto.nome}</td>
-                    <td>${produto.fabricante}</td>
-                    <td>${produto.modelo}</td>
-                    <td>${produto.ano}</td>
-                    <td>${produto.descriçao}</td>
-                    <td>${produto.preço}</td>
-                `;
+        const tabelaProdutos = document.getElementById('produtos').getElementsByTagName('tbody')[0];
+        tabelaProdutos.innerHTML = ''; // Clear the table body before adding new rows
 
-                tabelaProdutos.appendChild(row);
-            });
-        })
+        data.forEach(produto => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${produto.id}</td>
+                <td>${produto.nome}</td>
+                <td>${produto.fabricante}</td>
+                <td>${produto.modelo}</td>
+                <td>${produto.ano}</td>
+                <td>${produto.descriçao}</td>
+                <td>${produto.preço}</td>
+            `;
+            tabelaProdutos.appendChild(row);
+        });
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
 });
