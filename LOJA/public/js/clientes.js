@@ -11,10 +11,10 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 });*/
 
-const cliente = document.getElementById("cliente");
+const cliente = document.getElementById('cliente');
 console.log(cliente); // Verifica se o elemento foi encontrado
 
-cliente.addEventListener('submit', async(e) => {
+cliente.addEventListener('submit', async (e) => {
     // previne o comportamento padrão do formulário
     e.preventDefault();
 
@@ -25,6 +25,7 @@ cliente.addEventListener('submit', async(e) => {
     const sexo = document.getElementById('sexo').value;
     const celular = document.getElementById('celular').value;
     
+    console.log(nome, nascimento, celular, endereco, sexo);
 
     // envia os dados para o servidor
     const response = await fetch('/clientes', {
@@ -39,7 +40,7 @@ cliente.addEventListener('submit', async(e) => {
     // captura a resposta
     const data = await response.json();
     console.log('cliente cadastrado', data);
-})
+});
 
 
 

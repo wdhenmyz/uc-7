@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 
 // rotas de cadastro
 //rota para cadastrar um produto
-app.post('/loja', async(req,res) => {
+app.post('/produtos', async(req,res) => {
     const {nome, fabricante, modelo, ano, descricao, preco} = req.body;
 
     const queryText = 'INSERT INTO produtos (nome, fabricante , modelo, ano, descricao, preco) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *';
@@ -47,7 +47,7 @@ app.post('/loja', async(req,res) => {
 });
 
 //rota para cadastrar um funcionário
-app.post('/loja', async(req,res) => {
+app.post('/funcionarios', async(req,res) => {
     const {nome, nascimento, celular, endereco, sexo, funcao} = req.body;
 
     const queryText = 'INSERT INTO funcionarios (nome, nascimento, celular, endereco, sexo, funcao) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *';
@@ -62,16 +62,17 @@ app.post('/loja', async(req,res) => {
 });
 
 //rota para cadastrar um cliente
-app.post('/clientes', async(req,res) => {
-    const {nome, nascimento, endereco, sexo, celular} = req.body;
+app.post('/clientes', async (req, res) => {
+    const { nome, nascimento, endereco, sexo, celular } = req.body;
 
-    const queryText = 'INSERT INTO clientes (nome, nascimento, endereco, sexo, celular ) VALUES ($1, $2, $3, $4, $5) RETURNING *';
+    const queryText = 'INSERT INTO clientes(nome, nascimento, endereco, sexo, celular) VALUES($1, $2, $3, $4, $5) RETURNING *';
     const values = [nome, nascimento, endereco, sexo, celular];
 
     try {
-        const result = await pool.query(queryText,values);
+        const result = await pool.query(queryText, values);
         res.status(201).json(result.rows[0]);
-    } catch (err){
+    } catch (err) {
+        console.error('Erro ao cadastrar o cliente', err);
         res.status(500).send('Erro ao cadastrar o cliente');
     }
 });
