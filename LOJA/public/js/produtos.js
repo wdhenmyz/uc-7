@@ -100,3 +100,26 @@ document.getElementById("procurar").addEventListener('submit', async(e) => {
         console.error('Error fetching data:', error);
     }
 });
+
+document.getElementById("deletar").addEventListener('submit', async (e) => {
+    // previne o comportamento padrão do formulário
+    e.preventDefault(); 
+
+    // pega os dados do formulário
+    const id = document.getElementById("id").value;
+
+    try {
+        const response = await fetch(`https://sheetdb.io/api/v1/mg07naffiti78/id/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+});
