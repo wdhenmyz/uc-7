@@ -52,7 +52,7 @@ funcionario.addEventListener('submit', async (e) => {
             body: JSON.stringify({
                 data: [
                     {
-                        'id_funcionario': "INCREMENT",
+                        'id': "INCREMENT",
                         'nome': nome,
                         'data de nascimento': nascimento,
                         'celular': celular,
