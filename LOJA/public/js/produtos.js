@@ -51,7 +51,7 @@ produto.addEventListener('submit', async (e) => {
             body: JSON.stringify({
                 data: [
                     {
-                        'id': "INCREMENT",
+                        'id_produto': "INCREMENT",
                         'nome': nome,
                         'fabricante': fabricante,
                         'modelo': modelo,
