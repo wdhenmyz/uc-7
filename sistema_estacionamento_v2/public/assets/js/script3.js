@@ -23,7 +23,7 @@ document.getElementById('dailyReport').addEventListener('click', async function(
     console.log('Payload:', JSON.stringify(payload, null, 2));
 
     try {
-        const response = await fetch('https://sheetdb.io/api/v1/9nlku5fa6cl5i', {
+        const response = await fetch('', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
