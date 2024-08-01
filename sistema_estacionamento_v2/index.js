@@ -29,19 +29,26 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.post('/veiculos', async(req,res) => {
-    const {payload} = req.body;
+// rota para cadastrar os veículos
+app.post('/veiculos', async (req, res) => {
+    const { payload } = req.body;
 
     const queryText = 'INSERT INTO veiculos (placa, proprietario, tipo, entrada, saida, valor) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *';
-    const values = [payload]; 
-
+    
     try {
-        const result = await pool.query(queryText,values);
-        res.status(201).json(result.rows[0]);
-    } catch (err){
+        const results = [];
+
+        for (const entry of payload.data) {
+            const values = [entry.placa, entry.proprietario, entry.tipo, entry.entrada, entry.saida, entry.valor];
+            const result = await pool.query(queryText, values);
+            results.push(result.rows[0]);
+        }
+
+        res.status(201).json(results);
+    } catch (err) {
         res.status(500).send('Erro ao cadastrar o veículo');
     }
-})
+});
 
 app.listen(port, () => {
     console.log(`Servidor iniciado na porta http://localhost:${port}`);
