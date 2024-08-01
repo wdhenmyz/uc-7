@@ -30,10 +30,10 @@ app.get('/', (req, res) => {
 });
 
 app.post('/veiculos', async(req,res) => {
-    const { plate, owner, tipo, entryTime, exitTimeActual, value } = req.body;
+    const {payload} = req.body;
 
     const queryText = 'INSERT INTO veiculos (placa, proprietario, tipo, entrada, saida, valor) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *';
-    const values = [plate, owner, tipo, entryTime, exitTimeActual, value]; 
+    const values = [payload]; 
 
     try {
         const result = await pool.query(queryText,values);
