@@ -31,21 +31,25 @@ app.get('/', (req, res) => {
 
 // rota para cadastrar os veículos
 app.post('/veiculos', async (req, res) => {
-    const { payload } = req.body;
-
-    const queryText = 'INSERT INTO veiculos (placa, proprietario, tipo, entrada, saida, valor) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *';
-    
     try {
-        const results = [];
+        const { payload } = req.body;
 
-        for (const entry of payload.data) {
-            const values = [entry.placa, entry.proprietario, entry.tipo, entry.entrada, entry.saida, entry.valor];
-            const result = await pool.query(queryText, values);
-            results.push(result.rows[0]);
+        if (!payload || !Array.isArray(payload.data)) {
+            return res.status(400).send('Invalid request body');
         }
+
+        const insertVeiculos = async (entry) => {
+            const values = [entry.placa, entry.proprietario, entry.tipo, entry.entrada, entry.saida, entry.valor];
+            const queryText = 'INSERT INTO veiculos (placa, proprietario, tipo, entrada, saida, valor) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *';
+            const result = await pool.query(queryText, values);
+            return result.rows[0];
+        };
+
+        const results = await Promise.all(payload.data.map(insertVeiculos));
 
         res.status(201).json(results);
     } catch (err) {
+        console.error(err);
         res.status(500).send('Erro ao cadastrar o veículo');
     }
 });

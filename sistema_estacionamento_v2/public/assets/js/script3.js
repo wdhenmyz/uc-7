@@ -3,13 +3,8 @@ function loadFromDiario() {
     return data ? JSON.parse(data) : [];
 }
 
-document.getElementById('dailyReport').addEventListener('click', async function(e) {
-    e.preventDefault();
-
-    const dataEntries = loadFromDiario(); // Assumes this returns an array of objects
-    console.log('Loaded Data Entries:', dataEntries);
-
-    const payload = {
+function constructPayload(dataEntries) {
+    return {
         data: dataEntries.map(entry => ({
             'placa': entry.plate,
             'proprietario': entry.owner,
@@ -17,10 +12,19 @@ document.getElementById('dailyReport').addEventListener('click', async function(
             'entrada': entry.entryTime,
             'saida': entry.exitTimeActual,
             'valor': entry.value
-        }))
-    };
+        }))          
+    };    
+}
 
+document.getElementById('dailyReport').addEventListener('click', async function(e) {
+    e.preventDefault();
+
+    const dataEntries = loadFromDiario(); // Assumes this returns an array of objects
+    console.log('Loaded Data Entries:', dataEntries);
+
+    const payload = constructPayload(dataEntries);
     console.log('Payload:', JSON.stringify(payload, null, 2));
+    
 
     try {
         const response = await fetch('/veiculos', {
