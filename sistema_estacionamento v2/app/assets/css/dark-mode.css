@@ -1,0 +1,38 @@
+.dark #container {
+    background-color: #424242;
+    transition: 0.6s;
+}
+
+.dark .fonte {
+    background-color:white
+}
+
+.dark h1 {
+    color: rgb(187, 198, 207);
+}
+
+.dark h2 {
+    color: rgb(187, 198, 207);
+}
+
+.dark p {
+    color: rgb(187, 198, 207);
+}
+
+.dark label {
+    color: rgb(211, 217, 221);
+}
+
+.dark input[type="text"] {
+    background-color: rgb(202, 202, 206);
+    color: rgb(60, 60, 61);
+}
+
+.dark input[type="submit"] {
+    color: aliceblue;
+}
+
+.dark #parkingTableBody {
+    background-color: rgb(0, 0, 0);
+    color: aliceblue;
+}

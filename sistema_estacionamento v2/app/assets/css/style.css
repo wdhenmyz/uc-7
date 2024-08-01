@@ -1,0 +1,330 @@
+/* Estilos básicos para a página */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('imagem%20de%20fundo(1).jpg');
+    background-position: top;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+button {
+  margin: 0 10px 0 10px;
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  cursor: pointer;
+  border-radius: 20px;
+  border: transparent;
+  background-color: darkgreen;
+  color: #ffffff;
+  width: 60px;
+  height: 30px;
+}
+
+a {
+  display: flex;
+  border: transparent;
+  height: 70px;
+  width: 70px;
+}
+
+.local {
+  margin: 0 0 0 0;
+  background-color: transparent;
+  border: transparent;
+  width: 70PX;
+  height: 70px;
+}
+
+.local img {
+  width: 100%;
+}
+
+#container {
+    max-width: 910px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-overflow: clip;
+    overflow-y: hidden;
+    transition: 0.6s;
+}
+
+#topo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-left: 110px;
+    margin-right: 110px;
+}
+
+.fonte {
+  height: 40px;
+  width: 40px;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #2c2c2c52;
+  border-radius: 50px;
+  border: transparent;
+}
+
+#parkingFormContainer {
+  width: 900px;
+  display: flex;
+}
+
+form {
+  width: 450px;
+  margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="submit"] {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    border: solid rgba(0, 0, 0, 0.308) 1px;
+}
+
+input[type="submit"] {
+    background-color: rgba(0, 128, 0, 0.521);
+    width: 30%;
+    
+}
+
+#table {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#veiculo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 800px;
+    height: 120px;
+}
+
+h2 {
+  font-size: 26px;
+}
+
+p {
+  font-size: 18px;
+}
+
+th {
+  font-size: 17px;
+}
+
+td {
+  font-size: 17px;
+}
+
+.tipo {
+    width: 60px;
+    height: 100%;
+    margin-left: 30px;
+    margin-right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#spots {
+    height: 5px;
+    width: 40px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/*botão*/
+.styled-button {
+  position: relative;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ffffff;
+  background: linear-gradient(to bottom, #5df3da, #016363);
+  border-radius: 9999px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 1), 0 10px 20px rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #292929;
+}
+
+.styled-button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  right: -1px;
+  bottom: -1px;
+  left: -1px;
+  background: linear-gradient(to bottom, #292929, #000000);
+  z-index: -1;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+  opacity: 1;
+}
+
+.styled-button:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 1), 0 5px 10px rgba(0, 0, 0, 0.4);
+}
+
+.styled-button .inner-button {
+  position: relative; /* Ensure relative positioning for pseudo-element */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, #171717, #242424);
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 1);
+  border: 1px solid #252525;
+  transition: all 0.2s ease;
+}
+
+.styled-button .inner-button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  right: -1px;
+  bottom: -1px;
+  left: -1px;
+  background: linear-gradient(to bottom, #292929, #000000);
+  z-index: -1;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+  opacity: 1;
+}
+.styled-button .inner-button .icon {
+  filter: drop-shadow(0 10px 20px rgba(26, 25, 25, 0.9))
+    drop-shadow(0 0 4px rgba(0, 0, 0, 1));
+  transition: all 0.4s ease-in-out;
+}
+.styled-button .inner-button .icon:hover {
+  filter: drop-shadow(0 10px 20px rgba(50, 50, 50, 1))
+    drop-shadow(0 0 20px rgba(2, 2, 2, 1));
+  transform: rotate(-35deg);
+}
+
+#botaodark {
+  background: transparent;
+  border-color: transparent;
+}
+/*botão*/
+
+.theme-checkbox {
+  --toggle-size: 16px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 6.25em;
+  height: 3.125em;
+  background: -webkit-gradient(linear, left top, right top, color-stop(50%, #efefef), color-stop(50%, #2a2a2a)) no-repeat;
+  background: -o-linear-gradient(left, #979797 50%, #2a2a2a 50%) no-repeat;
+  background: linear-gradient(to right, #979797 50%, #2a2a2a 50%) no-repeat;
+  background-size: 205%;
+  background-position: 0;
+  -webkit-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 99em;
+  position: relative;
+  cursor: pointer;
+  font-size: var(--toggle-size);
+}
+
+.theme-checkbox::before {
+  content: "";
+  width: 2.25em;
+  height: 2.25em;
+  position: absolute;
+  top: 0.438em;
+  left: 0.438em;
+  background: -webkit-gradient(linear, left top, right top, color-stop(50%, #efefef), color-stop(50%, #2a2a2a)) no-repeat;
+  background: -o-linear-gradient(left, #efefef 50%, #2a2a2a 50%) no-repeat;
+  background: linear-gradient(to right, #efefef 50%, #2a2a2a 50%) no-repeat;
+  background-size: 205%;
+  background-position: 100%;
+  border-radius: 50%;
+  -webkit-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.theme-checkbox:checked::before {
+  left: calc(100% - 2.25em - 0.438em);
+  background-position: 0;
+}
+
+.theme-checkbox:checked {
+  background-position: 100%;
+}
+
+#dailyReport {
+  font-size: 15px
+}
+
+/* Add some basic styling for the pop-up */
+.popup {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+.popup-overlay {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
