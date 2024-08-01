@@ -12,7 +12,7 @@ document.getElementById('dailyReport').addEventListener('click', async function(
     const payload = {
         data: dataEntries.map(entry => ({
             'placa': entry.plate,
-            'proprietário': entry.owner,
+            'proprietario': entry.owner,
             'tipo': entry.tipo,
             'entrada': entry.entryTime,
             'saida': entry.exitTimeActual,
@@ -23,7 +23,7 @@ document.getElementById('dailyReport').addEventListener('click', async function(
     console.log('Payload:', JSON.stringify(payload, null, 2));
 
     try {
-        const response = await fetch('', {
+        const response = await fetch('/veiculos', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

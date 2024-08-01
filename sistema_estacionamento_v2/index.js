@@ -29,6 +29,19 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+app.post('/veiculos', async(req,res) => {
+    const { plate, owner, tipo, entryTime, exitTimeActual, value } = req.body;
+
+    const queryText = 'INSERT INTO veiculos (placa, proprietario, tipo, entrada, saida, valor) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *';
+    const values = [plate, owner, tipo, entryTime, exitTimeActual, value]; 
+
+    try {
+        const result = await pool.query(queryText,values);
+        res.status(201).json(result.rows[0]);
+    } catch (err){
+        res.status(500).send('Erro ao cadastrar o veículo');
+    }
+})
 
 app.listen(port, () => {
     console.log(`Servidor iniciado na porta http://localhost:${port}`);
