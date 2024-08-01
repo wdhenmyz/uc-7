@@ -34,6 +34,8 @@ document.getElementById('dailyReport').addEventListener('click', async function(
 
         const result = await response.json();
         console.log(result);
+
+        localStorage.removeItem('diario');
     } catch (error) {
         console.error('Error:', error);
     }
