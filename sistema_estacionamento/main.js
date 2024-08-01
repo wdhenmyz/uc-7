@@ -4,7 +4,7 @@ let mainWindow = null;
 app.on('ready', () => {
     mainWindow = new BrowserWindow({
         width: 1100,
-        height: 750,
+        height: 900,
         icon: 'app/assets/css/icone.ico'
         /*autoHideMenuBar: true,
         frame: false,
@@ -24,7 +24,7 @@ const template = [
     {label:'arquivo',
         submenu:[
             {label: 'sair', click: ()=> app.quit(), accelerator: 'Alt+f4'}, //definindo um evento click para fechar o app, definindo alt+f4 como atalho
-            {label: 'documentação', click: ()=> shell.openExternal('https://github.com/wdhenmyz/uc-7/blob/main/sistema_estacionamento/app/Documentacao.pdf')}
+            {label: 'documentação', click: ()=> shell.openExternal('https://github.com/wdhenmyz/uc-7/blob/main/sistema_estacionamento/app/Documenta%C3%A7%C3%A3o%20do%20C%C3%B3digo.pdf')}
         ]
     },
     {label:'opções',
