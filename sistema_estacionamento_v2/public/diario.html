@@ -39,24 +39,22 @@
             <a href="index.html"><button class="local">
               <img src="assets/css/pagina-inicial.png" alt="pagina inicial" title="pagina inicial">
             </button></a>
-            <a href="diario.html">
-              <img src="assets/css/Ícone-Livro-PNG-removebg-preview.png" alt="relatório diário" title="relatório diário">
-            </a>
+            <a href="procurar.html"><button class="local">
+              <img src="assets/css/marketing-de-busca.png" alt="procurar veículo" title="procurar veículo">
+            </button></a>
         </div>  
 
         <div class="popup-overlay" id="popupOverlay"></div>
         <div class="popup" id="popup">
             <h2>Filtered Vehicles</h2>
-            <div id="filteredVehiclesList"></div>
+            <div id="VehiclesTodayList"></div>
             <button id="closePopup">Close</button>
         </div>
         
         <!-- Tabela para mostrar os veículos estacionados -->
         <div id="table">
           <div>
-            <h2>Veículos Estacionados</h2>
-            <p id="availableSpots">Vagas Disponíveis: 20</p>
-            <p id="vagas">Vagas de moto: 5 <br> Vagas de carro: 10 <br> Vagas de caminhonete: 3 <br> vagas de onibus: 2</p>
+            <h2>Veiúculos Estacionados no dia</h2>
           </div>
             <button id="dailyReport" class="styled-button">
                 enviar relatório diário
@@ -93,7 +91,6 @@
                     <th>Hora de Entrada</th>
                     <th>Hora de Saída</th>
                     <th>Valor (R$)</th>
-                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody id="parkingTableBody">
@@ -102,9 +99,7 @@
         </table>
                 
 
-            <script src="assets/js/script.js"></script>
-            <script src="assets/js/script2.js"></script>
-            <script src="assets/js/script3.js"></script>
+            <script src="assets/js/diario.js"></script>
 
     </div>
     
