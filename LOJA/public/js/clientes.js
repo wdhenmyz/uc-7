@@ -34,7 +34,7 @@ cliente.addEventListener('submit', async (e) => {
             // define o cabeçalho
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ nome, nascimento, endereco, sexo, celular }),
+        body: JSON.stringify({ nome, nascimento, endereco, celular, sexo }),
     });
 
     // captura a resposta
