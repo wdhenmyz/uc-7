@@ -41,3 +41,4 @@ document.getElementById('dailyReport').addEventListener('click', async function(
     }
 });
 
+
