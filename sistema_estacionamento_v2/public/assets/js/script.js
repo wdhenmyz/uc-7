@@ -125,23 +125,28 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
                 const availableSpots = document.getElementById('availableSpots');
                 availableSpots.textContent = `Vagas Disponíveis: ${availableSpotsCount}`;
 
-                const vagas = document.getElementById('vagas');
+                const vagascarro = document.getElementById('vagas_carro');
+                const vagasmoto = document.getElementById('vagas_moto');
+                const vagascaminhonete = document.getElementById('vagas_caminhonete');
+                const vagasonibus = document.getElementById('vagas_onibus');
+
                 if (tipo === 'moto') {
                     motospots++;
-                    vagas.textContent = `Vagas de moto: ${motospots}, Vagas de carro: ${carspots}, Vagas de caminhonete: ${truckspots}, vagas de onibus: ${busspots}`
+                    vagasmoto.textContent = `Vagas de moto: ${motospots}`
                 }    
                 if (tipo === 'carro') {
                     carspots++;
-                    vagas.textContent = `Vagas de moto: ${motospots}, Vagas de carro: ${carspots}, Vagas de caminhonete: ${truckspots}, vagas de onibus: ${busspots}`
+                    vagascarro.textContent = `Vagas de carro: ${carspots}`
                 } 
                 if (tipo === 'caminhonete') {
                     truckspots++;
-                    vagas.textContent = `Vagas de moto: ${motospots}, Vagas de carro: ${carspots}, Vagas de caminhonete: ${truckspots}, vagas de onibus: ${busspots}`
+                    vagascaminhonete.textContent = `Vagas de caminhonete: ${truckspots}`
                 } 
                 if (tipo === 'onibus') {
                     busspots++;
-                    vagas.textContent = `Vagas de moto: ${motospots}, Vagas de carro: ${carspots}, Vagas de caminhonete: ${truckspots}, vagas de onibus: ${busspots}`
+                    vagasonibus.textContent = `vagas de onibus: ${busspots}`
                 } 
+                
                 
 
             });
@@ -163,23 +168,28 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
     availableSpots.textContent = `Vagas Disponíveis: ${availableSpotsCount}`;
 
 
-    const vagas = document.getElementById('vagas');
-    if (tipo === 'moto') {
-        motospots--;
-        vagas.textContent = `Vagas de moto: ${motospots}, Vagas de carro: ${carspots}, Vagas de caminhonete: ${truckspots}, vagas de onibus: ${busspots}`
-    }    
-    if (tipo === 'carro') {
-        carspots--;
-        vagas.textContent = `Vagas de moto: ${motospots}, Vagas de carro: ${carspots}, Vagas de caminhonete: ${truckspots}, vagas de onibus: ${busspots}`
-    } 
-    if (tipo === 'caminhonete') {
-        truckspots--;
-        vagas.textContent = `Vagas de moto: ${motospots}, Vagas de carro: ${carspots}, Vagas de caminhonete: ${truckspots}, vagas de onibus: ${busspots}`
-    } 
-    if (tipo === 'onibus') {
-        busspots--;
-        vagas.textContent = `Vagas de moto: ${motospots}, Vagas de carro: ${carspots}, Vagas de caminhonete: ${truckspots}, vagas de onibus: ${busspots}`
-    } 
+    const vagascarro = document.getElementById('vagas_carro');
+                const vagasmoto = document.getElementById('vagas_moto');
+                const vagascaminhonete = document.getElementById('vagas_caminhonete');
+                const vagasonibus = document.getElementById('vagas_onibus');
+
+                if (tipo === 'moto') {
+                    motospots--;
+                    vagasmoto.textContent = `Vagas de moto: ${motospots}`
+                }    
+                if (tipo === 'carro') {
+                    carspots--;
+                    vagascarro.textContent = `Vagas de carro: ${carspots}`
+                } 
+                if (tipo === 'caminhonete') {
+                    truckspots--;
+                    vagascaminhonete.textContent = `Vagas de caminhonete: ${truckspots}`
+                } 
+                if (tipo === 'onibus') {
+                    busspots--;
+                    vagasonibus.textContent = `vagas de onibus: ${busspots}`
+                } 
+                
 }
 
 // Carrega dados do localStorage e adiciona à tabela ao carregar a página

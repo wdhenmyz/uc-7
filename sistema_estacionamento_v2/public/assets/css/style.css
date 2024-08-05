@@ -32,6 +32,10 @@ a {
   width: 70px;
 }
 
+p {
+  margin: 0;
+}
+
 .local {
   margin: 0 0 0 0;
   background-color: transparent;
