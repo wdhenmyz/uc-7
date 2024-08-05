@@ -36,6 +36,7 @@ document.getElementById('dailyReport').addEventListener('click', async function(
         console.log(result);
 
         localStorage.removeItem('diario');
+        window.location.reload();
     } catch (error) {
         console.error('Error:', error);
     }
