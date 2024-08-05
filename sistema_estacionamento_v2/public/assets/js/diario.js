@@ -131,6 +131,15 @@ document.getElementById('dailyReport').addEventListener('click', async function(
     
 
     try {
+        const response2 = await fetch('https://sheetdb.io/api/v1/9nlku5fa6cl5i', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
+
         const response = await fetch('/veiculos', {
             method: 'POST',
             headers: {
@@ -141,10 +150,13 @@ document.getElementById('dailyReport').addEventListener('click', async function(
         });
 
         const result = await response.json();
-        console.log(result);
+        const result2 = await response2.json();
+        console.log(result2,result);
 
         localStorage.removeItem('diario');
     } catch (error) {
         console.error('Error:', error);
     }
+
+    
 });
