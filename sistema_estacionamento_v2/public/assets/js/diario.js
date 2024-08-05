@@ -126,37 +126,55 @@ document.getElementById('dailyReport').addEventListener('click', async function(
     const dataEntries = loadFromDiario(); // Assumes this returns an array of objects
     console.log('Loaded Data Entries:', dataEntries);
 
-    const payload = constructPayload(dataEntries);
-    console.log('Payload:', JSON.stringify(payload, null, 2));
+    const payload = {
+        data: dataEntries.map(entry => ({
+            'placa': entry.plate,
+            'proprietário': entry.owner,
+            'tipo': entry.tipo,
+            'entrada': entry.entryTime,
+            'saida': entry.exitTimeActual,
+            'valor': entry.value
+        }))
+    };
     
+    const headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    };
 
     try {
+        // First API request
         const response2 = await fetch('https://sheetdb.io/api/v1/9nlku5fa6cl5i', {
             method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
+            headers: headers,
             body: JSON.stringify(payload)
         });
 
+        if (!response2.ok) {
+            throw new Error(`SheetDB API request failed: ${response2.status} ${response2.statusText}`);
+        }
+
+        const result2 = await response2.json();
+        console.log('SheetDB Response:', result2);
+
+        // Second API request
         const response = await fetch('/veiculos', {
             method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
+            headers: headers,
             body: JSON.stringify(payload)
         });
 
+        if (!response.ok) {
+            throw new Error(`Veiculos API request failed: ${response.status} ${response.statusText}`);
+        }
+
         const result = await response.json();
-        const result2 = await response2.json();
-        console.log(result2,result);
+        console.log('Veiculos Response:', result);
 
         localStorage.removeItem('diario');
     } catch (error) {
         console.error('Error:', error);
     }
-
+    
     
 });
