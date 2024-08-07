@@ -3,6 +3,11 @@
     transition: 0.6s;
 }
 
+.dark #menu {
+    background-color: #424242;
+    transition: 0.6s;
+}
+
 .dark .fonte {
     background-color:white
 }
