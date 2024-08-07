@@ -5,7 +5,7 @@ body {
     padding: 0;
     background-image: url('fundo.jpg');
     background-position: top;
-    background-size: 100%;
+    background-size: auto;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
