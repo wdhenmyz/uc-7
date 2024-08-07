@@ -188,6 +188,22 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
         busspots--;
         vagasonibus.textContent = `vagas de onibus: ${busspots}`
     } 
+
+    if (motospots === 0) {
+        vagasmoto.textContent = 'Vagas de moto: não há vagas disponíveis';
+    }
+
+    if (carspots === 0) {
+        vagascarro.textContent = 'Vagas de carro: não há vagas disponíveis';       
+    }
+
+    if (truckspots === 0) {
+        vagascaminhonete.textContent = 'Vagas de caminhonete: não há vagas disponíveis';
+    }
+
+    if (busspots === 0) {
+        vagasonibus.textContent = 'vagas de onibus: não há vagas disponíveis';        
+    }
 }
 
 // Carrega dados do localStorage e adiciona à tabela ao carregar a página
