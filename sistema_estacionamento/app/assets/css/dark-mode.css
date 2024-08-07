@@ -8,19 +8,19 @@
 }
 
 .dark h1 {
-    color: rgb(187, 198, 207);
+    color: rgb(255, 255, 255);
 }
 
 .dark h2 {
-    color: rgb(187, 198, 207);
+    color: rgb(255, 255, 255);
 }
 
 .dark p {
-    color: rgb(187, 198, 207);
+    color: rgb(255, 255, 255);
 }
 
 .dark label {
-    color: rgb(211, 217, 221);
+    color: rgb(255, 255, 255);
 }
 
 .dark input[type="text"] {
