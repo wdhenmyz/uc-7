@@ -13,16 +13,11 @@ body {
 #menu {
     width: 500px;
     height: 200px;
-    background-color: #7276fa;
+    background-color: #0070bb;
     color: #fff;
     display: flex;
     flex-direction: column;
-}
-
-h2 {
-  margin-right: 10px;
-  margin-left: 10px;
-  height: 50px;
+    border-radius: 20px;
 }
 
 #opcoes {
@@ -151,6 +146,10 @@ input[type="submit"] {
 
 h2 {
   font-size: 26px;
+  margin-right: 10px;
+  margin-left: 10px;
+  height: 50px;
+  color: #000000;
 }
 
 p {
