@@ -12,6 +12,7 @@ app.on('ready', () => {
             preload:`${__dirname}/preload.js`
         }*/
     });
+    mainWindow.maximize();
     Menu.setApplicationMenu(Menu.buildFromTemplate(template))
     mainWindow.loadFile('app/index.html')
 });
