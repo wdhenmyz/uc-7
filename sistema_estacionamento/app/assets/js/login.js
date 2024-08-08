@@ -45,6 +45,12 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 
         const result = await response.json();
         console.log(result);
+
+        if (result.length > 0) {
+            window.location.href = 'index.html';
+        } else {
+            console.log('Invalid username or password');
+        }
         
     } catch (error) {
         console.error('Error:', error);
