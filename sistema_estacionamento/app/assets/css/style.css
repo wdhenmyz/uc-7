@@ -67,10 +67,11 @@ button[type="submit"] {
   cursor: pointer;
   border-radius: 20px;
   border: transparent;
-  background-color: darkgreen;
-  color: #ffffff;
-  width: 60px;
+  background: linear-gradient(to bottom, #5df3da, #016363);
+  color: #000000;
+  width: 30%;
   height: 30px;
+  border: solid 1px;
 }
 
 a {
@@ -176,9 +177,13 @@ input[type="text"], input[type="submit"], input[type="password"] {
 }
 
 input[type="submit"] {
-    background-color: rgba(0, 128, 0, 0.521);
+    background: linear-gradient(to bottom, #5df3da, #016363);
     width: 30%;
-    
+    border: solid 1px;
+}
+
+input[type="submit"]:hover {
+  cursor: pointer;
 }
 
 #table {
@@ -236,7 +241,7 @@ table {
 }
 
 table, th, td {
-    border: 1px solid #004bbba1;
+    border: 1px solid rgb(0, 0, 0);
 }
 
 th, td {
@@ -245,7 +250,7 @@ th, td {
 }
 
 th {
-    background-color: #004bbba1;
+    background-color: white;
 }
 
 /*botão*/
@@ -382,25 +387,3 @@ th {
   font-size: 15px
 }
 
-/* Add some basic styling for the pop-up */
-.popup {
-  display: none;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  padding: 20px;
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-}
-.popup-overlay {
-  display: none;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-}

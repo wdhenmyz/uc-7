@@ -12,6 +12,10 @@
     background-color:white
 }
 
+.dark a {
+    color: white;
+}
+
 .dark h1 {
     color: rgb(255, 255, 255);
 }
@@ -31,6 +35,10 @@
 .dark input[type="text"],.dark input[type="password"] {
     background-color: rgb(202, 202, 206);
     color: rgb(60, 60, 61);
+}
+
+.dark button[type="submit"] {
+    color: white;
 }
 
 .dark input[type="submit"] {
