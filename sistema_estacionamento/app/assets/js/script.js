@@ -44,9 +44,25 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
     exitTimeCell.textContent = exitTime ? new Date(exitTime).toLocaleString() : '';
     row.appendChild(exitTimeCell);
 
+    // Função para atualizar a taxa com base no tipo do veículo
+    function updateRate(tipo) {
+            if (tipo === 'moto') {
+                return 2;
+            } else if (tipo === 'carro') {
+                return 3;
+            } else if (tipo === 'caminhonete') {
+                return 4;
+            }else if (tipo === 'onibus') {
+                return 5;
+            }
+        }
+
+        const valor = updateRate(tipo); // Chama updateRate para definir a taxa inicial
+        console.log('Taxa calculada:', valor);
+
     // Célula para o valor a pagar
     const valueCell = document.createElement('td');
-    valueCell.textContent = value ? 'R$ ' + value.toFixed(2) : '';
+    valueCell.textContent = valor;
     row.appendChild(valueCell);
 
     // Célula para o botão de registrar saída
@@ -55,21 +71,9 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
     exitButton.textContent = 'Registrar Saída';
     exitButton.id = "exitButton"; 
 
-    // Função para atualizar a taxa com base no tipo do veículo
-    function updateRate(tipo) {
-        if (tipo === 'moto') {
-            return 2;
-        } else if (tipo === 'carro') {
-            return 3;
-        } else if (tipo === 'caminhonete') {
-            return 4;
-        }else if (tipo === 'onibus') {
-            return 5;
-        }
-    }
-
-    const valor = updateRate(tipo); // Chama updateRate para definir a taxa inicial
-    console.log('Taxa calculada:', valor);
+    
+    
+    
 
     if (exitTime) {
         exitButton.disabled = true;
@@ -78,10 +82,10 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
             const exitTimeActual = new Date();
             const diffInMs = exitTimeActual - new Date(entryTime);
             const diffInHours = Math.ceil(diffInMs / (1000 * 60 * 60));
-            const value = diffInHours * valor;
+            const totalvalue = diffInHours * valor;
 
             exitTimeCell.textContent = exitTimeActual.toLocaleString();
-            valueCell.textContent = 'R$ ' + value.toFixed(2);
+            valueCell.textContent = 'valor final R$ ' + totalvalue.toFixed(2);
             exitButton.disabled = true;
 
             // Atualiza os dados no localStorage
@@ -89,7 +93,7 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
             const vehicleIndex = data.findIndex(v => v.plate === plate && v.entryTime === entryTime);
             if (vehicleIndex !== -1) {
                 data[vehicleIndex].exitTime = exitTimeActual.toISOString();
-                data[vehicleIndex].value = value;
+                data[vehicleIndex].totalvalue = totalvalue;
                 saveToLocalStorage(data);
             }
 
@@ -101,7 +105,7 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
             }
             
             // Call the diario function with the appropriate data
-            diario({ plate, tipo, owner, entryTime, exitTimeActual, value });
+            diario({ plate, tipo, owner, entryTime, exitTimeActual, totalvalue });
 
             // Cria o botão "Pagar"
             const payButton = document.createElement('button');

@@ -16,7 +16,7 @@ document.getElementById('dailyReport').addEventListener('click', async function(
             'tipo': entry.tipo,
             'entrada': entry.entryTime,
             'saida': entry.exitTimeActual,
-            'valor': entry.value
+            'valor': entry.totalvalue
         }))
     };
 
