@@ -23,6 +23,11 @@ body {
     transition: 0.6s;
 }
 
+img {
+    width: 50px;
+    height: 60px;
+}
+
 #loginForm{
   margin-top: 10px;
     display: flex;
