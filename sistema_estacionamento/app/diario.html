@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VagaRápida</title>
+    <title>procurar</title>
 
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/dark-mode.css">
 
 </head>
 <body>
-    <div id="menu">
-      <h2>Menu</h2>
-      <div id="opcoes">
-        <a href="procurar.html"><button class="local">
-          <img src="assets/css/marketing-de-busca.png" alt="procurar veículo" title="procurar veículo">
-          <p>procurar veículos</p>
-        </button></a>
-        <a href="diario.html"><button class="local">
-          <img src="assets/css/Ícone-Livro-PNG-removebg-preview.png" alt="relatório diário" title="relatório diário">
-          <p>relatório diário</p></button>
-        </a>
-      </div>
+  <div id="menu">
+    <h2>Menu</h2>
+    <div id="opcoes">
+      <a href="index.html"><button class="local">
+        <img src="assets/css/pagina-inicial.png" alt="pagina inicial" title="pagina inicial">
+        <p>pagina inicial</p>
+      </button></a>
+      <a href="procurar.html"><button class="local">
+        <img src="assets/css/marketing-de-busca.png" alt="procurar veículo" title="procurar veículo">
+        <p>procurar veículo</p>
+      </button></a>
     </div>
+  </div>
 
     <div id="container">
       <div id="topo">
@@ -39,34 +39,24 @@
       </div> <br>
 
         <div id="parkingFormContainer">  <!-- Formulário para registrar a entrada de veículos -->
-            <form id="parkingForm" method="post">
+            <form id="vehicleForm">
                 <div class="info">
-                    <label for="plate">Placa do Veículo:</label>
-                    <input type="text" id="plate" name="plate" required>
-                    
-                    <label for="owner">Nome do Proprietário:</label>
-                    <input type="text" id="owner" name="owner" required>
-
-                    <label for="tipo">tipo de veículo:</label>
-                    <input type="text" id="tipo" name="tipo" required>
+                  <label for="plate">Placa do Veículo:</label>
+                  <input type="text" id="plate" name="plate" >
+                  
+                  <label for="tipo">tipo de veículo:</label>
+                    <input type="text" id="tipo" name="tipo" >
                 </div>
-                <input type="submit" value="Registrar Entrada">                
+                <button type="submit">procurar</button>
             </form>
-
-            <div>
-              <h2>Veículos Estacionados</h2>
-              <p id="availableSpots">Vagas Disponíveis: 20</p>
-              <p id="vagas_moto">Vagas de moto: 5 </p>
-              <p id="vagas_carro">Vagas de carro: 10</p>
-              <p id="vagas_caminhonete">Vagas de caminhonete: 3</p>
-              <p id="vagas_onibus">vagas de onibus: 2</p>
-            </div>
             
         </div>  
         
         <!-- Tabela para mostrar os veículos estacionados -->
         <div id="table">
-          
+          <div>
+            <h2>Veiúculos Estacionados no dia</h2>
+          </div>
             <button id="dailyReport" class="styled-button">
                 enviar relatório diário
                 <div class="inner-button">
@@ -102,18 +92,17 @@
                     <th>Hora de Entrada</th>
                     <th>Hora de Saída</th>
                     <th>Valor (R$)</th>
-                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody id="parkingTableBody">
                 <!-- Os dados dos veículos serão adicionados aqui dinamicamente -->
             </tbody>
         </table>
-              
-    </div>
+                
 
-            <script src="assets/js/script.js"></script>
-            <script src="assets/js/script2.js"></script>
-            <script src="assets/js/script3.js"></script>
+            <script src="assets/js/diario.js"></script>
+
+    </div>
+    
 </body>
 </html>
