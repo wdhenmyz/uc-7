@@ -74,51 +74,45 @@ function diminuirTamanho() {
     console.log(contador)
 }
 
-document.getElementById('vehicleForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+document.getElementById('vehicleForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-    const plate = document.getElementById('plate').value.toLowerCase();
-    const tipo = document.getElementById('tipo').value.toLowerCase();
+    // Retrieve and parse the data from localStorage
+    const storedData = localStorage.getItem('diario');
+    if (!storedData) {
+        console.error('No data found in localStorage');
+        return;
+    }
+    const parkingData = JSON.parse(storedData);
 
-    // Retrieve vehicles from Local Storage
-    const storedVehicles = JSON.parse(localStorage.getItem('diario')) || [];
+    // Get the form values
+    const placa = document.getElementById("plate").value.toLowerCase();
+    const tipo = document.getElementById("tipo").value.toLowerCase();
 
-    // Filter vehicles based on input
-    const VehiclesToday = storedVehicles.filter(vehicle =>
-        vehicle.plate.toLowerCase().includes(plate) || vehicle.tipo.toLowerCase().includes(tipo)
+    // Filter the data
+    const filteredData = parkingData.filter(item => 
+        (placa && item.placa.toLowerCase().includes(placa)) ||
+        (tipo && item.tipo.toLowerCase().includes(tipo))
     );
 
-    // Store the filtered vehicles in Local Storage
-    localStorage.setItem('VehiclesToday', JSON.stringify(VehiclesToday));
+    // Clear the table body
+    const tableBody = document.getElementById('parkingTableBody');
+    tableBody.innerHTML = '';
 
-    // Display the filtered vehicles in a pop-up
-    showPopup(VehiclesToday);
+    // Populate the table with filtered data
+    filteredData.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${item.plate}</td>
+            <td>${item.tipo}</td>
+            <td>${item.owner}</td>
+            <td>${item.entryTime}</td>
+            <td>${item.exitTimeActual}</td>
+            <td>${item.value}</td>
+        `;
+        tableBody.appendChild(row);
+    });
 });
-
-document.getElementById('closePopup').addEventListener('click', function() {
-    document.getElementById('popupOverlay').style.display = 'none';
-    document.getElementById('popup').style.display = 'none';
-});
-
-function showPopup(VehiclesToday) {
-    const VehiclesTodayList = document.getElementById('VehiclesTodayList');
-    VehiclesTodayList.innerHTML = '';
-
-    if (VehiclesToday.length === 0) {
-        VehiclesTodayList.innerHTML = '<p>Nenhum veículo encontrado</p>';
-    } else {
-        const list = document.createElement('ul');
-        VehiclesToday.forEach(vehicle => {
-            const listItem = document.createElement('li');
-            listItem.textContent = `Placa: ${vehicle.plate}, Tipo: ${vehicle.tipo}, dono: ${vehicle.owner}, entrada: ${vehicle.entryTime}, saida: ${vehicle.exitTime}`;
-            list.appendChild(listItem);
-        });
-        VehiclesTodayList.appendChild(list);
-    }
-
-    document.getElementById('popupOverlay').style.display = 'block';
-    document.getElementById('popup').style.display = 'block';
-}
 
 document.getElementById('dailyReport').addEventListener('click', async function(e) {
     e.preventDefault();
@@ -136,45 +130,25 @@ document.getElementById('dailyReport').addEventListener('click', async function(
             'valor': entry.value
         }))
     };
-    
-    const headers = {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    };
+
+    console.log('Payload:', JSON.stringify(payload, null, 2));
 
     try {
-        // First API request
-        const response2 = await fetch('https://sheetdb.io/api/v1/9nlku5fa6cl5i', {
+        const response = await fetch('https://sheetdb.io/api/v1/9nlku5fa6cl5i', {
             method: 'POST',
-            headers: headers,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(payload)
         });
-
-        if (!response2.ok) {
-            throw new Error(`SheetDB API request failed: ${response2.status} ${response2.statusText}`);
-        }
-
-        const result2 = await response2.json();
-        console.log('SheetDB Response:', result2);
-
-        // Second API request
-        const response = await fetch('/veiculos', {
-            method: 'POST',
-            headers: headers,
-            body: JSON.stringify(payload)
-        });
-
-        if (!response.ok) {
-            throw new Error(`Veiculos API request failed: ${response.status} ${response.statusText}`);
-        }
 
         const result = await response.json();
-        console.log('Veiculos Response:', result);
+        console.log(result);
 
         localStorage.removeItem('diario');
+        window.location.reload();
     } catch (error) {
         console.error('Error:', error);
     }
-    
-    
 });
