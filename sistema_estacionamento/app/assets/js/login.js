@@ -49,7 +49,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         if (result.length > 0) {
             window.location.href = 'index.html';
         } else {
-            console.log('Invalid username or password');
+            alert('Usuário ou senha inválidos');
         }
         
     } catch (error) {
