@@ -3,7 +3,7 @@ function loadFromDiario() {
     return data ? JSON.parse(data) : [];
 }
 
-function addRowToTable(plate, tipo, owner, entryTime, exitTimeActual, value) {
+function addRowToTable(plate, tipo, owner, entryTime, exitTimeActual, totalvalue) {
     const tableBody = document.getElementById('parkingTableBody');
     const row = document.createElement('tr');
 
@@ -31,7 +31,7 @@ function addRowToTable(plate, tipo, owner, entryTime, exitTimeActual, value) {
 
     // Célula para o valor a pagar
     const valueCell = document.createElement('td');
-    valueCell.textContent = value ? 'R$ ' + value.toFixed(2) : '';
+    valueCell.textContent = totalvalue;
     row.appendChild(valueCell);
 
     tableBody.appendChild(row);
@@ -40,7 +40,7 @@ function addRowToTable(plate, tipo, owner, entryTime, exitTimeActual, value) {
 window.addEventListener('load', function() {
     const data = loadFromDiario();
     data.forEach(vehicle => {
-        addRowToTable(vehicle.plate, vehicle.tipo, vehicle.owner, vehicle.entryTime, vehicle.exitTimeActual, vehicle.value);
+        addRowToTable(vehicle.plate, vehicle.tipo, vehicle.owner, vehicle.entryTime, vehicle.exitTimeActual, vehicle.totalvalue);
     });
 });
 
