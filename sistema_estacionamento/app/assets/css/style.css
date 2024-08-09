@@ -181,7 +181,7 @@ h1 {
 }
 
 form {
-  width: 450px;
+  width: 1000px;
   margin-bottom: 20px;
 }
 
@@ -192,7 +192,7 @@ label {
 }
 
 input[type="text"], input[type="submit"], input[type="password"] {
-    width: 80%;
+    width: 40%;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 20px;
@@ -201,7 +201,7 @@ input[type="text"], input[type="submit"], input[type="password"] {
 
 input[type="submit"] {
     background: linear-gradient(to bottom, #5df3da, #016363);
-    width: 30%;
+    width: 20%;
     border: solid 1px;
 }
 
@@ -481,4 +481,56 @@ th {
 .button:focus .button-box {
   transition: 0.4s;
   transform: translateX(-56px);
+}
+
+
+/*checkbox*/
+.checkbox-wrapper-23 *,
+  .checkbox-wrapper-23 *:after,
+  .checkbox-wrapper-23 *:before {
+  box-sizing: border-box;
+}
+
+.checkbox-wrapper-23 input {
+  position: absolute;
+  opacity: 0;
+}
+
+.checkbox-wrapper-23 input:checked + label svg path {
+  stroke-dashoffset: 0;
+}
+
+.checkbox-wrapper-23 input:focus + label {
+  transform: scale(1.03);
+}
+
+.checkbox-wrapper-23 input + label {
+  display: block;
+  border: 2px solid rgb(31, 31, 31);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.checkbox-wrapper-23 input + label:active {
+  transform: scale(1.05);
+  border-radius: 12px;
+}
+
+.checkbox-wrapper-23 input + label svg {
+  pointer-events: none;
+  padding: 5%;
+}
+
+.checkbox-wrapper-23 input + label svg path {
+  fill: none;
+  stroke: rgb(1, 131, 98);
+  stroke-width: 4px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 101;
+  transition: all 250ms cubic-bezier(1,0,.37,.91);
 }
