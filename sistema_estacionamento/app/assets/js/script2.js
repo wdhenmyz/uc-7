@@ -1,5 +1,3 @@
-const info = document.getElementById('parkingTableBody').innerHTML = '';
-
 let contador = 0
 
 // Função para aumentar o tamanho da letra
