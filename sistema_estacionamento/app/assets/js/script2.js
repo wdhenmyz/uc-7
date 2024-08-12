@@ -1,3 +1,10 @@
+// Função para carregar dados do localStorage
+function loadFromLocalStorage() {
+    const data = localStorage.getItem('parkingData');
+    return data ? JSON.parse(data) : [];
+}
+
+
 document.getElementById('vehicleForm').addEventListener('submit', async (e) => {
     e.preventDefault();
 
