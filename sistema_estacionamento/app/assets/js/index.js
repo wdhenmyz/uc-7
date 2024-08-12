@@ -73,7 +73,9 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
     if (exitTime) {
         exitButton.disabled = true;
     } else {
-        exitButton.addEventListener('click', function() {
+        exitButton.addEventListener('click', function(e) {
+            e.preventDefault();
+
             const exitTimeActual = new Date();
             const diffInMs = exitTimeActual - new Date(entryTime);
             const diffInHours = Math.ceil(diffInMs / (1000 * 60 * 60));
@@ -107,7 +109,9 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
             payButton.textContent = 'Pagar';
             actionsCell.appendChild(payButton);
 
-            payButton.addEventListener('click', async function() {               
+            payButton.addEventListener('click', async function(e) {    
+                e.preventDefault();
+                           
                 // Remove a linha da tabela
                 row.remove();
                 
