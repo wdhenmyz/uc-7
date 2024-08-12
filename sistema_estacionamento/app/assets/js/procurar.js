@@ -54,6 +54,11 @@ function addRowToTable(plate, tipo, owner, entryTime, exitTimeActual, totalvalue
 
     tableBody.appendChild(row);
 
+    const vagascarro = document.getElementById('vagas_carro');
+    const vagasmoto = document.getElementById('vagas_moto');
+    const vagascaminhonete = document.getElementById('vagas_caminhonete');
+    const vagasonibus = document.getElementById('vagas_onibus');
+
     if (tipo === 'moto') {
         motospots--;
         vagasmoto.textContent = `Vagas de moto: ${motospots}`
