@@ -6,7 +6,7 @@ function loadFromLocalStorage() {
 
 
 
-function addRowToTable(plate, tipo, owner, entryTime, exitTimeActual, value, totalvalue) {
+function addRowToTable(plate, tipo, owner, entryTime, exitTimeActual, totalvalue) {
     const tableBody = document.getElementById('parkingTableBody');
     const row = document.createElement('tr');
 
