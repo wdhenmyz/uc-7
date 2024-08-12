@@ -32,9 +32,24 @@ function addRowToTable(plate, tipo, owner, entryTime, exitTimeActual, value, tot
     exitTimeCell.textContent =  new Date(exitTimeActual).toLocaleString() ;
     row.appendChild(exitTimeCell);
 
+    function updateRate(tipo) {
+        if (tipo === 'moto') {
+            return 2;
+        } else if (tipo === 'carro') {
+            return 3;
+        } else if (tipo === 'caminhonete') {
+            return 4;
+        }else if (tipo === 'onibus') {
+            return 5;
+        }
+    }
+
+    const valor = updateRate(tipo); // Chama updateRate para definir a taxa inicial
+    console.log('Taxa calculada:', valor);
+
     // Célula para o valor a pagar
     const valueCell = document.createElement('td');
-    valueCell.textContent = value || totalvalue;
+    valueCell.textContent = valor || totalvalue;
     row.appendChild(valueCell);
 
     tableBody.appendChild(row);

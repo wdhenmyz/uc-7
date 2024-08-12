@@ -13,7 +13,7 @@ function saveToLocalStorage(data) {
 
 
 // Função para adicionar uma linha na tabela
-async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
+async function addRowToTable(plate, tipo, owner, entryTime, exitTime) {
     const tableBody = document.getElementById('parkingTableBody');
     const row = document.createElement('tr');
 
@@ -110,8 +110,7 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
             actionsCell.appendChild(payButton);
 
             payButton.addEventListener('click', async function(e) {    
-                e.preventDefault();
-                           
+                e.preventDefault();           
                 // Remove a linha da tabela
                 row.remove();
                 
