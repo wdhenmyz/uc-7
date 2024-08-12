@@ -3,23 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>procurar</title>
+    <title>diario</title>
 
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/dark-mode.css">
 
+    <link rel="stylesheet" href="assets/css/style2.css">
 </head>
 <body>
   <div id="menu">
     <h2>Menu</h2>
     <div id="opcoes">
-      <a href="index.html" title="pagina inicial"><button class="local">     
-      </button>pagina inicial</a>
-      <a href="procurar.html" title="procurar veículo"><button class="local">
-      </button>procurar veículo</a>
-      <a href="diario.html" title="relatório diário"><button class="local" >
-        </button>relatório diário
+
+      <a href="index.html" title="pagina inicial" class="opcoes">
+        <button class="Btn" >  
+          <div class="sign">
+            <svg viewBox="0 0 512 512">
+              <img src="assets/css/casa.png" alt="" srcset="">
+            </svg></div>          
+          <div class="text">pagina inicial</div>
+        </button></a>
+
+      <a href="procurar.html" title="procurar veículo" class="opcoes">
+        <button class="Btn">  
+          <div class="sign">
+            <svg viewBox="0 0 512 512">
+              <img src="assets/css/lupa.png" alt="">
+            </svg></div>          
+          <div class="text">procurar veículo</div>
+        </button></a>
+
+      <a href="diario.html" title="relatório diário" class="opcoes">
+        <button class="Btn">  
+          <div class="sign">
+            <svg viewBox="0 0 512 512">
+              <img src="assets/css/relatorio-financeiro.png" alt="" srcset="">
+            </svg></div>          
+          <div class="text">relatório diário</div>
+        </button>
       </a>
+
       <a href="login.html" title="desconectar" id="sair">
         <button class="button">
           <div class="button-box">
@@ -73,7 +96,12 @@
                 <img src="assets/css/Default_icon_of_a_sheet_0.png" alt="procurar veículo" title="procurar veículo" >             
                ver relatório 
             </a>
-            
+
+            <div style="display: flex; flex-direction: column;align-items: center;width: 230px;height: 230px;margin-left: 20px;">
+              <h2>valor total do dia</h2>
+              <div id="valordiario">
+              </div>
+            </div>
         </div>  
         
         <!-- Tabela para mostrar os veículos estacionados -->

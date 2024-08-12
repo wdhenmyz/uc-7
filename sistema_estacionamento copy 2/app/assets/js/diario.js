@@ -38,10 +38,13 @@ function addRowToTable(plate, tipo, owner, entryTime, exitTimeActual, totalvalue
 }
 
 window.addEventListener('load', function() {
+    let totalValue = 0;
     const data = loadFromDiario();
     data.forEach(vehicle => {
         addRowToTable(vehicle.plate, vehicle.tipo, vehicle.owner, vehicle.entryTime, vehicle.exitTimeActual, vehicle.totalvalue);
+        totalValue += vehicle.totalvalue;
     });
+    document.getElementById('valordiario').textContent = `R$ ${totalValue.toFixed(2)}`;
 });
 
 let contador = 0

@@ -3,22 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>procurar</title>
+    <title>VagaRápida</title>
 
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/dark-mode.css">
 
+    <link rel="stylesheet" href="assets/css/style2.css">
+
 </head>
 <body>
-    <div id="menu"><h2>Menu</h2>
+    <div id="menu">
+      <h2>Menu</h2>
       <div id="opcoes">
-        <a href="index.html" title="pagina inicial"><button class="local">       
-        </button>pagina inicial</a>
-        <a href="procurar.html" title="procurar veículo"><button class="local">         
-        </button>procurar veículo</a>
-        <a href="diario.html" title="relatório diário"><button class="local">    
-          </button>relatório diário
+
+        <a href="index.html" title="pagina inicial" class="opcoes">
+          <button class="Btn" >  
+            <div class="sign">
+              <svg viewBox="0 0 512 512">
+                <img src="assets/css/casa.png" alt="" srcset="">
+              </svg></div>          
+            <div class="text">pagina inicial</div>
+          </button></a>
+  
+        <a href="procurar.html" title="procurar veículo" class="opcoes">
+          <button class="Btn">  
+            <div class="sign">
+              <svg viewBox="0 0 512 512">
+                <img src="assets/css/lupa.png" alt="">
+              </svg></div>          
+            <div class="text">procurar veículo</div>
+          </button></a>
+  
+        <a href="diario.html" title="relatório diário" class="opcoes">
+          <button class="Btn">  
+            <div class="sign">
+              <svg viewBox="0 0 512 512">
+                <img src="assets/css/relatorio-financeiro.png" alt="" srcset="">
+              </svg></div>          
+            <div class="text">relatório diário</div>
+          </button>
         </a>
+
         <a href="login.html" title="desconectar" id="sair">
           <button class="button">
             <div class="button-box">
@@ -57,16 +82,22 @@
       </div> <br>
 
         <div id="parkingFormContainer">  <!-- Formulário para registrar a entrada de veículos -->
-            <form id="vehicleForm">
+            <form id="parkingForm" method="post">
                 <div class="info">
-                  <label for="plate">Placa do Veículo:</label>
-                  <input type="text" id="plate" name="plate" >
-                  
-                  <label for="tipo">tipo de veículo:</label>
-                    <input type="text" id="tipo" name="tipo" >
+                    <label for="plate">Placa do Veículo:</label>
+                    <input type="text" id="plate" name="plate" required>
+                    
+                    <label for="owner">Nome do Proprietário:</label>
+                    <input type="text" id="owner" name="owner" required>
+
+                    <label for="tipo">tipo de veículo:</label>
+                    <input type="text" id="tipo" name="tipo" required>
                 </div>
-                <button type="submit">procurar</button>
-            </form>            
+                <input type="submit" value="Registrar Entrada">                
+            </form>
+
+            
+            
         </div>  
         
         <!-- Tabela para mostrar os veículos estacionados -->
@@ -99,7 +130,7 @@
 
         </div><br>
         <table>
-            <thead id="parkingTableHead">
+            <thead>
                 <tr>
                     <th>Placa</th>
                     <th>tipo</th>
@@ -107,38 +138,39 @@
                     <th>Hora de Entrada</th>
                     <th>Hora de Saída</th>
                     <th>Valor (R$)</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody id="parkingTableBody">
                 <!-- Os dados dos veículos serão adicionados aqui dinamicamente -->
             </tbody>
         </table>
-                
+              
+    </div>
+
+    <div id="vagas">      
+        <p id="availableSpots">Vagas Disponíveis: 20</p>
+      <div style="display: flex;flex-direction: column;align-items: center;">
+        <img src="assets/css/Default_icon_of_a_motorcycle_3.png" alt="">
+        <p id="vagas_moto">Vagas de moto: 5 </p>
+      </div>
+      <div style="display: flex;flex-direction: column;align-items: center;">
+        <img src="assets/css/Default_icon_of_a_car_3.png" alt="">
+        <p id="vagas_carro">Vagas de carro: 10</p>
+      </div>
+      <div style="display: flex;flex-direction: column;align-items: center;">
+        <img src="assets/css/Default_icon_of_a_truck_2.png" alt="">
+        <p id="vagas_caminhonete">Vagas de caminhonete: 3</p>
+      </div>
+      <div style="display: flex;flex-direction: column;align-items: center;">
+        <img src="assets/css/Default_icon_of_a_bus_1.png" alt="">
+        <p id="vagas_onibus">vagas de onibus: 2</p>
+      </div>
+                  
+    </div>
 
             <script src="assets/js/script.js"></script>
             <script src="assets/js/script2.js"></script>
             <script src="assets/js/script3.js"></script>
-
-    </div>
-
-    <div id="vagas">      
-      <p id="availableSpots">Vagas Disponíveis: 20</p>
-    <div style="display: flex;flex-direction: column;align-items: center;">
-      <img src="assets/css/Default_icon_of_a_motorcycle_3.png" alt="">
-      <p id="vagas_moto">Vagas de moto: 5 </p>
-    </div>
-    <div style="display: flex;flex-direction: column;align-items: center;">
-      <img src="assets/css/Default_icon_of_a_car_3.png" alt="">
-      <p id="vagas_carro">Vagas de carro: 10</p>
-    </div>
-    <div style="display: flex;flex-direction: column;align-items: center;">
-      <img src="assets/css/Default_icon_of_a_truck_2.png" alt="">
-      <p id="vagas_caminhonete">Vagas de caminhonete: 3</p>
-    </div>
-    <div style="display: flex;flex-direction: column;align-items: center;">
-      <img src="assets/css/Default_icon_of_a_bus_1.png" alt="">
-      <p id="vagas_onibus">vagas de onibus: 2</p>
-    </div>
-    
 </body>
 </html>
