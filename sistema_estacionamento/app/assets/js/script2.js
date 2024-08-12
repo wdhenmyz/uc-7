@@ -1,4 +1,3 @@
-
 document.getElementById('vehicleForm').addEventListener('submit', async (e) => {
     e.preventDefault();
 
