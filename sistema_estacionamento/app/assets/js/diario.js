@@ -63,11 +63,12 @@ document.getElementById('vehicleForm').addEventListener('submit', async (e) => {
     const placa = document.getElementById("plate").value.toLowerCase();
     const tipo = document.getElementById("tipo").value.toLowerCase();
 
-    // Filter the data
-    const filteredData = parkingData.filter(item => 
-        (placa && item.placa.toLowerCase().includes(placa)) ||
-        (tipo && item.tipo.toLowerCase().includes(tipo))
-    );
+    // Filter the data based on the form values
+    const filteredData = parkingData.filter(item => {
+        const matchesPlaca = placa ? item.plate.toLowerCase().includes(placa) : true;
+        const matchesTipo = tipo ? item.tipo.toLowerCase().includes(tipo) : true;
+        return matchesPlaca && matchesTipo;
+    });
 
     // Clear the table body
     const tableBody = document.getElementById('parkingTableBody');
