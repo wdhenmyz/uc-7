@@ -35,7 +35,7 @@ margin-top: 10px;
 }
 
 #menu {
-  width: 100px;
+  width: 130px;
   height: 405px;
   background-color: #dbdbdb;
   color: #fff;
@@ -43,6 +43,8 @@ margin-top: 10px;
   flex-direction: column;
   border-radius: 20px;
   transition: 0.6s;
+  display: flex;
+  align-items: center;
 }
 
 #opcoes {
