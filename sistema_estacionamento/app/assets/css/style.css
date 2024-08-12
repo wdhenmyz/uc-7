@@ -12,6 +12,16 @@ body {
   background-attachment: fixed;
 }
 
+#valordiario {
+  font-size: 15px;
+  background-color: #0399805e;
+  color: black;
+  border-radius: 5px;
+  border: #333 solid 5px;
+  width: 200px;
+  height: 100px;
+}
+
 #login {
   width: 100%;
   height: 200px;
@@ -185,8 +195,10 @@ border: transparent;
 }
 
 #parkingFormContainer {
-width: 900px;
-display: flex;
+  width: 1000px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 form {
