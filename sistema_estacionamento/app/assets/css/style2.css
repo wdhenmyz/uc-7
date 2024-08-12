@@ -26,17 +26,18 @@
   .sign svg {
     width: 17px;
   }
-  
-  .sign svg path {
-    fill: white;
+  .sign img {
+    width: 95%;
+    height: 95%;
   }
+
   /* text */
   .text {
     position: absolute;
     right: 0%;
     width: 0%;
     opacity: 0;
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 1.2em;
     font-weight: 600;
     transition-duration: .3s;
