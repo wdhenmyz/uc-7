@@ -10,12 +10,7 @@ function saveToLocalStorage(data) {
 }
 
 
-let availableSpotsCount = 20; // Total number of parking spots
 
-let motospots = 5; // Number of motorcycle spots
-let carspots = 10; // Number of car spots
-let truckspots = 3; // Number of truck spots
-let busspots = 2; // Number of bus spots
 
 // Função para adicionar uma linha na tabela
 async function addRowToTable(plate, tipo, owner, entryTime, exitTime, value) {
