@@ -36,7 +36,7 @@ margin-top: 10px;
 
 #menu {
   width: 135px;
-  height: 405px;
+  height: 410px;
   background-color: #dbdbdb;
   color: #fff;
   display: flex;
@@ -45,6 +45,7 @@ margin-top: 10px;
   transition: 0.6s;
   display: flex;
   align-items: center;
+  
 }
 
 #opcoes {
@@ -56,6 +57,7 @@ flex-direction: column;
 align-items: center;
 background-color: #0000002f;
 border-radius: 20px;
+margin-bottom: 5px;
 }
 
 #vagas {
