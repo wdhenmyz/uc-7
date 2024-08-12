@@ -13,13 +13,17 @@ body {
 }
 
 #valordiario {
-  font-size: 15px;
+  font-size: 35px;
   background-color: #0399805e;
   color: black;
   border-radius: 5px;
   border: #333 solid 5px;
   width: 200px;
   height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 #login {
