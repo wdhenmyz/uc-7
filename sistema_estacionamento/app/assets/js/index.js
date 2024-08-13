@@ -143,7 +143,7 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime) {
                     vagasonibus.textContent = `vagas de onibus: ${busspots}`
                 } 
                 
-
+                window.location.reload();
             });
         
             
@@ -205,11 +205,22 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime) {
 }
 
 // Carrega dados do localStorage e adiciona à tabela ao carregar a página
-window.addEventListener('load', function() {
+window.addEventListener('load', function() {    
     const data = loadFromLocalStorage();
     data.forEach(vehicle => {
         addRowToTable(vehicle.plate, vehicle.tipo, vehicle.owner, vehicle.entryTime, vehicle.exitTime, vehicle.value);
     });
+    
+    let totalValue = 0;
+    function loadFromDiario() {
+        const data = localStorage.getItem('diario');
+        return data ? JSON.parse(data) : [];
+    }
+    const data2 = loadFromDiario();
+    data2.forEach(vehicle => {
+        totalValue += Number(vehicle.totalvalue); // Ensure totalvalue is treated as a number
+    });
+    document.getElementById('valordiario').textContent = `R$ ${totalValue.toFixed(2)}`;
 });
 
 // Lida com o envio do formulário
