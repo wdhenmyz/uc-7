@@ -53,3 +53,7 @@
 .dark .text {
     color: white;
 }
+
+.dark #vagas {
+    background-color: #424242;
+}
