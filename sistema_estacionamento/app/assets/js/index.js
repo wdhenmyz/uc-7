@@ -230,7 +230,7 @@ document.getElementById('parkingForm').addEventListener('submit', function(event
     const plate = document.getElementById('plate').value;
     const tipo = document.getElementById('tipo').value;
     const owner = document.getElementById('owner').value;
-    const entryTime = new Date().toISOString();
+    const entryTime = new Date().toLocaleString();
     
     addRowToTable(plate, tipo, owner,  entryTime, null, null);
 
