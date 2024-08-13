@@ -174,25 +174,26 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime) {
     const vagascaminhonete = document.getElementById('vagas_caminhonete');
     const vagasonibus = document.getElementById('vagas_onibus');
 
-    if (tipo === 'moto') {
+    if (tipo === 'moto' && motospots > 0) {
         motospots--;
         vagasmoto.textContent = `Vagas de moto: ${motospots}`
     }    
-    if (tipo === 'carro') {
+    if (tipo === 'carro' && carspots > 0) {
         carspots--;
         vagascarro.textContent = `Vagas de carro: ${carspots}`
     } 
-    if (tipo === 'caminhonete') {
+    if (tipo === 'caminhonete' && truckspots > 0) {
         truckspots--;
         vagascaminhonete.textContent = `Vagas de caminhonete: ${truckspots}`
     } 
-    if (tipo === 'onibus') {
+    if (tipo === 'onibus' && busspots > 0) {
         busspots--;
         vagasonibus.textContent = `vagas de onibus: ${busspots}`
     } 
 
     if (motospots === 0) {
         vagasmoto.textContent = 'Vagas de moto: não há vagas disponíveis';
+        addRowToTable.blocked = true;
     }
 
     if (carspots === 0) {
