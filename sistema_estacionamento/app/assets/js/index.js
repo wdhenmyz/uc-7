@@ -67,12 +67,6 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime) {
     actionsCell.appendChild(exitButton);
     row.appendChild(actionsCell);
     
-    
-    
-
-    if (exitTime) {
-        exitButton.disabled = true;
-    } else {
         exitButton.addEventListener('click', function(e)  {
             e.preventDefault();
 
@@ -154,8 +148,6 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime) {
         
             
         });
-        
-    }
 
     actionsCell.appendChild(exitButton);
     row.appendChild(actionsCell);
