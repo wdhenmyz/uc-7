@@ -10,8 +10,6 @@ function saveToLocalStorage(data) {
 }
 
 
-
-
 // Função para adicionar uma linha na tabela
 async function addRowToTable(plate, tipo, owner, entryTime, exitTime) {
     const tableBody = document.getElementById('parkingTableBody');
@@ -66,6 +64,8 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime) {
     exitButton.textContent = 'Registrar Saída';
     exitButton.id = "exitButton"; 
 
+    actionsCell.appendChild(exitButton);
+    row.appendChild(actionsCell);
     
     
     
@@ -73,7 +73,7 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime) {
     if (exitTime) {
         exitButton.disabled = true;
     } else {
-        exitButton.addEventListener('click', function(e) {
+        exitButton.addEventListener('click', function(e)  {
             e.preventDefault();
 
             const exitTimeActual = new Date();
