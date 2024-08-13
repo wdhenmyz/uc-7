@@ -193,19 +193,22 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime) {
 
     if (motospots === 0) {
         vagasmoto.textContent = 'Vagas de moto: não há vagas disponíveis';
-        addRowToTable.blocked = true;
+        alert('Vagas de moto esgotadas');
     }
 
     if (carspots === 0) {
-        vagascarro.textContent = 'Vagas de carro: não há vagas disponíveis';       
+        vagascarro.textContent = 'Vagas de carro: não há vagas disponíveis';   
+        alert('Vagas de carro esgotadas');    
     }
 
     if (truckspots === 0) {
         vagascaminhonete.textContent = 'Vagas de caminhonete: não há vagas disponíveis';
+        alert('Vagas de caminhonete esgotadas');
     }
 
     if (busspots === 0) {
-        vagasonibus.textContent = 'vagas de onibus: não há vagas disponíveis';        
+        vagasonibus.textContent = 'vagas de onibus: não há vagas disponíveis';
+        alert('Vagas de onibus esgotadas');
     }
 }
 
