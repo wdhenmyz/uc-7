@@ -19,7 +19,8 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 
         if (result.length > 0) {
             alert('Bem vindo');
-            window.location.href = 'index.html';           
+            window.location.href = 'index.html';     
+            return;      
         } else {
             alert('Usuário ou senha inválidos');
         }
