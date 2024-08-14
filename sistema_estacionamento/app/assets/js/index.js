@@ -210,7 +210,9 @@ window.addEventListener('load', function() {
     data.forEach(vehicle => {
         addRowToTable(vehicle.plate, vehicle.tipo, vehicle.owner, vehicle.entryTime, vehicle.exitTime, vehicle.value);
     });
-    
+});
+
+window.addEventListener('load', function() {    
     let totalValue = 0;
     function loadFromDiario() {
         const data = localStorage.getItem('diario');
