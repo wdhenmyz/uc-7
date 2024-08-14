@@ -1,7 +1,10 @@
-function loadFromDiario() {
-    const data = localStorage.getItem('diario');
+// Função para carregar dados do localStorage
+function loadFromLocalStorage() {
+    const data = localStorage.getItem('parkingData');
     return data ? JSON.parse(data) : [];
 }
+
+
 
 function addRowToTable(plate, tipo, owner, entryTime, exitTimeActual, totalvalue) {
     const tableBody = document.getElementById('parkingTableBody');
@@ -29,30 +32,82 @@ function addRowToTable(plate, tipo, owner, entryTime, exitTimeActual, totalvalue
     exitTimeCell.textContent =  new Date(exitTimeActual).toLocaleString() ;
     row.appendChild(exitTimeCell);
 
+    function updateRate(tipo) {
+        if (tipo === 'moto') {
+            return 2;
+        } else if (tipo === 'carro') {
+            return 3;
+        } else if (tipo === 'caminhonete') {
+            return 4;
+        }else if (tipo === 'onibus') {
+            return 5;
+        }
+    }
+
+    const valor = updateRate(tipo); // Chama updateRate para definir a taxa inicial
+    console.log('Taxa calculada:', valor);
+
     // Célula para o valor a pagar
     const valueCell = document.createElement('td');
-    valueCell.textContent = totalvalue;
+    valueCell.textContent = valor || totalvalue;
     row.appendChild(valueCell);
 
     tableBody.appendChild(row);
+
+    const vagascarro = document.getElementById('vagas_carro');
+    const vagasmoto = document.getElementById('vagas_moto');
+    const vagascaminhonete = document.getElementById('vagas_caminhonete');
+    const vagasonibus = document.getElementById('vagas_onibus');
+
+    if (tipo === 'moto') {
+        motospots--;
+        vagasmoto.textContent = `Vagas de moto: ${motospots}`
+    }    
+    if (tipo === 'carro') {
+        carspots--;
+        vagascarro.textContent = `Vagas de carro: ${carspots}`
+    } 
+    if (tipo === 'caminhonete') {
+        truckspots--;
+        vagascaminhonete.textContent = `Vagas de caminhonete: ${truckspots}`
+    } 
+    if (tipo === 'onibus') {
+        busspots--;
+        vagasonibus.textContent = `vagas de onibus: ${busspots}`
+    } 
+
+    if (motospots === 0) {
+        vagasmoto.textContent = 'Vagas de moto: não há vagas disponíveis';
+    }
+
+    if (carspots === 0) {
+        vagascarro.textContent = 'Vagas de carro: não há vagas disponíveis';       
+    }
+
+    if (truckspots === 0) {
+        vagascaminhonete.textContent = 'Vagas de caminhonete: não há vagas disponíveis';
+    }
+
+    if (busspots === 0) {
+        vagasonibus.textContent = 'vagas de onibus: não há vagas disponíveis';        
+    }
 }
 
+// Carrega dados do localStorage e adiciona à tabela ao carregar a página
 window.addEventListener('load', function() {
-    let totalValue = 0;
-    const data = loadFromDiario();
+    const data = loadFromLocalStorage();
     data.forEach(vehicle => {
-        addRowToTable(vehicle.plate, vehicle.tipo, vehicle.owner, vehicle.entryTime, vehicle.exitTimeActual, vehicle.totalvalue);
-        totalValue += vehicle.totalvalue;
+        addRowToTable(vehicle.plate, vehicle.tipo, vehicle.owner, vehicle.entryTime, vehicle.exitTime, vehicle.value,vehicle.value||vehicle.totalvalue);
     });
-    document.getElementById('valordiario').textContent = `R$ ${totalValue.toFixed(2)}`;
 });
+
 
 
 document.getElementById('vehicleForm').addEventListener('submit', async (e) => {
     e.preventDefault();
 
     // Retrieve and parse the data from localStorage
-    const storedData = localStorage.getItem('diario');
+    const storedData = localStorage.getItem('parkingData');
     if (!storedData) {
         console.error('No data found in localStorage');
         return;
@@ -89,41 +144,3 @@ document.getElementById('vehicleForm').addEventListener('submit', async (e) => {
     });
 });
 
-document.getElementById('dailyReport').addEventListener('click', async function(e) {
-    e.preventDefault();
-
-    const dataEntries = loadFromDiario(); // Assumes this returns an array of objects
-    console.log('Loaded Data Entries:', dataEntries);
-
-    const payload = {
-        data: dataEntries.map(entry => ({
-            'placa': entry.plate,
-            'proprietário': entry.owner,
-            'tipo': entry.tipo,
-            'entrada': entry.entryTime,
-            'saida': entry.exitTimeActual,
-            'valor': entry.totalvalue
-        }))
-    };
-
-    console.log('Payload:', JSON.stringify(payload, null, 2));
-
-    try {
-        const response = await fetch('https://sheetdb.io/api/v1/9nlku5fa6cl5i', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(payload)
-        });
-
-        const result = await response.json();
-        console.log(result);
-
-        localStorage.removeItem('diario');
-        window.location.reload();
-    } catch (error) {
-        console.error('Error:', error);
-    }
-});
