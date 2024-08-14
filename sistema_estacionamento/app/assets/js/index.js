@@ -233,15 +233,21 @@ document.getElementById('parkingForm').addEventListener('submit', function(event
     const tipo = document.getElementById('tipo').value;
     const owner = document.getElementById('owner').value;
     const entryTime = new Date().toISOString();
-    
-    addRowToTable(plate, tipo, owner,  entryTime, null, null);
 
-    // Salva os dados no localStorage
+    // se plate for igual a um existente, alerta e retorna
     const data = loadFromLocalStorage();
-    data.push({ plate, tipo, owner, entryTime});
-    saveToLocalStorage(data);
-    
-    document.getElementById('parkingForm').reset();
+    if (data.some(vehicle => vehicle.plate === plate)) {
+        alert('Placa ja existente');
+        return;
+    } else {
+        addRowToTable(plate, tipo, owner,  entryTime, null, null);
+        // Salva os dados no localStorage
+        const data = loadFromLocalStorage();
+        data.push({ plate, tipo, owner, entryTime});
+        saveToLocalStorage(data);
+        
+        document.getElementById('parkingForm').reset();
+    }   
 });
 
 
