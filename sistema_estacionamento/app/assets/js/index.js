@@ -166,6 +166,7 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime) {
         const vagascaminhonete = document.getElementById('vagas_caminhonete');
         const vagasonibus = document.getElementById('vagas_onibus');
 
+
         if (tipo === 'moto' && motospots > 0) {
             motospots--;
             vagasmoto.textContent = `Vagas de moto: ${motospots}`
@@ -178,29 +179,42 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime) {
             truckspots--;
             vagascaminhonete.textContent = `Vagas de caminhonete: ${truckspots}`
         } 
-        if (tipo === 'onibus' && busspots > 0) {
+        if (tipo === 'onibus' && busspots > -1) {
             busspots--;
             vagasonibus.textContent = `vagas de onibus: ${busspots}`
-        } 
+        }
+
 
         if (motospots === 0) {
-            vagasmoto.textContent = 'Vagas de moto: não há vagas disponíveis';
+            vagasmoto.textContent = 'Vagas de moto: não há vagas disponíveis';     
             alert('Vagas de moto esgotadas');
+        } else if (motospots === -1) {
+            
+            
         }
 
         if (carspots === 0) {
-            vagascarro.textContent = 'Vagas de carro: não há vagas disponíveis';   
-            alert('Vagas de carro esgotadas');    
+            vagascarro.textContent = 'Vagas de carro: não há vagas disponíveis';  
+            alert('Vagas de carro esgotadas');
+        } else if (carspots === -1) {
+            
+            
         }
 
         if (truckspots === 0) {
-            vagascaminhonete.textContent = 'Vagas de caminhonete: não há vagas disponíveis';
+            vagascaminhonete.textContent = 'Vagas de caminhonete: não há vagas disponíveis';        
             alert('Vagas de caminhonete esgotadas');
+        } else if (truckspots === -1) {
+            
+            
         }
 
         if (busspots === 0) {
             vagasonibus.textContent = 'vagas de onibus: não há vagas disponíveis';
             alert('Vagas de onibus esgotadas');
+        } else if (busspots === -1) {
+            
+            
         }
 }
 
@@ -234,6 +248,9 @@ document.getElementById('parkingForm').addEventListener('submit', function(event
     const owner = document.getElementById('owner').value;
     const entryTime = new Date().toISOString();
 
+    if (plate ) {
+        
+    }
     // se plate for igual a um existente, alerta e retorna
     const data = loadFromLocalStorage();
     if (data.some(vehicle => vehicle.plate === plate)) {
