@@ -88,15 +88,7 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime) {
                     saveToLocalStorage(data);
                 }
 
-                // Armazena os dados no diario 
-                function diario(data) {
-                    const existingData = JSON.parse(localStorage.getItem('diario')) || [];
-                    existingData.push(data);
-                    localStorage.setItem('diario', JSON.stringify(existingData));
-                }
-                
-                // Call the diario function with the appropriate data
-                diario({ plate, tipo, owner, entryTime, exitTimeActual, totalvalue });
+               
 
                 // Cria o botão "Pagar"
                 const payButton = document.createElement('button');
@@ -104,7 +96,18 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime) {
                 actionsCell.appendChild(payButton);
 
                 payButton.addEventListener('click', async function(e) {    
-                    e.preventDefault();           
+                    e.preventDefault();
+
+                     // Armazena os dados no diario 
+                    function diario(data) {
+                        const existingData = JSON.parse(localStorage.getItem('diario')) || [];
+                        existingData.push(data);
+                        localStorage.setItem('diario', JSON.stringify(existingData));
+                    }
+                
+                    // Call the diario function with the appropriate data
+                    diario({ plate, tipo, owner, entryTime, exitTimeActual, totalvalue });
+                    
                     // Remove a linha da tabela
                     row.remove();
                     
