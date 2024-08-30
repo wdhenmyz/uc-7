@@ -7,7 +7,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     
     
     try {
-        const response = await fetch(`https://sheetdb.io/api/v1/mg07naffiti78/search?id=${id}&usuario=${usuario}&senha=${senha}`, {
+        const response = await fetch(`https://sheetdb.io/api/v1/mg07naffiti78/search?usuario=${usuario}&senha=${senha}`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
