@@ -182,7 +182,7 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime) {
             truckspots--;
             vagascaminhonete.textContent = `Vagas de caminhonete: ${truckspots}`
         } 
-        if (tipo === 'onibus' && busspots > -1) {
+        if (tipo === 'onibus' && busspots > 0) {
             busspots--;
             vagasonibus.textContent = `vagas de onibus: ${busspots}`
         }
