@@ -1,6 +1,6 @@
 document.getElementById('reset').addEventListener('click', () => {
     window.location.reload();
-})
+});
 
 // This function shuffles the divs with the class "card"
 function shuffleCards() {
@@ -10,13 +10,18 @@ function shuffleCards() {
 
     for (let i = 0; i < boards.length; i++) {
         const board = boards[i];
-        board.innerHTML = "";
+        board.innerHTML = ""; // Clear the board
 
-        // Delay adding the animation class to see the shuffle effect
+        // Delay adding cards to see the shuffle effect
         setTimeout(() => {
-            board.classList.add("shuffle-animation");
             shuffledCards.slice(i * 4, (i + 1) * 4).forEach(card => board.appendChild(card));
-        }, 200* i); // Adjust the delay as needed
+            board.classList.add("shuffle-animation");
+        }, 200 * i); // Adjust delay for animation
+        
+        // Remove animation class after it's done
+        setTimeout(() => {
+            board.classList.remove("shuffle-animation");
+        }, 200 * (i + 1)); 
     }
 }
 
@@ -24,21 +29,15 @@ function shuffleCards() {
 function init() {
     // Add a click event listener to the button with the id "start"
     document.getElementById("start").addEventListener("click", shuffleCards);
+
+    // Add event listeners to flip the cards
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        card.addEventListener('click', function() {
+            card.classList.toggle('hover'); // Flip card on click
+        });
+    });
 }
 
 init();
-
-const cards = document.querySelectorAll('.card');
-// function to flip the card
-function flipCard(){
-    document.addEventListener("DOMContentLoaded", function() {            
-        cards.forEach(card => {
-          card.addEventListener('click', function() {
-            card.classList.toggle('hover');
-          });
-        });
-      });
-}
-
-flipCard();
 
