@@ -60,11 +60,15 @@ function verificarFimDeJogo() {
     if (todasCartasViradas) {
         setTimeout(() => {
             alert('Você encontrou todos os pares! O jogo será reiniciado.');
-            window.location.reload()
+            reiniciarJogo();
         }, 500); // Pequeno atraso antes do alerta
     }
 }
 
+// Função para reiniciar o jogo
+function reiniciarJogo() {
+    window.location.reload(); // Recarrega a página para reiniciar o jogo
+}
 
 // Inicializar os eventos de clique nas cartas
 function init() {
