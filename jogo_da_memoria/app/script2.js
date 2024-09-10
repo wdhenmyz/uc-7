@@ -25,19 +25,9 @@ function virarCarta() {
 
 // Verificar se as cartas são iguais
 function verificarCorrespondencia() {
-    // Extrai os números dos IDs das cartas
-    const idPrimeiraCarta = parseInt(primeiraCarta.id.substring(1)); // Remove o 'n' do ID e converte para número
-    const idSegundaCarta = parseInt(segundaCarta.id.substring(1));
-
-    // Verifica se são pares sucessivos
-    const saoIguais = Math.abs(idPrimeiraCarta - idSegundaCarta) === 1 && 
-                      (idPrimeiraCarta % 2 === 1); // Confirma que é o primeiro do par (impar)
-
-    // Se forem iguais, desabilita as cartas, senão as desvira
+    const saoIguais = primeiraCarta.dataset.pair === segundaCarta.dataset.pair; // Compara o par das cartas
     saoIguais ? desabilitarCartas() : desvirarCartas();
 }
-
-
 
 // Desabilitar as cartas se forem correspondentes
 function desabilitarCartas() {
