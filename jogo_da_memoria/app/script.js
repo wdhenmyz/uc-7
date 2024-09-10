@@ -1,43 +1,44 @@
 document.getElementById('reset').addEventListener('click', () => {
-    window.location.reload();
+    window.location.reload(); // Recarrega a página ao clicar no botão "reset"
 });
 
-// This function shuffles the divs with the class "card"
-function shuffleCards() {
-    const cards = document.querySelectorAll(".card");
-    const shuffledCards = Array.from(cards).sort(() => Math.random() - 0.5);
-    const boards = document.querySelectorAll(".board");
+// Esta função embaralha os divs com a classe "card"
+function embaralharCartas() {
+    const cartas = document.querySelectorAll(".card");
+    const cartasEmbaralhadas = Array.from(cartas).sort(() => Math.random() - 0.5);
+    const tabuleiros = document.querySelectorAll(".board");
 
-    for (let i = 0; i < boards.length; i++) {
-        const board = boards[i];
-        board.innerHTML = ""; // Clear the board
+    for (let i = 0; i < tabuleiros.length; i++) {
+        const tabuleiro = tabuleiros[i];
+        tabuleiro.innerHTML = ""; // Limpa o tabuleiro
 
-        // Delay adding cards to see the shuffle effect
+        // Adiciona um atraso para ver o efeito de embaralhamento
         setTimeout(() => {
-            shuffledCards.slice(i * 4, (i + 1) * 4).forEach(card => board.appendChild(card));
-            board.classList.add("shuffle-animation");
-        }, 200 * i); // Adjust delay for animation
+            cartasEmbaralhadas.slice(i * 4, (i + 1) * 4).forEach(carta => tabuleiro.appendChild(carta));
+            tabuleiro.classList.add("shuffle-animation");
+        }, 200 * i); // Ajuste o atraso para a animação
         
-        // Remove animation class after it's done
+        // Remove a classe de animação após a finalização do embaralhamento
         setTimeout(() => {
-            board.classList.remove("shuffle-animation");
+            tabuleiro.classList.remove("shuffle-animation");
         }, 200 * (i + 1)); 
     }
 }
 
-// This function initializes the game
-function init() {
-    // Add a click event listener to the button with the id "start"
-    document.getElementById("start").addEventListener("click", shuffleCards);
+// Esta função inicializa o jogo
+function iniciar() {
+    // Adiciona o evento de clique ao botão com o id "start"
+    document.getElementById("start").addEventListener("click", embaralharCartas);
 
-    // Add event listeners to flip the cards
-    const cards = document.querySelectorAll('.card');
-    cards.forEach(card => {
-        card.addEventListener('click', function() {
-            card.classList.toggle('hover'); // Flip card on click
+    // Adiciona eventos de clique para virar as cartas
+    const cartas = document.querySelectorAll('.card');
+    cartas.forEach(carta => {
+        carta.addEventListener('click', function() {
+            carta.classList.toggle('hover'); // Vira a carta ao clicar
         });
     });
 }
 
-init();
+iniciar();
+
 
