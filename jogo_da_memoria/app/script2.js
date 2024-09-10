@@ -53,6 +53,19 @@ function resetarTabuleiro() {
     bloquearTabuleiro = false; // Desbloquear o tabuleiro
 }
 
+// Função para verificar se todas as cartas foram viradas
+function verificarFimDeJogo() {
+    const todasCartasViradas = document.querySelectorAll('.card.hover').length === document.querySelectorAll('.card').length;
+
+    if (todasCartasViradas) {
+        setTimeout(() => {
+            alert('Você encontrou todos os pares! O jogo será reiniciado.');
+            window.location.reload()
+        }, 500); // Pequeno atraso antes do alerta
+    }
+}
+
+
 // Inicializar os eventos de clique nas cartas
 function init() {
     const cartas = document.querySelectorAll('.card');
