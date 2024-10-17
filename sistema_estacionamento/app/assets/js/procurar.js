@@ -4,8 +4,11 @@ function loadFromLocalStorage() {
     return data ? JSON.parse(data) : [];
 }
 
+import {availableSpotsCount, motospots, carspots, truckspots, busspots} from './configuracoes_basicas.js';
 
 async function addRowToTable(plate, tipo, owner, entryTime, exitTime) {
+    
+
     const tableBody = document.getElementById('parkingTableBody');
     const row = document.createElement('tr');
 
@@ -219,7 +222,7 @@ async function addRowToTable(plate, tipo, owner, entryTime, exitTime) {
 window.addEventListener('load', function() {
     const data = loadFromLocalStorage();
     data.forEach(vehicle => {
-        addRowToTable(vehicle.plate, vehicle.tipo, vehicle.owner, vehicle.entryTime, vehicle.exitTime, vehicle.value,vehicle.value||vehicle.totalvalue);
+        addRowToTable(vehicle.plate, vehicle.tipo, vehicle.owner, vehicle.entryTime, vehicle.exitTime, vehicle.value||vehicle.totalvalue);
     });
 });
 
