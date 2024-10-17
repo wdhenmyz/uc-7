@@ -11,13 +11,15 @@ const app = express();
 // define a porta 
 const port = 3000;
 
+const { POOL } = require('./conection');
+
 // informa o acesso ao pg
 const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'vagarapida',
-    password: 'BemVindo!',
-    port: 5432,
+    user: POOL.user,
+    host: POOL.host,
+    database: POOL.database,
+    password: POOL.password,
+    port: POOL.port,
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
