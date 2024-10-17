@@ -1,4 +1,36 @@
-// importa o pg e o express
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* importa o pg e o express
 const express = require('express');
 const {Pool} = require('pg');
 
@@ -59,3 +91,4 @@ app.post('/veiculos', async (req, res) => {
 app.listen(port, () => {
     console.log(`Servidor iniciado na porta http://localhost:${port}`);
 })
+*/
