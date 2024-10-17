@@ -4,7 +4,7 @@ function loadFromLocalStorage() {
     return data ? JSON.parse(data) : [];
 }
 
-import {availableSpotsCount, motospots, carspots, truckspots, busspots} from './configuracoes_basicas.js';
+
 
 async function addRowToTable(plate, tipo, owner, entryTime, exitTime) {
     

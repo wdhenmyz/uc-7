@@ -9,8 +9,6 @@ function saveToLocalStorage(data) {
     localStorage.setItem('parkingData', JSON.stringify(data));
 }
 
-import {availableSpotsCount, motospots, carspots, truckspots, busspots} from './configuracoes_basicas.js';
-
 
 // Função para adicionar uma linha na tabela
 async function addRowToTable(plate, tipo, owner, entryTime, exitTime) {
