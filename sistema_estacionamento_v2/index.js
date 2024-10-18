@@ -10,13 +10,15 @@ app.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
 })
 
+// retorna todos os veículos
 app.get('/estacionar', (req, res) => {
     res.json(estacionamento);
 })
 
+// cria um novo veículo
 app.post('/estacionar', (req, res) => {
     const novoVeiculo = req.body;
-    novoVeiculo.id = estacionamento.length + 1;
+    novoVeiculo.id = estacionamento.length + 1; // adiciona um id para o novo veículo
     estacionamento.push(novoVeiculo);
     res.status(201).json(novoVeiculo)
 })
