@@ -1,4 +1,18 @@
+const express = require('express');
+const app = express();
+const estacionamento = require('./data/estacionamento');
+const PORT = require('./port');
 
+const port = PORT.PORT;
+
+app.use(express.json());
+app.listen(port, () => {
+    console.log(`Servidor rodando na porta ${port}`);
+})
+
+app.post('/estacionar', (req, res) => {
+
+})
 
 
 
