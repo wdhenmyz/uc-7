@@ -1,12 +1,11 @@
-import { PORT } from '../../../port'
-console.log(PORT)
+const PORT = 3000;
 
 document.getElementById('parkingForm').addEventListener('submit', async function (e) {
     e.preventDefault(); //impedir o envio do formulário
 
     // coleta os dados do formulário
-    const plate = document.getElementById('plate').value;
-    const owner = document.getElementById('onwer').value;
+    const placa = document.getElementById('plate').value;
+    const dono = document.getElementById('owner').value;
     const tipo = document.querySelector('input[name="value-radio"]:checked')?.value;
 
     if (!tipo) {
@@ -15,8 +14,8 @@ document.getElementById('parkingForm').addEventListener('submit', async function
     }
 
     const novoVeiculo = {
-        placa: plate,
-        dono: owner,
+        placa: placa,
+        dono: dono,
         tipo: tipo,
         entrada: new Date().toLocaleString()
     }
