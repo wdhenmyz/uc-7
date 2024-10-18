@@ -10,8 +10,12 @@ app.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
 })
 
-app.post('/estacionar', (req, res) => {
 
+app.post('/estacionar', (req, res) => {
+    const novoVeiculo = req.body;
+    novoVeiculo.id = estacionamento.length + 1;
+    estacionamento.push(novoVeiculo);
+    res.status(201).json(novoVeiculo)
 })
 
 
