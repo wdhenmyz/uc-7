@@ -1,5 +1,5 @@
-const port = require('../../../port')
-const PORT = port.PORT;
+import { PORT } from '../../../port'
+console.log(PORT)
 
 document.getElementById('parkingForm').addEventListener('submit', async function (e) {
     e.preventDefault(); //impedir o envio do formulário
@@ -7,7 +7,8 @@ document.getElementById('parkingForm').addEventListener('submit', async function
     // coleta os dados do formulário
     const plate = document.getElementById('plate').value;
     const owner = document.getElementById('onwer').value;
-    const tipo = document.getElementById('input[name="value-radio"]:checked').value;
+    const tipo = document.querySelector('input[name="value-radio"]:checked')?.value;
+
     if (!tipo) {
         alert('por favor, selecione o tipo de veículo');
         return;
@@ -22,7 +23,7 @@ document.getElementById('parkingForm').addEventListener('submit', async function
 
     // envia os dados para o servidor
     try {
-        const response = await fetch(`http:localhost:${PORT}/estacionar`, {
+        const response = await fetch(`http://localhost:${PORT}/estacionar`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -33,7 +34,7 @@ document.getElementById('parkingForm').addEventListener('submit', async function
         if (response.ok) {
             alert('veículo estacionado com sucesso!');
             adicionarVeiculoNaTabela(novoVeiculo);
-            document.getElementById('parkingForm').request();
+            document.getElementById('parkingForm').reset();
         } else {
             alert('Erro ao estacionar o veículo');
         }
@@ -63,7 +64,7 @@ function adicionarVeiculoNaTabela(novoVeiculo) {
 // função para carregar os veículos estacionados
 async function carregarVeiculos() {
     try {
-        const response = await fetch('http:localhost:${PORT}/estacionados');
+        const response = await fetch('http://localhost:${PORT}/estacionados');
         const veiculos = await response.json();
         veiculos.forEach(adicionarVeiculoNaTabela)
     } catch (error) {
