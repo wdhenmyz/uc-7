@@ -1,3 +1,5 @@
+const express = require('express');
+const app = express();
 const PORT = 3000;
 
 document.getElementById('parkingForm').addEventListener('submit', async function (e) {
