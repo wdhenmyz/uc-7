@@ -14,7 +14,7 @@ function adicionarVeiculoNaTabela(novoVeiculo) {
     tabela.appendChild(linha);
 }
 
-async function carregarVeiculos() {
+async function carregarDiario() {
     try {
         const response = await fetch(`http://localhost:3000/diario`);
         const veiculos = await response.json();
@@ -25,4 +25,4 @@ async function carregarVeiculos() {
 }
 
 // Chamar a funcionalidade para carregar os veículos estacionados
-window.onload = carregarVeiculos;
+window.onload = carregarDiario;

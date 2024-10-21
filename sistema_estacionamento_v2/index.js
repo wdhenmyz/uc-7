@@ -29,3 +29,10 @@ app.post('/estacionar', (req, res) => {
 app.get('/diario', (req, res) => {
     res.json(diario)
 })
+
+// postar os veículos no array diário
+app.post('/diario', (req, res) => {
+    const veiculo = req.body;
+    diario.push(veiculo);
+    res.status(201).json(veiculo);
+});
