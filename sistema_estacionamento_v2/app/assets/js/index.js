@@ -40,22 +40,7 @@ document.getElementById('parkingForm').addEventListener('submit', async function
     }
 });
 
-function adicionarVeiculoNaTabela(novoVeiculo) {
-    const tabela = document.getElementById('parkingTableBody');
-    const linha = document.createElement('tr');
 
-    linha.innerHTML = `
-        <td>${novoVeiculo.placa}</td>
-        <td>${novoVeiculo.tipo}</td>
-        <td>${novoVeiculo.dono}</td>
-        <td>${novoVeiculo.entrada}</td>
-        <td></td>
-        <td></td>
-        <td><button onclick="removerVeiculo(botao)">Registrar saída</button></td>
-    `;
-
-    tabela.appendChild(linha);
-}
 
 async function carregarVeiculos() {
     try {
@@ -122,3 +107,19 @@ function calcularValor(entrada, saida) {
     return horas * taxaPorHora;
 }
 
+function adicionarVeiculoNaTabela(novoVeiculo) {
+    const tabela = document.getElementById('parkingTableBody');
+    const linha = document.createElement('tr');
+
+    linha.innerHTML = `
+        <td>${novoVeiculo.placa}</td>
+        <td>${novoVeiculo.tipo}</td>
+        <td>${novoVeiculo.dono}</td>
+        <td>${novoVeiculo.entrada}</td>
+        <td></td>
+        <td></td>
+        <td><button onclick="removerVeiculo(this)">Registrar saída</button></td>
+    `;
+
+    tabela.appendChild(linha);
+}
