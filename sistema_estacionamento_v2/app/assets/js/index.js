@@ -1,5 +1,6 @@
 const express = require('express');
-const PORT = 3000;
+const port = require('../../../port');
+const PORT = port.PORT;
 
 document.getElementById('parkingForm').addEventListener('submit', async function (e) {
     e.preventDefault(); //impedir o envio do formulário
