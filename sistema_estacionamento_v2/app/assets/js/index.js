@@ -116,8 +116,8 @@ function adicionarVeiculoNaTabela(novoVeiculo) {
         <td>${novoVeiculo.tipo}</td>
         <td>${novoVeiculo.dono}</td>
         <td>${novoVeiculo.entrada}</td>
-        <td></td>
-        <td></td>
+        <td>${novoVeiculo.saida || ''}</td>
+        <td>${novoVeiculo.valor || ''}</td>
         <td><button onclick="removerVeiculo(this)">Registrar saída</button></td>
     `;
 
