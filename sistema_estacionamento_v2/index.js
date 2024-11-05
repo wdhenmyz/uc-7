@@ -1,38 +1,19 @@
-const express = require('express');
-const app = express();
-const estacionamento = require('./data/estacionamento');
-const diario = require('./data/diario')
+require("dotenv").config();
 
-const PORT = 3000
+const http = require("http");
+const { registerVehicle } = require("./routes/vehicles"); // Import the register route
+const { PORT } = require("./port");
 
-app.use(express.json());
+const requestHandler = (req, res) => {
+  if (req.method === "POST" && req.url === "/entrada") {
+    registerVehicle(req, res);
 
-app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
-});
+  } else {
+    res.writeHead(404, { "Content-Type": "text/plain" });
+    res.end("Route not found");
+  }
+};
 
-// retorna todos os veículos
-app.get('/estacionar', (req, res) => {
-    res.json(estacionamento);
-});
-
-// cria um novo veículo
-app.post('/estacionar', (req, res) => {
-    const novoVeiculo = req.body;
-    // Melhor prática: Gerar ID único
-    novoVeiculo.id = Date.now();
-    estacionamento.push(novoVeiculo);
-    res.status(201).json(novoVeiculo);
-});
-
-// retorna os veículos no array diário
-app.get('/diario', (req, res) => {
-    res.json(diario)
-})
-
-// postar os veículos no array diário
-app.post('/diario', (req, res) => {
-    const veiculo = req.body;
-    diario.push(veiculo);
-    res.status(201).json(veiculo);
+http.createServer(requestHandler).listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
 });
