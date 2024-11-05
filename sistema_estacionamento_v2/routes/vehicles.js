@@ -53,9 +53,16 @@ const calculateValue = (type) => {
 
 // Função para obter todos os veículos
 const getVehicles = async (req, res) => {
+    // Cria uma consulta SQL para obter todos os veículos
+    const vehiclesQuery = `
+        SELECT * FROM Veiculos
+    `;
+
+    console.log(vehiclesQuery);
+
     try {
         // Consulta para obter todos os veículos
-        const result = await sql`SELECT * FROM Veiculos`;
+        const result = await sql`${vehiclesQuery}`;
 
         // Verifica se existem veículos
         if (result.length === 0) {
@@ -67,6 +74,7 @@ const getVehicles = async (req, res) => {
         // Responde com os dados dos veículos
         res.writeHead(200, { "Content-Type": "application/json" });
         res.end(JSON.stringify(result));
+        
     } catch (error) {
         console.error("Erro ao executar a consulta:", error);
         res.writeHead(500, { "Content-Type": "application/json" });
