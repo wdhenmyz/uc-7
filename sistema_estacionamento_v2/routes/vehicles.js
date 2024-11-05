@@ -51,4 +51,29 @@ const calculateValue = (type) => {
     }
 };
 
-module.exports = { registerVehicle };
+// Função para obter todos os veículos
+const getVehicles = async (req, res) => {
+    try {
+        // Consulta para obter todos os veículos
+        const result = await sql`SELECT * FROM Veiculos`;
+
+        // Verifica se existem veículos
+        if (result.length === 0) {
+            res.writeHead(404, { "Content-Type": "application/json" });
+            res.end(JSON.stringify({ message: "No vehicles found." }));
+            return;
+        }
+
+        // Responde com os dados dos veículos
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify(result));
+    } catch (error) {
+        console.error("Erro ao executar a consulta:", error);
+        res.writeHead(500, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ message: "Internal server error." }));
+    }
+};
+
+
+// Exporta as funções
+module.exports = { registerVehicle, getVehicles };
