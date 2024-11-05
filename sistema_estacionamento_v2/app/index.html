@@ -83,7 +83,7 @@
       </div> <br>
 
         <div id="parkingFormContainer">  <!-- Formulário para registrar a entrada de veículos -->
-            <form id="parkingForm" method="post">
+            <form id="parkingForm" method="post" action="/entrada">
                 <div class="info">
                     <label for="plate">Placa do Veículo:</label>
                     <input type="text" id="plate" name="plate" required>
@@ -93,13 +93,13 @@
 
                     <!-- de Uiverse.io por Yaya12085 -->
                     <div class="radio-input">
-                      <input value="carro" name="value-radio" id="carro" type="radio">
+                      <input value="carro" name="value-radio" id="carro" type="radio" required>
                       <label for="carro">carro</label>
-                      <input value="moto" name="value-radio" id="moto" type="radio">
+                      <input value="moto" name="value-radio" id="moto" type="radio" required>
                       <label for="moto">moto</label>
-                      <input value="onibus" name="value-radio" id="onibus" type="radio">
+                      <input value="onibus" name="value-radio" id="onibus" type="radio" required>
                       <label for="onibus">onibus</label>
-                      <input value="caminhonete" name="value-radio" id="caminhonete" type="radio">
+                      <input value="caminhonete" name="value-radio" id="caminhonete" type="radio" required>
                       <label for="caminhonete">caminhonete</label>
                     </div>
                   

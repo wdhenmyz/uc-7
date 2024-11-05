@@ -1,33 +1,54 @@
 const { neon } = require("@neondatabase/serverless");
-const sql = neon(process.env.DATABASE_URL);
+const { sql } = neon(process.env.DATABASE_URL);
 
-// Function to handle registering a vehicle
 const registerVehicle = async (req, res) => {
-  let body = "";
-  req.on("data", chunk => {
-    body += chunk.toString();
-  });
+    let body = '';
 
-  req.on("end", async () => {
-    const formData = new URLSearchParams(body);
-    const plate = formData.get("plate");
-    const owner = formData.get("owner");
-    const type = formData.get("value-radio");
+    req.on('data', chunk => {
+        body += chunk.toString(); // Concatena os dados recebidos
+    });
 
-    try {
-      await sql`
-        INSERT INTO Veiculos (placa, tipo, proprietario)
-        VALUES (${plate}, ${type}, ${owner})
-      `;
+    req.on('end', async () => {
+        const params = new URLSearchParams(body);
+        
+        const plate = params.get('plate');
+        const owner = params.get('owner');
+        const type = params.get('value-radio');
+        const currentDateTime = new Date();
+        const value = calculateValue(type); // Função para calcular o valor baseado no tipo
 
-      res.writeHead(200, { "Content-Type": "text/plain" });
-      res.end("Veículo registrado com sucesso.");
-    } catch (error) {
-      console.error(error);
-      res.writeHead(500, { "Content-Type": "text/plain" });
-      res.end("Erro ao registrar o veículo.");
+        // Consulta para inserir os dados na tabela Veiculos
+        const insertQuery = `
+            INSERT INTO Veiculos (placa, tipo, proprietario, hora_entrada, valor) 
+            VALUES ($1, $2, $3, $4, $5)
+        `;
+        
+        try {
+            await sql `${insertQuery}`([plate, type, owner, currentDateTime, value]);
+            res.writeHead(200, { "Content-Type": "text/plain" });
+            res.end("Vehicle registered successfully");
+        } catch (error) {
+            console.error("Error inserting data: ", error);
+            res.writeHead(500, { "Content-Type": "text/plain" });
+            res.end("Error registering vehicle");
+        }
+    });
+};
+
+// Função para determinar o valor baseado no tipo de veículo
+const calculateValue = (type) => {
+    switch (type) {
+        case 'carro':
+            return 4.00; // Exemplo de valor para carro
+        case 'moto':
+            return 3.00;  // Exemplo de valor para moto
+        case 'onibus':
+            return 6.00; // Exemplo de valor para ônibus
+        case 'caminhonete':
+            return 7.00; // Exemplo de valor para caminhonete
+        default:
+            return 0; // Valor padrão se o tipo não for reconhecido
     }
-  });
 };
 
 module.exports = { registerVehicle };
