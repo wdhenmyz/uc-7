@@ -1,26 +1,24 @@
-require("dotenv").config();
-const cors = require("cors");
-const { PORT } = require("./port");
+// index.js
+import express from "express";
+import routes from "./routes/routes.js"; // Importando o arquivo de rotas
+import { PORT as port } from "./port.js";
 
-const http = require("http");
-const { registerVehicle, getVehicles } = require("./routes/vehicles"); // Import the register route
+const app = express();
 
+// Configura o servidor para lidar com JSON
+app.use(express.json());
+app.use(express.urlencoded({ extended: true })); // Necessário para capturar dados do formulário
 
-const requestHandler = (req, res) => {
-    cors()(req, res, () => {
-        if (req.method === "POST" && req.url === "/entrada") {
-            registerVehicle(req, res); // Chama a função de registro de veículo
+import cors from "cors";
+app.use(cors({
+  origin: 'http://localhost:3000'  // Substitua pela URL do seu frontend
+}));
 
-        } else if (req.method === "GET" && req.url === "/veiculos") {
-            getVehicles(req, res); // Chama a função para obter todos os veículos
+// Usando as rotas importadas
+app.use("/", routes); // Aplique as rotas no caminho base
 
-        } else {
-            res.writeHead(404, { "Content-Type": "text/plain" });
-            res.end("Rota não encontrada");
-        }
-    });
-};
-
-http.createServer(requestHandler).listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+// Configura o servidor para escutar em uma porta específica
+const PORT = port || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
 });
