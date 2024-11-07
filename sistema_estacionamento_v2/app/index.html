@@ -83,7 +83,7 @@
       </div> <br>
 
         <div id="parkingFormContainer">  <!-- Formulário para registrar a entrada de veículos -->
-            <form id="parkingForm" method="post" action="/entrada">
+            <form id="parkingForm" >
                 <div class="info">
                     <label for="plate">Placa do Veículo:</label>
                     <input type="text" id="plate" name="plate" required>
@@ -160,6 +160,7 @@
                   
     </div>
 
+            <script type="module" src="../config/firebase.js"></script>
             <script type="module" src="assets/js/index.js"></script>
 
             <script src="assets/js/configuracoes_basicas.js"></script>

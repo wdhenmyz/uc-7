@@ -1,6 +1,6 @@
 // databaseFunctions.js
 import { ref, set, get } from "firebase/database";
-import { database } from "./firebase.js";
+import { db as database } from "./firebase.js";
 
 // Função para adicionar um veículo
 export function addVehicle(vehicleID, vehicleData) {

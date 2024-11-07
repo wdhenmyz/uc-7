@@ -1,39 +1,89 @@
-import { getDatabase, ref, set } from "firebase/database";
+import { db } from "../../../config/firebase.js";
+import { ref, set, get } from "firebase/database";
 
 // Função para registrar os dados do veículo
 document.getElementById("parkingForm").addEventListener("submit", async (event) => {
-  event.preventDefault(); // Impede o recarregamento da página
+  event.preventDefault();
 
   // Pega os valores do formulário
-  const placa = document.getElementById("plate").value; // ID correto para o campo de placa
-  const dono = document.getElementById("owner").value; // ID correto para o campo de dono
-  const tipo = document.querySelector('input[name="value-radio"]:checked').value; // Radio button para tipo
+  const placa = document.getElementById("plate").value;
+  const dono = document.getElementById("owner").value;
+  const tipo = document.querySelector('input[name="value-radio"]:checked')?.value;
 
-  // Definindo o ID do veículo usando a placa
-  const vehicleID = placa; // Usando a placa como ID único
-
-  // Obtendo a referência do banco de dados
-  const db = getDatabase();
+  if (!placa || !dono || !tipo) {
+    console.error("Por favor, preencha todos os campos.");
+    return;
+  }
 
   try {
-    // Envia os dados para o Firebase Realtime Database
-    await set(ref(db, 'vehicles/' + vehicleID), {
+    // Usa a referência `ref` e `set` corretamente para a versão modular do Firebase
+    const vehicleRef = ref(db, 'vehicles/' + placa);
+
+    console.log('Placa:', placa); 
+    console.log('Dono:', dono); 
+    console.log('Tipo:', tipo); 
+    console.log('Referência do veículo:', vehicleRef.toString());
+
+    await set(vehicleRef, {
       placa: placa,
       dono: dono,
       tipo: tipo,
-      entrada: new Date().toISOString(), // Hora de entrada
-      saida: null, // Ainda não há hora de saída
-      valor: 0, // Valor inicial como 0
+      entrada: new Date().toISOString(),
+      saida: null,
+      valor: 0,
     });
 
-    // Exibe uma mensagem de sucesso no console
     console.log("Veículo registrado com sucesso!");
-
-    // Opcional: Limpar o formulário após o envio
     document.getElementById("parkingForm").reset();
-
   } catch (error) {
-    // Exibe um erro caso algo dê errado
     console.error("Erro ao registrar veículo:", error.message);
   }
 });
+
+
+// Função para carregar os veículos e preencher a tabela
+async function carregarVeiculos() {
+  try {
+    // Pega todos os veículos na referência 'vehicles'
+    const vehiclesRef = ref(db, 'vehicles/');
+    const snapshot = await get(vehiclesRef);
+    
+    // Verifica se existem dados
+    if (snapshot.exists()) {
+      const veiculos = snapshot.val(); // Retorna todos os veículos como um objeto
+      const tbody = document.getElementById("parkingTableBody"); // Corpo da tabela
+      
+      // Limpa a tabela antes de adicionar os novos dados
+      tbody.innerHTML = "";
+
+      // Itera sobre os veículos e adiciona uma linha na tabela para cada um
+      Object.keys(veiculos).forEach(placa => {
+        const veiculo = veiculos[placa];
+
+        // Cria uma nova linha da tabela
+        const tr = document.createElement("tr");
+
+        // Adiciona células para cada dado do veículo
+        tr.innerHTML = `
+          <td>${veiculo.placa}</td>
+          <td>${veiculo.tipo}</td>
+          <td>${veiculo.dono}</td>
+          <td>${veiculo.entrada}</td>
+          <td>${veiculo.saida || 'Ainda não saiu'}</td>
+          <td>R$ ${veiculo.valor.toFixed(2)}</td>
+          <td><button class="btn-editar">Editar</button> <button class="btn-excluir">Excluir</button></td>
+        `;
+
+        // Adiciona a linha ao corpo da tabela
+        tbody.appendChild(tr);
+      });
+    } else {
+      console.log("Nenhum veículo encontrado.");
+    }
+  } catch (error) {
+    console.error("Erro ao carregar veículos:", error.message);
+  }
+}
+
+// Chama a função para carregar os veículos quando a página for carregada
+window.onload = carregarVeiculos;
