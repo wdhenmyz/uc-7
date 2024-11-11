@@ -6,6 +6,9 @@ document.getElementById('parkingForm').addEventListener('submit', async (e) => {
   const dono = document.getElementById('owner').value;
   const tipo = document.querySelector('input[name="value-radio"]:checked').value;
   
+  // Calcular o valor do estacionamento com base no tipo de veículo
+  const valor = calcularValor(tipo);
+
   // Create an object for vehicle data
   const vehicleData = {
       placa,
@@ -13,7 +16,7 @@ document.getElementById('parkingForm').addEventListener('submit', async (e) => {
       tipo,
       entrada: new Date().toISOString(), // Save entry time as ISO string
       saida: null,                      // Exit time is null initially
-      valor: 0                             // Placeholder for the value, to be calculated later
+      valor                            // Placeholder for the value, to be calculated later
   };
 
   console.log(vehicleData);
@@ -40,6 +43,31 @@ document.getElementById('parkingForm').addEventListener('submit', async (e) => {
   }
 });
 
+// Função para calcular o valor com base no tipo de veículo
+function calcularValor(tipo) {
+  let valor = 0;
+  
+  // Define valores baseados no tipo do veículo
+  switch (tipo) {
+      case 'carro':
+          valor = 4;  // Exemplo de valor fixo para carros
+          break;
+      case 'moto':
+          valor = 2;  // Exemplo de valor fixo para motos
+          break;
+      case 'caminhonete':
+          valor = 6;  // Exemplo de valor fixo para caminhões
+          break;
+      case 'onibus':
+          valor = 8;  // Exemplo de valor fixo para caminhões
+          break;
+      default:
+          valor = 0;  // Valor padrão para tipos não definidos
+          break;
+  }
+
+  return valor;
+}
 
 // carregar todos os veículos na tabela
 document.addEventListener('DOMContentLoaded', async () => {
@@ -53,12 +81,16 @@ document.addEventListener('DOMContentLoaded', async () => {
       const tableBody = document.getElementById('parkingTableBody');
       tableBody.innerHTML = ''; // Limpa o conteúdo da tabela antes de adicionar novos dados
 
+      let totalValue = 0; // Variável para acumular o valor total do dia
+
       vehicles.forEach(vehicle => {
           const row = document.createElement('tr');
                 
         const entrada = vehicle.entrada ? new Date(vehicle.entrada).toLocaleString() : 'N/A';
         const saida = vehicle.saida ? new Date(vehicle.saida).toLocaleString() : 'N/A';
         
+        // Calcular o valor total
+        totalValue += vehicle.valor; // Adiciona o valor do veículo ao total
 
           row.innerHTML = `
               <td>${vehicle.placa}</td>
@@ -72,6 +104,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
           tableBody.appendChild(row);
       });
+
+      // Exibir o valor total na seção de valor diário
+      const valorDiarioDiv = document.getElementById('valordiario');
+      valorDiarioDiv.innerHTML = `R$ ${totalValue.toFixed(2)}`; // Formatar o valor como moeda
 
       // Adiciona event listeners para os botões de exclusão
       document.querySelectorAll('.delete-button').forEach(button => {

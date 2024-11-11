@@ -12,6 +12,8 @@ async function getVehiclesFromExit() {
         const tableBody = document.getElementById('parkingTableBody');
         tableBody.innerHTML = ''; // Limpa a tabela antes de adicionar os dados
 
+        let totalValue = 0; // Variável para acumular o valor total do dia
+
         vehicles.forEach(vehicle => {
             // Converte os timestamps para data e hora legíveis
             const entryTime = vehicle.entrada ? new Date(vehicle.entrada.seconds * 1000).toLocaleString() : '';
@@ -19,6 +21,10 @@ async function getVehiclesFromExit() {
 
             // Cria uma nova linha na tabela para cada veículo
             const row = document.createElement('tr');
+
+            // Calcular o valor total
+            totalValue += vehicle.valor; // Adiciona o valor do veículo ao total
+
             row.innerHTML = `
                 <td>${vehicle.placa}</td>
                 <td>${vehicle.tipo}</td>
@@ -30,6 +36,10 @@ async function getVehiclesFromExit() {
             // Adiciona a linha à tabela
             tableBody.appendChild(row);
         });
+
+        // Exibir o valor total na seção de valor diário
+        const valorDiarioDiv = document.getElementById('valordiario');
+        valorDiarioDiv.innerHTML = `R$ ${totalValue.toFixed(2)}`; // Formatar o valor como moeda
     } catch (error) {
         console.error("Erro ao buscar dados da coleção 'saida':", error);
     }

@@ -41,7 +41,7 @@ app.post('/api/entrada', async (req, res) => {
             tipo,
             entrada: entryTimestamp,
             saida: exitTimestamp,
-            valor: 0
+            valor: valor
         });
 
         res.status(200).json({ id: docRef.id, message: 'veiculo cadastrado com sucesso' });
