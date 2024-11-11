@@ -4,7 +4,7 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:node": "node index.js",
+    "start:node": "node firestore.js",
     "start:electron": "electron .",
     "start": "concurrently \"npm run start:node\" \"npm run start:electron\""
   },
