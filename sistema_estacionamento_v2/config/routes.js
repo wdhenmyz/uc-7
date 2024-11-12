@@ -132,7 +132,27 @@ app.get('/api/saida', async (req, res) => {
     }
 });
 
+// Rota para apagar todos os documentos da coleção `saida`
+app.delete('/api/saida', async (req, res) => {
+    const saidaRef = db.collection('saida');
 
+    try {
+        const snapshot = await saidaRef.get();;
+
+        if (snapshot.empty) {
+            return res.status(200).json({ message: 'Nenhum documento encontrado na coleção "saida".' });
+        }
+
+        // Deleta cada documento na coleção
+        const deletePromises = snapshot.docs.map(doc => doc.ref.delete());
+        await Promise.all(deletePromises);
+
+        res.status(200).json({ message: 'Todos os documentos da coleção "saida" foram apagados com sucesso.' });
+    } catch (error) {
+        console.error("Erro ao apagar documentos da coleção 'saida':", error);
+        res.status(500).json({ error: 'Erro ao apagar documentos da coleção "saida".' });
+    }
+});
 
 
 module.exports = app;
