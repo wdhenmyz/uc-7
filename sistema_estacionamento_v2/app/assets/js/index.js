@@ -164,6 +164,8 @@ async function deleteVehicle(id) {
     }
 
     console.log("Veículo movido para 'saida' e excluído com sucesso");
+
+    window.location.reload();
   } catch (error) {
     console.error("Erro ao excluir o veículo:", error);
   }
