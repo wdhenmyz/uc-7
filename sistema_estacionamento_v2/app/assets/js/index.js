@@ -4,7 +4,17 @@ const caminhonete = 6;
 const onibus = 8;
 
 const vagas = carro+moto+caminhonete+onibus;
-let vagas_disponiveis;
+let vagas_disponiveis = vagas;
+
+const vagasCarro = document.getElementById('vagas_carro');
+const vagasMoto = document.getElementById('vagas_moto');
+const vagasCaminhonete = document.getElementById('vagas_caminhonete');
+const vagasOnibus = document.getElementById('vagas_onibus');
+
+let motospots = 5; // Number of motorcycle spots
+let carspots = 5; // Number of car spots
+let truckspots = 5; // Number of truck spots
+let busspots = 5; // Number of bus spots
 
 document.getElementById('parkingForm').addEventListener('submit', async (e) => {
   e.preventDefault(); // Prevent the form from submitting the traditional way
@@ -43,24 +53,10 @@ document.getElementById('parkingForm').addEventListener('submit', async (e) => {
           console.log("veiculo cadastrado com sucesso");
           // Refresh the parking table or handle UI updates as needed
           window.location.reload();
-
       } else {
           console.error("falha ao cadastrar veiculo");
       }
 
-    if (tipo == 'carro') {
-      vagas_disponiveis = vagas - 1;
-      document.getElementById('availableSpots').textContent = `Vagas Disponíveis: ${vagas_disponiveis}`;     
-    } else if (tipo == 'moto') {
-      vagas_disponiveis = vagas - 1;
-      document.getElementById('availableSpots').textContent = `Vagas Disponíveis: ${vagas_disponiveis}`;     
-    } else if (tipo == 'caminhonete') {
-      vagas_disponiveis = vagas - 1;
-      document.getElementById('availableSpots').textContent = `Vagas Disponíveis: ${vagas_disponiveis}`;     
-    } else if (tipo == 'onibus') {
-      vagas_disponiveis = vagas - 1;
-      document.getElementById('availableSpots').textContent = `Vagas Disponíveis: ${vagas_disponiveis}`;
-    }
 
   } catch (error) {
       console.error("falha ao enviar dados:", error);
@@ -108,11 +104,14 @@ document.addEventListener('DOMContentLoaded', async () => {
       let totalValue = 0; // Variável para acumular o valor total do dia
 
       vehicles.forEach(vehicle => {
-          const row = document.createElement('tr');
+        const row = document.createElement('tr');
                 
         const entrada = vehicle.entrada ? new Date(vehicle.entrada).toLocaleString() : 'N/A';
         const saida = vehicle.saida ? new Date(vehicle.saida).toLocaleString() : 'N/A';
         
+        vagas_disponiveis--;
+        document.getElementById('availableSpots').textContent = `Vagas Disponíveis: ${vagas_disponiveis}`;
+
         // Calcular o valor total
         totalValue += vehicle.valor; // Adiciona o valor do veículo ao total
 
@@ -127,7 +126,26 @@ document.addEventListener('DOMContentLoaded', async () => {
           `;
 
           tableBody.appendChild(row);
+
+
+          if (vehicle.tipo == 'carro') {     
+            carspots--;
+            vagasCarro.textContent = `Vagas de carro: ${carspots}`
+          }
+          if (vehicle.tipo == 'moto') {
+            motospots--;
+            vagasMoto.textContent = `Vagas de moto: ${motospots}`
+          } 
+          if (vehicle.tipo == 'caminhonete') {
+            truckspots--;
+            vagasCaminhonete.textContent = `Vagas de caminhonete: ${truckspots}`
+          } 
+          if (vehicle.tipo == 'onibus') {
+            busspots--;
+            vagasOnibus.textContent = `Vagas de onibus: ${busspots}`
+          }
       });
+
 
       // Exibir o valor total na seção de valor diário
       const valorDiarioDiv = document.getElementById('valordiario');
@@ -219,25 +237,28 @@ async function saida(id) {
 
     console.log("Veículo excluído da coleção 'entrada'");
 
+    // 5. Atualizar os contadores de vagas
+    if (vehicleData.tipo == 'carro') {
+      carspots++;
+      vagasCarro.textContent = `Vagas de carro: ${carspots}`
+    } 
+    if (vehicleData.tipo == 'moto') {
+      motospots++;
+      vagasMoto.textContent = `Vagas de moto: ${motospots}`
+    } 
+    if (vehicleData.tipo == 'caminhonete') {
+      truckspots++;
+      vagasCaminhonete.textContent = `Vagas de caminhonete: ${truckspots}`
+    } 
+    if (vehicleData.tipo == 'onibus') {
+      busspots++;
+      vagasOnibus.textContent = `Vagas de onibus: ${busspots}`
+    }
+
+    // 6. Atualizar o contador de vagas disponíveis
+    availableSpots.textContent = `Vagas Disponíveis: ${carspots + motospots + truckspots + busspots}`;
     
   } catch (error) {
     console.error("Erro ao registrar a saída:", error);
   }
 }
-
-
-
-
-
-// Função para exibir os dados do veículo no modal
-/*function showVehicleData(vehicleData) {
-  document.getElementById('modalContainer').style.display = 'flex';
-  document.getElementById('modalPlaca').innerText = `Placa: ${vehicleData.placa}`;
-  document.getElementById('modalTipo').innerText = `Tipo: ${vehicleData.tipo}`;
-  document.getElementById('modalDono').innerText = `Dono: ${vehicleData.dono}`;
-  document.getElementById('modalEntrada').innerText = `Entrada: ${new Date(vehicleData.entrada.seconds * 1000).toLocaleString()}`;
-  document.getElementById('modalSaida').innerText = `Saída: ${vehicleData.saida ? new Date(vehicleData.saida.seconds * 1000).toLocaleString() : 'Não registrada'}`;
-  document.getElementById('modalValor').innerText = `Valor: R$${vehicleData.valor}`;
-}*/
-
-
