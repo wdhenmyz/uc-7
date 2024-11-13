@@ -3,7 +3,12 @@ const moto = 2;
 const caminhonete = 6;
 const onibus = 8;
 
-const vagas = carro+moto+caminhonete+onibus;
+let motospots = 5; // Number of motorcycle spots
+let carspots = 5; // Number of car spots
+let truckspots = 5; // Number of truck spots
+let busspots = 5; // Number of bus spots
+
+const vagas = motospots+carspots+truckspots+busspots;
 let vagas_disponiveis = vagas;
 
 const vagasCarro = document.getElementById('vagas_carro');
@@ -11,10 +16,7 @@ const vagasMoto = document.getElementById('vagas_moto');
 const vagasCaminhonete = document.getElementById('vagas_caminhonete');
 const vagasOnibus = document.getElementById('vagas_onibus');
 
-let motospots = 5; // Number of motorcycle spots
-let carspots = 5; // Number of car spots
-let truckspots = 5; // Number of truck spots
-let busspots = 5; // Number of bus spots
+
 
 document.getElementById('parkingForm').addEventListener('submit', async (e) => {
   e.preventDefault(); // Prevent the form from submitting the traditional way
