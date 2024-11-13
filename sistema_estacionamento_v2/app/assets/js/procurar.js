@@ -91,6 +91,65 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 
+// Função para carregar a tabela com base nos filtros
+async function buscarVeiculos(event) {
+  event.preventDefault(); // Impede o envio do formulário para recarregar a página
+  
+  const placa = document.getElementById('plate').value;
+  const dono = document.getElementById('owner').value;
+  const tipo = document.querySelector('input[name="value-radio"]:checked')?.value; // Verifica se algum tipo foi selecionado
+
+  // Configura a URL da requisição GET, incluindo os parâmetros de pesquisa
+  const url = new URL('http://localhost:3000/api/entrada'); // Altere para o endpoint correto
+  const params = new URLSearchParams();
+
+  if (placa) params.append('placa', placa);
+  if (dono) params.append('owner', dono);
+  if (tipo) params.append('tipo', tipo);
+
+  url.search = params.toString();
+
+  try {
+    // Faz a requisição para o backend
+    const response = await fetch(url);
+    const veiculos = await response.json();
+    
+    if (!response.ok) {
+      throw new Error('Erro ao buscar os veículos');
+    }
+
+    // Limpa a tabela antes de exibir os novos resultados
+    const tableBody = document.getElementById('parkingTableBody');
+    tableBody.innerHTML = '';
+
+    // Preenche a tabela com os dados retornados
+    veiculos.forEach(vehicle => {
+      const row = document.createElement('tr');
+      
+      row.innerHTML = `
+        <td>${vehicle.placa}</td>
+        <td>${vehicle.tipo}</td>
+        <td>${vehicle.dono}</td>
+        <td>${new Date(vehicle.entrada).toLocaleString()}</td>
+        <td>${vehicle.saida ? new Date(vehicle.saida).toLocaleString() : 'Ainda não saiu'}</td>
+        <td>${vehicle.valor ? vehicle.valor : '0,00'}</td>
+        <td><button class="saida-button" data-id="${vehicle.id}">saida</button></td>
+      `;
+      
+      tableBody.appendChild(row);
+    });
+
+  } catch (error) {
+    console.error('Erro ao buscar veículos:', error);
+  }
+}
+
+// Adiciona o evento de submit ao formulário
+const vehicleForm = document.getElementById('vehicleForm');
+vehicleForm.addEventListener('submit', buscarVeiculos);
+
+
+
 async function loadModal(vehicleData) {
   console.log("Dados do veículo enviados para modal:", vehicleData); // Verifique se os dados aparecem aqui
   const vehicleDataString = encodeURIComponent(JSON.stringify(vehicleData));
