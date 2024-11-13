@@ -27,11 +27,3 @@ function diminuirTamanho() {
 
     console.log(contador)
 }
-
-// configurar o numero de vagas
-let availableSpotsCount = 20; // Total number of parking spots
-
-let motospots = 5; // Number of motorcycle spots
-let carspots = 10; // Number of car spots
-let truckspots = 3; // Number of truck spots
-let busspots = 2; // Number of bus spots

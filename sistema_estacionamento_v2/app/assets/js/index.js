@@ -3,6 +3,9 @@ const moto = 2;
 const caminhonete = 6;
 const onibus = 8;
 
+const vagas = carro+moto+caminhonete+onibus;
+let vagas_disponiveis;
+
 document.getElementById('parkingForm').addEventListener('submit', async (e) => {
   e.preventDefault(); // Prevent the form from submitting the traditional way
 
@@ -40,9 +43,25 @@ document.getElementById('parkingForm').addEventListener('submit', async (e) => {
           console.log("veiculo cadastrado com sucesso");
           // Refresh the parking table or handle UI updates as needed
           window.location.reload();
+
       } else {
           console.error("falha ao cadastrar veiculo");
       }
+
+    if (tipo == 'carro') {
+      vagas_disponiveis = vagas - 1;
+      document.getElementById('availableSpots').textContent = `Vagas Disponíveis: ${vagas_disponiveis}`;     
+    } else if (tipo == 'moto') {
+      vagas_disponiveis = vagas - 1;
+      document.getElementById('availableSpots').textContent = `Vagas Disponíveis: ${vagas_disponiveis}`;     
+    } else if (tipo == 'caminhonete') {
+      vagas_disponiveis = vagas - 1;
+      document.getElementById('availableSpots').textContent = `Vagas Disponíveis: ${vagas_disponiveis}`;     
+    } else if (tipo == 'onibus') {
+      vagas_disponiveis = vagas - 1;
+      document.getElementById('availableSpots').textContent = `Vagas Disponíveis: ${vagas_disponiveis}`;
+    }
+
   } catch (error) {
       console.error("falha ao enviar dados:", error);
   }
