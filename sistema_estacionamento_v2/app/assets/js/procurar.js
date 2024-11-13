@@ -91,62 +91,69 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 
-// Função para carregar a tabela com base nos filtros
-async function buscarVeiculos(event) {
-  event.preventDefault(); // Impede o envio do formulário para recarregar a página
-  
+document.getElementById('vehicleForm').addEventListener('submit', async function (event) {
+  event.preventDefault();
+
+  // Pegando os valores dos campos do formulário
   const placa = document.getElementById('plate').value;
   const dono = document.getElementById('owner').value;
-  const tipo = document.querySelector('input[name="value-radio"]:checked')?.value; // Verifica se algum tipo foi selecionado
+  const tipo = document.querySelector('input[name="value-radio"]:checked')?.value;
 
-  // Configura a URL da requisição GET, incluindo os parâmetros de pesquisa
-  const url = new URL('http://localhost:3000/api/entrada'); // Altere para o endpoint correto
-  const params = new URLSearchParams();
+  // Montando a query dinâmica
+  const query = [];
 
-  if (placa) params.append('placa', placa);
-  if (dono) params.append('owner', dono);
-  if (tipo) params.append('tipo', tipo);
+  if (placa) query.push(`placa=${encodeURIComponent(placa)}`);
+  if (dono) query.push(`dono=${encodeURIComponent(dono)}`);
+  if (tipo) query.push(`tipo=${encodeURIComponent(tipo)}`);
 
-  url.search = params.toString();
+  // Construindo a URL com base nos campos preenchidos
+  const queryString = query.length ? '?' + query.join('&') : '';
 
   try {
-    // Faz a requisição para o backend
-    const response = await fetch(url);
-    const veiculos = await response.json();
-    
+    const response = await fetch(`http://localhost:3000/api/entrada${queryString}`);
+
     if (!response.ok) {
-      throw new Error('Erro ao buscar os veículos');
+      throw new Error("Erro ao buscar dados dos veículos");
     }
 
-    // Limpa a tabela antes de exibir os novos resultados
-    const tableBody = document.getElementById('parkingTableBody');
-    tableBody.innerHTML = '';
+    const vehicles = await response.json();
+    console.log(vehicles);
 
-    // Preenche a tabela com os dados retornados
-    veiculos.forEach(vehicle => {
+    // Limpa a tabela antes de inserir novos dados
+    const tableBody = document.getElementById('parkingTableBody');
+    tableBody.innerHTML = ''; 
+
+    // Verificando se há veículos e populando a tabela
+    if (vehicles.length === 0) {
       const row = document.createElement('tr');
-      
-      row.innerHTML = `
-        <td>${vehicle.placa}</td>
-        <td>${vehicle.tipo}</td>
-        <td>${vehicle.dono}</td>
-        <td>${new Date(vehicle.entrada).toLocaleString()}</td>
-        <td>${vehicle.saida ? new Date(vehicle.saida).toLocaleString() : 'Ainda não saiu'}</td>
-        <td>${vehicle.valor ? vehicle.valor : '0,00'}</td>
-        <td><button class="saida-button" data-id="${vehicle.id}">saida</button></td>
-      `;
-      
+      row.innerHTML = `<td colspan="7">Nenhum veículo encontrado</td>`;
       tableBody.appendChild(row);
-    });
+    } else {
+      vehicles.forEach(vehicle => {
+        const row = document.createElement('tr');
+        const entrada = vehicle.entrada ? new Date(vehicle.entrada).toLocaleString() : 'N/A';
+        const saida = vehicle.saida ? new Date(vehicle.saida).toLocaleString() : 'N/A';
+
+        row.innerHTML = `
+          <td>${vehicle.placa}</td>
+          <td>${vehicle.tipo}</td>
+          <td>${vehicle.dono}</td>
+          <td>${entrada}</td>
+          <td>${saida}</td>
+          <td>${vehicle.valor}</td>
+          <td><button class="saida-button" data-id="${vehicle.id}">Saída</button></td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
 
   } catch (error) {
-    console.error('Erro ao buscar veículos:', error);
+    console.error("Erro ao carregar os veículos:", error);
   }
-}
+});
 
-// Adiciona o evento de submit ao formulário
-const vehicleForm = document.getElementById('vehicleForm');
-vehicleForm.addEventListener('submit', buscarVeiculos);
+
+
 
 
 

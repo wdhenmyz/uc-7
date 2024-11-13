@@ -86,6 +86,40 @@ app.get('/api/entrada/:id', async (req, res) => {
     }
 });
 
+app.get('/api/entrada', async (req, res) => {
+    const { placa, dono, tipo } = req.query;  // Captura os parâmetros de consulta
+  
+    try {
+      // Inicializando a consulta à coleção 'veiculos'
+      let query = vehiclesRef;  // Referência à coleção 'veiculos'
+  
+      // Condicional para aplicar filtros com base nos parâmetros recebidos
+      if (placa) query = query.where('placa', '==', placa);
+      if (dono) query = query.where('dono', '==', dono);
+      if (tipo) query = query.where('tipo', '==', tipo);
+  
+      // Executando a consulta
+      const snapshot = await query.get();
+      
+      if (snapshot.empty) {
+        return res.status(404).json({ message: 'Nenhum veículo encontrado' });
+      }
+  
+      // Mapear os documentos para um array
+      const vehicles = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+  
+      // Enviar a resposta com os veículos encontrados
+      res.json(vehicles);
+    } catch (error) {
+      console.error("Erro ao buscar os veículos:", error);
+      res.status(500).json({ error: "Erro ao buscar os veículos" });
+    }
+  });
+  
+  
 
 app.delete('/api/entrada/:id', async (req, res) => {
     try {
