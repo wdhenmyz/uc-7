@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Veículo</title>
+    <style>
+        body {
+            background-color: #f0f0f0; /* Mudança de cor para verificar */
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h2>Informações do Veículo</h2>
+    <p id="modalPlaca">Carregando...</p>
+    <p id="modalTipo"></p>
+    <p id="modalDono"></p>
+    <p id="modalEntrada"></p>
+    <p id="modalSaida"></p>
+    <p id="modalValor"></p>
+
+    <script>
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            return JSON.parse(decodeURIComponent(params.get('vehicleData')));
+        }
+
+        const vehicleData = getQueryParams();
+        if (vehicleData) {
+            document.getElementById('modalPlaca').innerText = `Placa: ${vehicleData.placa}`;
+            document.getElementById('modalTipo').innerText = `Tipo: ${vehicleData.tipo}`;
+            document.getElementById('modalDono').innerText = `Dono: ${vehicleData.dono}`;
+            document.getElementById('modalEntrada').innerText = `Entrada: ${new Date(vehicleData.entrada.seconds * 1000).toLocaleString()}`;
+            document.getElementById('modalSaida').innerText = `Saída: ${vehicleData.saida ? new Date(vehicleData.saida.seconds * 1000).toLocaleString() : 'Não registrada'}`;
+            document.getElementById('modalValor').innerText = `Valor: R$${vehicleData.valor}`;
+        } else {
+            document.getElementById('modalPlaca').innerText = "Dados do veículo não encontrados";
+        }
+    </script>
+</body>
+</html>
