@@ -130,22 +130,34 @@ document.addEventListener('DOMContentLoaded', async () => {
           tableBody.appendChild(row);
 
 
-          if (vehicle.tipo == 'carro') {     
+          if (vehicle.tipo == 'carro' && carspots > 0) { 
             carspots--;
             vagasCarro.textContent = `Vagas de carro: ${carspots}`
+          } else if (carspots == 0) {
+            vagasCarro.textContent = `Vagas de carro: ${carspots}`
           }
-          if (vehicle.tipo == 'moto') {
+
+          if (vehicle.tipo == 'moto' && motospots > 0) {
             motospots--;
             vagasMoto.textContent = `Vagas de moto: ${motospots}`
-          } 
-          if (vehicle.tipo == 'caminhonete') {
+          } else if (motospots == 0) {
+            vagasMoto.textContent = `Vagas de moto: ${motospots}`
+          }
+
+          if (vehicle.tipo == 'caminhonete' && truckspots > 0) {
             truckspots--;
             vagasCaminhonete.textContent = `Vagas de caminhonete: ${truckspots}`
-          } 
-          if (vehicle.tipo == 'onibus') {
+          } else if (truckspots == 0) {
+            vagasCaminhonete.textContent = `Vagas de caminhonete: ${truckspots}`
+          }
+
+          if (vehicle.tipo == 'onibus' && busspots > 0) {
             busspots--;
             vagasOnibus.textContent = `Vagas de onibus: ${busspots}`
+          } else if (busspots == 0) {
+            vagasOnibus.textContent = `Vagas de onibus: ${busspots}`
           }
+
       });
 
 
