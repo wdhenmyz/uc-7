@@ -1,3 +1,36 @@
+// Função para exibir pop-up de carregamento
+function showPopup(message) {
+    const popup = document.getElementById('popup');
+    if (!popup) {
+      // Criar pop-up se não existir
+      const newPopup = document.createElement('div');
+      newPopup.id = 'popup';
+      newPopup.style.position = 'fixed';
+      newPopup.style.top = '50%';
+      newPopup.style.left = '50%';
+      newPopup.style.transform = 'translate(-50%, -50%)';
+      newPopup.style.padding = '20px';
+      newPopup.style.backgroundColor = '#333';
+      newPopup.style.color = '#fff';
+      newPopup.style.borderRadius = '5px';
+      newPopup.style.zIndex = '1000';
+      newPopup.innerText = message;
+      document.body.appendChild(newPopup);
+    } else {
+      popup.innerText = message;
+      popup.style.display = 'block';
+    }
+}
+  
+// Função para esconder o pop-up de carregamento
+function hidePopup() {
+    const popup = document.getElementById('popup');
+    if (popup) {
+        popup.style.display = 'none';
+    }
+}
+
+
 // Função para buscar os veículos da coleção 'saida' e mostrar na tabela
 async function getVehiclesFromExit() {
     try {
@@ -84,6 +117,9 @@ document.getElementById('dailyReport').addEventListener('click', async () => {
             body: JSON.stringify(payload)
         });
 
+        // Exibir mensagem de carregamento
+        showPopup("enviando relatório diário, aguarde......");
+
         if (!sheetDbResponse.ok) {
             throw new Error("Erro ao enviar os dados para o SheetDB");
         }
@@ -100,9 +136,12 @@ document.getElementById('dailyReport').addEventListener('click', async () => {
         console.log("Dados enviados para o SheetDB e documentos deletados da coleção 'saida' com sucesso");
 
         // Opcional: Atualize a interface ou mostre uma mensagem de sucesso para o usuário
-        alert("Relatório diário enviado e dados apagados com sucesso!");
+        showPopup("Relatório diário enviado e dados apagados com sucesso!");
+        setTimeout(() => {
+            hidePopup();
+            window.location.reload();
+          }, 2500); // Aguardar 1.5 segundos antes de redirecionar
         
-        window.location.reload();
     } catch (error) {
         console.error("Erro ao processar o relatório diário:", error);
         alert("Houve um erro ao enviar os dados. Verifique o console para mais informações.");
