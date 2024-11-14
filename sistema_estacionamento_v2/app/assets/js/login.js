@@ -1,67 +1,84 @@
+// Função para exibir pop-up de carregamento
+function showPopup(message) {
+  const popup = document.getElementById('popup');
+  if (!popup) {
+    // Criar pop-up se não existir
+    const newPopup = document.createElement('div');
+    newPopup.id = 'popup';
+    newPopup.style.position = 'fixed';
+    newPopup.style.top = '50%';
+    newPopup.style.left = '50%';
+    newPopup.style.transform = 'translate(-50%, -50%)';
+    newPopup.style.padding = '20px';
+    newPopup.style.backgroundColor = '#333';
+    newPopup.style.color = '#fff';
+    newPopup.style.borderRadius = '5px';
+    newPopup.style.zIndex = '1000';
+    newPopup.innerText = message;
+    document.body.appendChild(newPopup);
+  } else {
+    popup.innerText = message;
+    popup.style.display = 'block';
+  }
+}
+
+// Função para esconder o pop-up de carregamento
+function hidePopup() {
+  const popup = document.getElementById('popup');
+  if (popup) {
+    popup.style.display = 'none';
+  }
+}
+
+// Evento de submissão do formulário de login
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const senha = document.getElementById('password').value;
-    const usuario = document.getElementById('username').value;
-    
-    
-    
-    try {
-        const response = await fetch(`https://sheetdb.io/api/v1/mg07naffiti78/search?usuario=${usuario}&senha=${senha}`, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-        });
+  const senha = document.getElementById('password').value;
+  const usuario = document.getElementById('username').value;
 
-        const result = await response.json();
-        console.log(result);
+  console.log(`usuario= ${usuario} senha= ${senha}`);
 
-        if (result.length > 0) {
-            async function confirm() {
-              let id = prompt("porfavor entre seu id:");
+  try {
+    // Exibir mensagem de carregamento
+    showPopup("Realizando login, aguarde......");
 
-              if (id == null || id.trim() === "") {
-                alert("Você não colocou um id válido");
-                return;
-              }
+    // Fazendo o GET com os parâmetros 'usuario' e 'senha' na URL
+    const response = await fetch(`http://localhost:3000/api/login?usuario=${encodeURIComponent(usuario)}&senha=${encodeURIComponent(senha)}`);
 
-              try {
-                const response = await fetch(`https://sheetdb.io/api/v1/mg07naffiti78/search?&id=${id}`, {
-                  method: 'GET',
-                  headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                  },
-                });
-
-                const result = await response.json();
-                console.log(result);
-
-                if (result.length > 0) {
-                    alert('Bem vindo');
-                    window.location.href = 'index.html';     
-                    return;  
-                  
-                } else {
-                  alert('Você não entrou um id válido');
-                }
-              } catch (error) {
-                console.error('Fetch error:', error);
-                alert('Ocorreu um erro ao buscar os dados. Tente novamente mais tarde.');
-              }
-            }
-
-            confirm()
-                
-        } else {
-            alert('Usuário ou senha inválidos');
-        }
-        
-    } catch (error) {
-        console.error('Error:', error);
+    if (!response.ok) {
+      throw new Error("Erro ao buscar dados do usuário");
     }
 
+    const result = await response.json();
 
+    if (result.success) {
+
+      // Exibir mensagem de sucesso e redirecionar após um curto intervalo
+      showPopup("Login com sucesso! Bem-vindo");
+      setTimeout(() => {
+        hidePopup();
+        window.location.href = 'index.html';
+      }, 1500); // Aguardar 1.5 segundos antes de redirecionar
+
+    } else {
+
+      showPopup("Usuário ou senha incorretos")
+
+      setTimeout(() => {
+        hidePopup();
+      }, 1500); // Aguardar 1.5 segundos antes de redirecionar
+
+    }
+  } catch (error) {
+
+    showPopup("Usuário ou senha incorretos")
+
+    setTimeout(() => {
+      hidePopup();
+    }, 1500); // Aguardar 1.5 segundos antes de redirecionar
+
+    console.error("Erro ao buscar o usuário:", error);
+ 
+  }
 });

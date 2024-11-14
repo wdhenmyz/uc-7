@@ -14,7 +14,7 @@ app.on('ready', () => {
     });
     mainWindow.maximize();
     Menu.setApplicationMenu(Menu.buildFromTemplate(template))
-    mainWindow.loadFile('app/index.html')
+    mainWindow.loadFile('app/login.html')
 });
 
 app.on("window-all-closed", () => {

@@ -19,6 +19,45 @@ const db = admin.firestore();
 app.use(express.json());
 
 const vehiclesRef = db.collection('veículos');
+const usersRef = db.collection('usuário'); // Certifique-se de referenciar a coleção 'usuario'
+
+// pegar todos os usuários
+app.get('/api/usuarios', async (req, res) => {
+  try {
+      const snapshot = await usersRef.get();
+      const users = [];
+
+      snapshot.forEach(doc => {
+        users.push({ id: doc.id, ...doc.data() });
+      });
+
+      res.status(200).json(users);
+  } catch (error) {
+      console.error("Erro ao buscar dados dos usuários:", error);
+      res.status(500).json({ error: 'Falha ao buscar dados dos usuários' });
+  }
+});
+
+
+// Configuração da rota no servidor
+app.get('/api/login', async (req, res) => {
+  const { usuario, senha } = req.query;  // Captura 'nome' e 'senha' dos parâmetros de consulta
+
+  try {
+    // Fazendo o GET com os parâmetros 'nome' e 'senha' na URL
+    const snapshot = await usersRef.where('usuario', '==', usuario).where('senha', '==', senha).get();
+
+    if (snapshot.empty) {
+      return res.status(401).json({ error: 'Usuário ou senha incorretos' });
+    }
+
+    res.json({ success: true });
+  } catch (error) {
+    console.error("Erro ao buscar o usuário:", error);
+    res.status(500).json({ error: "Erro ao buscar o usuário" });
+  }
+});
+
 
 // Route to add vehicle data
 app.post('/api/entrada', async (req, res) => {
