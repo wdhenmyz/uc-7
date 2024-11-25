@@ -86,6 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.getElementById('dailyReport').addEventListener('click', async () => {
     try {
+        // Exibir mensagem de carregamento
+        showPopup("enviando relatório diário, aguarde......");
+
         // Faz a requisição GET para pegar todos os veículos da coleção 'saida'
         const response = await fetch('http://localhost:3000/api/saida');
         const vehicles = await response.json();
@@ -117,8 +120,6 @@ document.getElementById('dailyReport').addEventListener('click', async () => {
             body: JSON.stringify(payload)
         });
 
-        // Exibir mensagem de carregamento
-        showPopup("enviando relatório diário, aguarde......");
 
         if (!sheetDbResponse.ok) {
             throw new Error("Erro ao enviar os dados para o SheetDB");
@@ -144,6 +145,6 @@ document.getElementById('dailyReport').addEventListener('click', async () => {
         
     } catch (error) {
         console.error("Erro ao processar o relatório diário:", error);
-        alert("Houve um erro ao enviar os dados. Verifique o console para mais informações.");
+        showPopup("Houve um erro ao enviar os dados. Verifique o console para mais informações.");
     }
 });
