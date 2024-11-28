@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -49,3 +50,56 @@
     
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+
+</head>
+<body>
+
+    <div id="container">
+      <div id="topo">
+
+        <button onclick="aumentarTamanho()" class="fonte">A+</button>
+        <button onclick="diminuirTamanho()" class="fonte">A-</button>
+
+        <h1>VagaRápida</h1>        
+
+        <button id="botaodark" onclick="document.body.classList.toggle('dark')">
+          <input type="checkbox" class="theme-checkbox">
+        </button>
+
+      </div> <br>
+
+      <div id="login">
+
+        <form id="loginForm">
+          <div class="info">
+
+            <label for="username">Nome de Usuário:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+          <input type="submit" value="Entrar">
+        </form>
+
+      </div> <!-- Formulário para registrar a entrada de veículos -->
+            
+            <script type="module" src="assets/js/login.js"></script>
+
+            <script src="assets/js/configuracoes_basicas.js"></script>
+
+    </div>
+    
+</body>
+</html>
+>>>>>>> 0afbd0e2c15375698b7d3aadc240baf2ce87246b
