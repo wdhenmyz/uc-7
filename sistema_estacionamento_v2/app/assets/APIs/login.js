@@ -1,4 +1,4 @@
-import { showPopup, hidePopup } from "./Popup.js";
+import { showPopup, hidePopup } from "../components/Popup.js";
 
 async function login(usuario, senha) {
     try {

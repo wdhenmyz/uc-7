@@ -1,4 +1,4 @@
-import { login } from "../components/login.js";
+import { login } from "../APIs/login.js";
 
 // Evento de submissão do formulário de login
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
