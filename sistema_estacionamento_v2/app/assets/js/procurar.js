@@ -16,7 +16,7 @@ const vagasMoto = document.getElementById('vagas_moto');
 const vagasCaminhonete = document.getElementById('vagas_caminhonete');
 const vagasOnibus = document.getElementById('vagas_onibus');
 
-
+import { loadModal } from '../components/modal.js';
 
 
 // carregar todos os veículos na tabela
@@ -151,19 +151,6 @@ document.getElementById('vehicleForm').addEventListener('submit', async function
     console.error("Erro ao carregar os veículos:", error);
   }
 });
-
-
-
-
-
-
-async function loadModal(vehicleData) {
-  console.log("Dados do veículo enviados para modal:", vehicleData); // Verifique se os dados aparecem aqui
-  const vehicleDataString = encodeURIComponent(JSON.stringify(vehicleData));
-  window.open(`modal.html?vehicleData=${vehicleDataString}`, 'VeiculoInfo', 'width=400,height=400');
-}
-
-
 
 async function saida(id) {
   try {
