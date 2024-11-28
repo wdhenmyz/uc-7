@@ -1,4 +1,5 @@
-import { showPopup, hidePopup } from "./Popup.js";
+import { showPopup, hidePopup } from "../components/Popup.js";
+import { login } from "../components/login.js";
 
 // Evento de submissão do formulário de login
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
@@ -9,7 +10,11 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 
   console.log(`usuario= ${usuario} senha= ${senha}`);
 
-  try {
+  login(usuario, senha);
+});
+
+
+/*try {
     // Exibir mensagem de carregamento
     showPopup("Realizando login, aguarde......");
 
@@ -50,5 +55,4 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 
     console.error("Erro ao buscar o usuário:", error);
  
-  }
-});
+  }*/

@@ -1,6 +1,7 @@
 const express = require('express');
 const admin = require('firebase-admin');
 const app = express();
+const cors = require('cors');
 
 // Import your service account key JSON file
 var serviceAccount = require("./vaga-rapida-firebase-adminsdk-74g0f-984d2e2197.json");
@@ -14,9 +15,13 @@ admin.initializeApp({
 // Firestore collection reference
 const db = admin.firestore();
 
-
 // Middleware to parse JSON requests
 app.use(express.json());
+
+// Middleware to allow cross-origin requests
+app.use(cors({
+  origin: 'http://127.0.0.1:5500' // Apenas essa origem pode acessar
+}));
 
 const vehiclesRef = db.collection('veículos');
 const usersRef = db.collection('usuário'); // Certifique-se de referenciar a coleção 'usuario'
