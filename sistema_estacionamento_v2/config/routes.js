@@ -10,7 +10,7 @@ app.use(express.json());
 const usuarios = require('../preload/usuários');
 app.use(usuarios);
 
-// Configuração da rota para login
+// Configuração da rota GET para login
 const login = require('../preload/login');
 app.use(login);
 
@@ -22,6 +22,15 @@ app.use(entrada);
 const saida = require('../preload/carregar_Saida');
 app.use(saida);
 
+// Rota GET para buscar um veículo pelo ID
+const veiculoId = require('../preload/veiculo_id');
+app.use(veiculoId);
+
+// Rota GET para buscar um veículo pelos parâmetros de consulta
+const consultarCarros = require('../preload/consultar_Carros');
+app.use(consultarCarros);
+
+
 
 // Rota POST para cadastrar um novo veículo
 const cadastrarEntrada = require('../preload/cadastrar_entrada');
@@ -29,71 +38,11 @@ app.use(cadastrarEntrada);
 
 
 
+// Rota DELETE para excluir um veículo
+const deletarEntrada = require('../preload/deletar_veiculo');
+app.use(deletarEntrada);
+
 /*
-// Rota GET para buscar um veículo pelo ID
-app.get('/api/entrada/:id', async (req, res) => {
-    try {
-        const { id } = req.params; // Obtém o ID do veículo da URL
-        const doc = await vehiclesRef.doc(id).get(); // Busca o documento no Firestore
-
-        if (!doc.exists) {
-            return res.status(404).json({ error: 'Veículo não encontrado' });
-        }
-
-        // Retorna os dados do veículo encontrado
-        res.status(200).json({ id: doc.id, ...doc.data() });
-    } catch (error) {
-        console.error("Erro ao buscar o veículo:", error);
-        res.status(500).json({ error: 'Falha ao buscar o veículo' });
-    }
-});
-
-app.get('/api/entrada', async (req, res) => {
-    const { placa, dono, tipo } = req.query;  // Captura os parâmetros de consulta
-  
-    try {
-      // Inicializando a consulta à coleção 'veiculos'
-      let query = vehiclesRef;  // Referência à coleção 'veiculos'
-  
-      // Condicional para aplicar filtros com base nos parâmetros recebidos
-      if (placa) query = query.where('placa', '==', placa);
-      if (dono) query = query.where('dono', '==', dono);
-      if (tipo) query = query.where('tipo', '==', tipo);
-  
-      // Executando a consulta
-      const snapshot = await query.get();
-      
-      if (snapshot.empty) {
-        return res.status(404).json({ message: 'Nenhum veículo encontrado' });
-      }
-  
-      // Mapear os documentos para um array
-      const vehicles = snapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-  
-      // Enviar a resposta com os veículos encontrados
-      res.json(vehicles);
-    } catch (error) {
-      console.error("Erro ao buscar os veículos:", error);
-      res.status(500).json({ error: "Erro ao buscar os veículos" });
-    }
-  });
-  
-  
-
-app.delete('/api/entrada/:id', async (req, res) => {
-    try {
-        const { id } = req.params;
-        await vehiclesRef.doc(id).delete();
-        res.status(200).json({ message: 'Veículo excluído com sucesso' });
-    } catch (error) {
-        console.error("Erro ao excluir o veículo:", error);
-        res.status(500).json({ error: 'Falha ao excluir o veículo' });
-    }
-});
-
 // Rota PATCH para registrar a saída do veículo
 app.patch('/api/saida/:id', async (req, res) => {
     const vehicleId = req.params.id;
