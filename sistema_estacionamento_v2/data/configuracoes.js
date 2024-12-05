@@ -1,11 +1,6 @@
-// data/configuracoes.js
-const configuracoes = [
-    {
-        vagas_Carros:0,
-        vagas_Moto:0,
-        vagas_Onibus:0,
-        vagas_Caminhonete:0,
-    }
-];
-
-module.exports = configuracoes;
+let vagas_Carros = 5;
+let vagas_Moto = 5;
+let vagas_Onibus = 5;
+let vagas_Caminhonete = 5
+ 
+export { vagas_Carros, vagas_Moto, vagas_Onibus, vagas_Caminhonete };
