@@ -17,7 +17,7 @@ async function login(usuario, senha) {
         if (result.success) {
     
           // Exibir mensagem de sucesso e redirecionar após um curto intervalo
-          showPopup("Login com sucesso! Bem-vindo");
+          showPopup("Login realizado com sucesso! Bem-vindo");
           setTimeout(() => {
             hidePopup();
             window.location.href = 'index.html';
